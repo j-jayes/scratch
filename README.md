@@ -2,8 +2,4 @@
 
 ## Purpose
 
-Describes project
-
-## Process
-
-Describes how far I am
+Scratch project for soing stuff I probably won't come back to
