@@ -4,3 +4,97 @@ author: "JJayes"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: html_document
 ---
+
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+df <- read_rds(here::here("data", "df_fathom.rds"))
+```
+
+## More Rstats or more Python?
+
+```{r}
+df %>%
+  arrange(desc(created_at)) %>% 
+  view
+```
+
+Most common hashtags?
+
+```{r}
+library(tidytext)
+
+hashtags <- df %>%
+  unnest(cols = c(hashtags)) %>%
+  filter(!is.na(hashtags)) %>%
+  mutate(hashtags = str_to_lower(hashtags)) %>%
+  count(hashtags, is_retweet) %>%
+  mutate(is_retweet = if_else(is_retweet == TRUE, 
+                              "Retweet", 
+                              "@fathomdata tweet"))
+```
+
+
+```{r}
+library(ggsci)
+
+hashtags %>% 
+  group_by(is_retweet) %>% 
+  slice_max(n, n = 12, with_ties = F) %>% 
+  ungroup() %>% 
+  mutate(language = str_detect(hashtags, "rstats|python|sql|css")) %>% 
+  mutate(hashtags = reorder_within(hashtags, n, is_retweet)) %>% 
+  ggplot(aes(n, hashtags, fill = n, colour = language)) +
+  geom_col(show.legend = F) +
+  scale_fill_material("blue") +
+  scale_color_manual(values = c("white", "red")) +
+  scale_y_reordered() +
+  facet_wrap(~ is_retweet, scales = "free") +
+  labs(x = "Number of tweets tagging")
+```
+
+```{r}
+hashtags %>%
+  filter(hashtags %in% c("rstats", "python", "sql", "css")) %>%
+  mutate(hashtags = fct_reorder(hashtags, n)) %>%
+  ggplot(aes(n, is_retweet, fill = hashtags)) +
+  geom_col(position = "fill") +
+  scale_x_continuous(labels = scales::percent_format()) +
+  labs(
+    x = "Share of tweets tagging langauge",
+    fill = "Language",
+    y = NULL
+  ) +
+  scale_fill_npg(
+    guide = guide_legend(reverse = TRUE)
+  )
+```
+
+```{r}
+hashtags %>%
+  filter(hashtags %in% c("rstats", "python", "sql", "css")) %>%
+  pivot_wider(names_from = is_retweet, values_from = n) %>%
+  arrange(desc(`@fathomdata tweet`)) %>%
+  knitr::kable()
+```
+
+Looking beyond just hashtags?
+
+```{r}
+df %>% select(text) %>% 
+  mutate(rstats = str_detect(text, "rstats"),
+         python = str_detect(text, "python")) %>% 
+  summarise(across(c(rstats, python), sum))
+```
+
+
+
+Who does fathom retweet?
+
+```{r}
+df %>% 
+  count(retweet_name, retweet_screen_name, sort = T) %>% 
+  filter(!is.na(retweet_screen_name))
+```
+

@@ -5,3 +5,19 @@ date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: html_document
 ---
 
+## Scrape Fathom Data twitter feed and check for R vs Python content
+
+```{r}
+library(tidyverse)
+library(rtweet)
+
+```
+
+```{r}
+df <- get_timelines(c("fathomdata"), n = 3200)
+
+# df %>% write_rds(here::here("data", "df_fathom.rds"))
+
+
+```
+
