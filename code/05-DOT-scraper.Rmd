@@ -1,0 +1,63 @@
+---
+title: "DOT-scraper"
+author: "JJayes"
+date: "02/02/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+```{r}
+url <- "https://www.dol.gov/agencies/oalj/PUBLIC/DOT/REFERENCES/DOT01A"
+
+html <- read_html(url)
+
+titles <- html %>% 
+  html_nodes("strong") %>% 
+  html_text(trim = T) %>% 
+  as_tibble() %>% 
+  filter(row_number() > 9) %>% 
+  rename(title = value)
+
+descriptions <- html %>% 
+  html_nodes("dd") %>% 
+  html_text(trim = T) %>% 
+  as_tibble() %>% 
+  filter(row_number() > 2)
+
+df <- titles %>% 
+  bind_cols(descriptions)
+
+df <- df %>% 
+  mutate(alternate_titles = str_extract(title, "alternate titles\\: .*"),
+         alternate_titles = str_remove(alternate_titles, "alternate titles\\:"),
+         alternate_titles = str_squish(alternate_titles)) %>% 
+  mutate(code = str_extract(title, "[0-9]+\\.[0-9]+\\-[0-9]+"))
+
+df
+```
+
+### Scraping info from SCB's website.
+
+```{r}
+html <- read_html("https://www.h5.scb.se/yreg/SSYKBeskr2012.asp?id=1120")
+
+table <- html %>% 
+  html_table()
+
+table <- table[[1]]
+
+
+table %>% 
+  pivot_longer(everything()) %>% 
+  distinct(value)
+```
+

@@ -1,0 +1,122 @@
+---
+title: "History through the Fouries"
+author: "JJayes"
+date: "29/03/2022"
+output: 
+    html_document:
+        toc: true
+        toc_depth: 3
+        toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, message = F, warning = F, fig.align = "center")
+library(tidyverse)
+library(lubridate)
+library(reactable)
+theme_set(theme_light())
+```
+
+## Purpose
+
+Plots for Johan's inaugrual lecture
+
+## Prompt
+
+From Johan -
+
+I’m trying to do something innovative. There is a high likelihood that it fails. I want to write the economic history of South Africa through the Fouries. Sounds silly, but it might just work. 
+
+Would it be possible to send me a graph of our research on the Spanish flu, where you show all the Fouries? You can decide what is the easiest/prettiest, but I can imagine that there are a lot of Fouries in Oudtshoorn, so if you only want to focus on that town, that could work. Maybe something similar to what you did for the Bunus?
+
+The story is actually about Paarl as well, so perhaps two graphs (I know I’m pushing my luck): one showing the disparity in death rates between white and coloured households in Paarl before and during the flu, and one showing the number of Fouries that died in Oudtshoorn.
+
+<blockquote>
+
+The project began, in 2018, as an attempt to ascertain the effects of the Spanish flu a hundred years earlier. I could not have imagined that only two years later the world would experience another pandemic. Our research on the flu was suddenly in demand; we now only submitted a report to the Presidency in April 2020, but with then Masters student Jonathan Jayes, I published two papers on the effects of the flu, showing how it exacerbated existing inequalities in the health care system, a finding that has relevance for today. In the graph I show the difference in mortality rates of Paarl residents, by race. It is clear that the flu disproportionally affected coloured residents. That is not to say that death was not pervasive amongst all groups. As the next graph shows, in Oudtshoorn where my great-grandfather lived, many Fouries were also amongst the dead.
+
+</blockquote>
+
+## Data
+
+Read in Spanish flu data
+
+```{r}
+df <- read_rds("data/spanish_flu_data.rds")
+
+df_fourie <- df %>%
+  mutate(surname = str_to_lower(surname)) %>%
+  filter(str_detect(surname, "fourie")) %>%
+  mutate(fourie = TRUE)
+
+df_fourie %>% head()
+```
+
+## Analysis
+
+How many observations per town?
+
+```{r}
+df_fourie %>%
+  filter(!is.na(sex)) %>%
+  count(town, sort = T) %>%
+  mutate(town = fct_reorder(town, n)) %>%
+  ggplot(aes(n, town)) +
+  geom_col(fill = "Midnightblue") +
+  scale_fill_grey() +
+  labs(x = "Number of observations in dataset")
+```
+
+Sex breakdown?
+
+```{r}
+df_fourie %>%
+  count(sex)
+```
+
+Table of different occupations
+
+```{r}
+df_fourie %>%
+  count(occupation, sort = T) %>%
+  filter(nchar(occupation) > 1) %>%
+  reactable::reactable(columns = c(list(
+    occupation = colDef(name = "Occupation"),
+    n = colDef(name = "Number")
+  )))
+```
+
+### Scatterplot of Fouries who died in Oudtshoorn during the pandemic
+
+```{r}
+df_plot <- df %>%
+  mutate(fourie = str_detect(surname, "Fourie")) %>%
+  filter(
+    between(death_date, ymd("1918-09-01"), ymd("1919-02-01")),
+    !is.na(sex),
+    town == "Oudtshoorn"
+  )
+
+df_plot %>%
+  ggplot(aes(x = death_date, y = age_years, shape = sex)) +
+  geom_point(cex = 2, alpha = .2) +
+  geom_label(data = df_plot %>% filter(fourie == T), aes(label = christian_names), show.legend = FALSE) +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) +
+  scale_color_brewer(palette = "Dark2") +
+  labs(
+    y = "Age in years",
+    x = "Date of death"
+  ) +
+  theme(legend.text = element_text(size = 15))
+```
+
+### Mortality rates in Paarl by age group and race
+
+```{r}
+p <- read_rds("data/Paarl_mortality.rds")
+
+p
+```

@@ -95,6 +95,84 @@ Who does fathom retweet?
 ```{r}
 df %>% 
   count(retweet_name, retweet_screen_name, sort = T) %>% 
-  filter(!is.na(retweet_screen_name))
+  filter(!is.na(retweet_screen_name)) %>% 
+  slice_max(n, n = 12, with_ties = F) %>% 
+  knitr::kable()
+```
+
+
+```{r}
+df <- read_rds(here::here("data", "df_fathom_datawookie.rds"))
+```
+
+```{r}
+df %>% 
+  count(screen_name)
+```
+
+```{r}
+remove_bits <- "&amp;|&lt;|&gt;"
+
+tidy_tweets <- df %>% 
+  filter(!str_detect(text, "^RT")) %>%
+  mutate(text = str_remove_all(text, remove_bits)) %>%
+  unnest_tokens(word, text, token = "tweets") %>%
+  filter(!word %in% stop_words$word,
+         !word %in% str_remove_all(stop_words$word, "'"),
+         str_detect(word, "[a-z]"))
+
+frequency <- tidy_tweets %>% 
+  group_by(screen_name) %>% 
+  count(word, sort = TRUE) %>% 
+  left_join(tidy_tweets %>% 
+              group_by(screen_name) %>% 
+              summarise(total = n())) %>%
+  mutate(freq = n/total)
+
+library(tidyr)
+
+frequency <- frequency %>% 
+  select(screen_name, word, freq) %>% 
+  pivot_wider(names_from = screen_name, values_from = freq) %>%
+  arrange(desc(datawookie, fathomdata))
+
+```
+
+```{r}
+library(scales)
+
+frequency %>% 
+  ggplot(aes(datawookie, fathomdata)) +
+  geom_jitter(alpha = 0.1, size = 2.5, width = 0.25, height = 0.25) +
+  geom_text(aes(label = word), check_overlap = TRUE, vjust = 1.5) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  geom_abline(color = "red") +
+  theme(legend.position = "none")
+```
+
+
+```{r}
+frequency %>% 
+  mutate(highlight = word == "@standardbankza") %>% 
+  ggplot(aes(datawookie, fathomdata)) +
+  geom_jitter(alpha = 0.1, size = 2.5, width = 0.25, height = 0.25) +
+  geom_text(aes(label = word, colour = highlight), check_overlap = TRUE, vjust = 1.5) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  geom_abline(color = "red") +
+  scale_color_manual(values = c("grey80", "midnightblue")) +
+  theme(legend.position = "none")
+```
+
+haha! 
+
+```{r}
+frequency %>% 
+  filter(is.na(fathomdata)) %>% 
+  select(-fathomdata) %>% 
+  mutate(datawookie = scales::percent(datawookie)) %>% 
+  slice_head(n = 10) %>% 
+  knitr::kable()
 ```
 

@@ -14,9 +14,9 @@ library(rtweet)
 ```
 
 ```{r}
-df <- get_timelines(c("fathomdata"), n = 3200)
+df <- get_timelines(c("fathomdata", "datawookie"), n = 3200)
 
-# df %>% write_rds(here::here("data", "df_fathom.rds"))
+# df %>% write_rds(here::here("data", "df_fathom_datawookie.rds"))
 
 
 ```
