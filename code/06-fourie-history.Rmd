@@ -97,6 +97,12 @@ df_plot <- df %>%
     town == "Oudtshoorn"
   )
 
+# jpeg(filename = "figures/Oudtshoorn_fouries_v1.jpeg",
+#      units = "in",
+#      width = 8, 
+#      height = 6,
+#      res = 1000)
+
 df_plot %>%
   ggplot(aes(x = death_date, y = age_years, shape = sex)) +
   geom_point(cex = 2, alpha = .2) +
@@ -111,6 +117,8 @@ df_plot %>%
     x = "Date of death"
   ) +
   theme(legend.text = element_text(size = 15))
+
+# dev.off()
 ```
 
 ### Mortality rates in Paarl by age group and race
@@ -120,3 +128,22 @@ p <- read_rds("data/Paarl_mortality.rds")
 
 p
 ```
+
+#### Another take on mortality rates in Paarl - this time showing pre-pandemic mortality rates as well. 
+
+```{r}
+p <- read_rds("data/Paarl_mortality_2.rds")
+
+p
+
+# jpeg(filename = "figures/paarl_mortality_v1.jpeg",
+#      units = "in",
+#      width = 8, 
+#      height = 6,
+#      res = 1000)
+# 
+# p
+# 
+# dev.off()
+```
+
