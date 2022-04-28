@@ -1,0 +1,117 @@
+---
+title: "PEFA Rwanda and Burundi"
+author: "JJayes"
+date: '2022-04-27'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Purpose
+
+Analyse PEFA data for Kathy B. Rwanda and Burundi.
+
+### Read in data
+
+```{r}
+library(tidyverse)
+df <- readxl::read_excel(here::here("data/for_kathy.xlsx"))
+
+df <- df %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(-c(framework, country, year))
+```
+
+### Groupings
+
+Separate pi variables from donor variables.
+
+```{r}
+df <- df %>%
+  filter(nchar(name) == 5) %>%
+  mutate(group = case_when(
+    str_detect(name, "pi_*") ~ "P",
+    TRUE ~ "Other"
+  ))
+
+# df %>% 
+#   ggplot(aes(value, name, fill = country)) +
+#   geom_col(position = "dodge") +
+#   facet_wrap(~group, nrow = 2, scales = "free")
+```
+
+### Groupings 2
+
+Segment variables into groups for aggregation in a step below.
+
+```{r}
+df <- df %>%
+  mutate(
+    number = parse_number(name),
+    number = case_when(
+      str_detect(name, "pi") ~ number,
+      TRUE ~ 0
+    )
+  ) %>%
+  mutate(group = case_when(
+    between(number, 1, 4) ~ "A. PFM-OUT-TURNS: Credibility of the budget",
+    between(number, 5, 10) ~ "B. KEY CROSS-CUTTING ISSUES: Comprehensiveness and Transparency",
+    between(number, 11, 12) ~ "C. BUDGET CYCLE: Policy-Based Budgeting",
+    between(number, 13, 21) ~ "C. BUDGET CYCLE:  Predictability and Control in Budget Execution",
+    between(number, 22, 25) ~ "C. BUDGET CYCLE:   Accounting, Recording and Reporting",
+    between(number, 26, 28) ~ "C. BUDGET CYCLE:   External Scrutiny and Audit",
+    TRUE ~ "D. DONOR PRACTICES "
+  ))
+
+df %>% 
+  ggplot(aes(value, name, fill = country)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~group, nrow = 2, scales = "free")
+```
+
+Write out file for comparison at low level of aggregation
+
+```{r}
+# df %>% write.csv(here::here("data/for_kathy_long.csv"))
+```
+
+
+```{r}
+df <- df %>% 
+  group_by(country, group) %>% 
+  mutate(mean_value = mean(value)) %>% 
+  ungroup() %>% 
+  distinct(country, group, mean_value) %>% 
+  separate(group, c("letter", "rest"), sep = "\\.") %>% 
+  separate(rest, c("big", "small"), sep = "\\:") %>% 
+  mutate(across(big:small, str_squish)) %>% 
+  mutate(small = case_when(
+    is.na(small) ~ "Donor Practices",
+    TRUE ~ small
+    
+  ))
+```
+
+White out file for radar chart - high level of aggregation
+
+```{r}
+# df %>% write.csv(here::here("data/for_kathy_condensed.csv"))
+
+df %>% 
+  select(-c(big, letter)) %>% 
+  pivot_wider(names_from = small, values_from = mean_value) %>% 
+  write.csv(here::here("data/for_kathy_condensed_wide.csv"))
+
+df %>% 
+  ggplot(aes(mean_value, small, fill = country)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~ big, scales = "free")
+```
+
+
+### Back to Excel
+
+Radar chart created in excel.
+
