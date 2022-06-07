@@ -2,4 +2,4 @@
 
 ## Purpose
 
-Scratch project for soing stuff I probably won't come back to
+Scratch project for doing stuff I probably won't come back to
