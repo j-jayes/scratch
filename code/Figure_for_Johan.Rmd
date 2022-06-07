@@ -1,0 +1,173 @@
+---
+title: "Figure_for_Johan"
+author: "JJayes"
+date: '2022-06-07'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Purpose
+
+Figure planning for Johan about how to visualize his matched sample from the tax census and petitions to the government.
+
+## Planning
+
+The plan is to make a figure that shows two things:
+
+1. The share of individuals who are petitioners matched to the tax census, as a proportion of the tax census.
+1. For each petitioner who appears in the tax census each year, how many years do they appear in the tax census.
+
+Let's start with each of the petitioners. We create a set of 400 fake names with the `ch_generate` function from the [**charlatan** package](https://docs.ropensci.org/charlatan/).
+
+```{r}
+library(charlatan)
+
+petitioners <- ch_generate(n = 400) %>% 
+  select(petitioner = name)
+
+petitioners %>% head() %>% knitr::kable(col.names = "Example names")
+```
+
+Now we generate for each year, a dummy variable for whether these individuals are in the tax census dataset.
+
+```{r}
+years <- 1751:1800 %>% as_tibble() %>% rename(year = value)
+
+is_in <- function(petitioner) {
+  runif(50, 0, 1) %>%
+    as_tibble() %>%
+    mutate(value = ifelse(value > .9, 1, 0)) %>% 
+    bind_cols(years) %>%
+    pivot_wider(names_from = year, values_from = value)
+}
+
+petitioners <- petitioners %>% 
+  mutate(is_in_dataset = map(petitioner, is_in)) %>% 
+  unnest(is_in_dataset)
+
+petitioners %>% 
+  select(1:6) %>% 
+  head(5) %>% 
+  knitr::kable()
+
+```
+
+Now we have a dataset with 50 years and a binary indicating if the individual is in the tax census.
+
+Original idea: just do lines to show when people enter and leave the tax census. Let's start small with just 25 people.
+
+```{r}
+petitioners_time <- petitioners %>% 
+  pivot_longer(-petitioner, names_to = "year", values_to = "is_present") %>% 
+  mutate(year = as.numeric(year)) %>% 
+  filter(is_present == 1) %>% 
+  group_by(petitioner) %>% 
+  mutate(min_year = min(year),
+         max_year = max(year),
+         n_years = n()) %>% 
+  ungroup() %>% 
+  mutate(duration = max_year - min_year)
+```
+
+This chart is showing dots for each time a petitioner appears in the tax census, and a line showing the duration they are in the census. The colour of the line shows their number of observations over this period.
+
+```{r}
+petitioners_25 <- petitioners %>% select(petitioner) %>% sample_n(25)
+
+petitioners_time %>%
+  # choose just 25 petitioners
+  filter(petitioner %in% petitioners_25$petitioner) %>%
+  mutate(petitioner = fct_reorder(petitioner, min_year)) %>%
+  ggplot(aes(x = year, y = petitioner)) +
+  geom_point() +
+  # line to show duration
+  geom_segment(aes(
+    x = min_year,
+    y = petitioner,
+    xend = max_year,
+    yend = petitioner,
+    colour = n_years
+  )) +
+  scale_color_gradient2(
+    low = "blue", high = "red", mid = "pink",
+    midpoint = 10
+  ) +
+  labs(
+    x = "Year",
+    y = "Petitioner",
+    colour = "Observations\nin sample"
+  )
+
+
+```
+
+
+We now look from the other side - how many petitioners are in the tax census, and how many times do they appear?
+
+We want to show this as a stacked column plot.
+
+First we need to simulate what share the petitioners make up of the tax census each year, let's make it between 15 percent and 25 percent.
+
+```{r}
+share_petitioners <- runif(50, 15, 25) %>% 
+  as_tibble() %>% 
+  mutate(share_petitioners = round(value)) %>% 
+  select(share_petitioners)
+
+share_petitioners <- years %>% 
+  bind_cols(share_petitioners) %>% 
+  mutate(share_other = 100 - share_petitioners)
+
+share_petitioners %>% 
+  pivot_longer(-year) %>% 
+  mutate(name = str_to_title(str_remove(name, "share_"))) %>% 
+  ggplot(aes(x = year, y = value, fill = name)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  labs(x = "Year",
+       y = "Share of tax census",
+       fill = NULL)
+```
+
+Great, now let us choose that many petitioners from the set of petitioners each year
+
+What's a good way to do this??
+
+For each year, we need to see which petitioners appear, then sample from these
+
+```{r}
+who_is_in <- function(year, how_many){
+  petitioners_time %>% 
+    filter(year == year) %>% 
+    distinct(petitioner, n_years) %>% 
+    slice_sample(n = how_many) 
+  
+}
+
+share_petitioners <- share_petitioners %>% 
+  mutate(names = pmap(list(year, share_petitioners), who_is_in))
+
+share_petitioners <- share_petitioners %>% 
+  unnest(names)
+
+not_petitioners <- share_petitioners %>% 
+  select(year, n_years = share_other) %>% 
+  mutate(n = NA) %>% 
+  distinct()
+
+share_petitioners %>% 
+  count(year, n_years) %>% 
+  bind_rows(not_petitioners) %>% 
+  ggplot(aes(year, n_years, fill = factor(n))) +
+  geom_col(position = "fill") +
+  labs(fill = "Number of years that petitioners\nwho are in the tax census in this\nyear appear in total in tax censuses") +
+  theme(legend.position = "bottom")
+
+
+```
+
+This is kinda chaotic - 
+
