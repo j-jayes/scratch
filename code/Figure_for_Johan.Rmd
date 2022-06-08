@@ -1,12 +1,24 @@
 ---
-title: "Figure_for_Johan"
+title: "Figure for Johan"
 author: "JJayes"
 date: '2022-06-07'
-output: html_document
+output: 
+    html_document:
+        theme: journal
+        highlight: haddock
+        toc: true
+        toc_depth: 3
+        toc_float: true
+        code_folding: show
+urlcolor: blue
+mainfont: cochineal
+sansfont: Fira Sans
+monofont: Fira Code   
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 ## Purpose
@@ -154,20 +166,40 @@ share_petitioners <- share_petitioners %>%
   unnest(names)
 
 not_petitioners <- share_petitioners %>% 
-  select(year, n_years = share_other) %>% 
-  mutate(n = NA) %>% 
+  select(year, n = share_other) %>% 
+  mutate(n_years = NA) %>% 
   distinct()
+
+colours <- scale_fill_brewer(palette = "Paired")
+
+library(RColorBrewer)
+my.cols <- brewer.pal(12, "Paired")
+my.cols
 
 share_petitioners %>% 
   count(year, n_years) %>% 
-  bind_rows(not_petitioners) %>% 
-  ggplot(aes(year, n_years, fill = factor(n))) +
-  geom_col(position = "fill") +
+  bind_rows(not_petitioners) %>%
+  ggplot(aes(year, n, fill = factor(n_years))) +
+  scale_fill_manual(values = my.cols) +
+  geom_col() +
   labs(fill = "Number of years that petitioners\nwho are in the tax census in this\nyear appear in total in tax censuses") +
   theme(legend.position = "bottom")
 
 
 ```
 
-This is kinda chaotic - 
+This is kinda chaotic - maybe a better colour scale will work?
 
+```{r}
+share_petitioners %>%
+  count(year, n_years) %>%
+  bind_rows(not_petitioners) %>%
+  ggplot(aes(year, n, fill = n_years)) +
+  scale_fill_gradient2(low = "blue", high = "orange", mid = "yellow", midpoint = 6) +
+  geom_col(position = "fill") +
+  labs(fill = "Number of years that petitioners\nwho are in the tax census in this\nyear appear in total in tax censuses") +
+  theme(legend.position = "bottom")
+
+```
+
+Maybe this is a bit better?
