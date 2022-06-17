@@ -119,22 +119,73 @@ df_plot %>%
   theme(legend.text = element_text(size = 15))
 
 # dev.off()
+
+# jpeg(filename = "figures/Oudtshoorn_fouries_v2.jpeg",
+#      units = "in",
+#      width = 8, 
+#      height = 6,
+#      res = 1000)
+
+df_plot <- df_plot %>%
+  mutate(sex = ifelse(sex == "Male", "Manlik", "Vroulik"))
+
+df_plot %>% 
+  ggplot(aes(x = death_date, y = age_years, shape = sex)) +
+  geom_point(cex = 2, alpha = .2) +
+  geom_label(data = df_plot %>% filter(fourie == T), aes(label = christian_names), show.legend = FALSE) +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) +
+  scale_color_brewer(palette = "Dark2") +
+  labs(
+    y = "Ouderdom in jare",
+    x = "Sterfdatum"
+  ) +
+  theme(legend.text = element_text(size = 15))
+
+# dev.off()
 ```
 
 ### Mortality rates in Paarl by age group and race
 
 ```{r}
-p <- read_rds("data/Paarl_mortality.rds")
+data_paarl <- read_rds("data/Paarl_for_Johan_June_2022_1.rds")
 
-p
+data_male <- read_rds("data/Paarl_for_Johan_June_2022_1_male.rds")
+data_female <- read_rds("data/Paarl_for_Johan_June_2022_1_female.rds")
+
+data_paarl %>%
+  ggplot(aes(y = age, x = pct, fill = sex)) +
+  geom_bar(data = subset(data_male, sex == "Male"), stat = "identity") +
+  geom_bar(data = subset(data_female, sex == "Female"), stat = "identity") +
+  geom_vline(xintercept = 0, lty = 2) +
+  facet_wrap(~race) +
+  scale_x_continuous(
+    breaks = seq(-12, 12, 2),
+    labels = c("12", "10", "8", "6", "4", "2", "0", "2", "4", "6", "8", "10", "12")
+  ) +
+  labs(
+    x = "Mortality rate by age group\nDeaths per 100 residents",
+    y = ""
+  ) +
+  # scale_fill_brewer(palette = "Dark2") +
+  scale_fill_grey() +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 15)
+  )
+
 ```
 
 #### Another take on mortality rates in Paarl - this time showing pre-pandemic mortality rates as well. 
 
 ```{r}
-p <- read_rds("data/Paarl_mortality_2.rds")
+data_paarl_2 <- read_rds("data/Paarl_for_Johan_June_2022_2.rds")
 
-p
+data_male_2 <- read_rds("data/Paarl_for_Johan_June_2022_2_male.rds")
+data_female_2 <- read_rds("data/Paarl_for_Johan_June_2022_2_female.rds")
 
 # jpeg(filename = "figures/paarl_mortality_v1.jpeg",
 #      units = "in",
@@ -142,7 +193,85 @@ p
 #      height = 6,
 #      res = 1000)
 # 
-# p
+data_paarl_2 %>%
+  ggplot(aes(y = age, x = pct, fill = sex)) +
+  geom_bar(data = subset(data_male_2, sex == "Male"), stat = "identity") +
+  geom_bar(data = subset(data_female_2, sex == "Female"), stat = "identity") +
+  geom_vline(xintercept = 0, lty = 2) +
+  facet_grid(race~period) +
+  scale_x_continuous(
+    breaks = seq(-12, 12, 2),
+    labels = c("12", "10", "8", "6", "4", "2", "0", "2", "4", "6", "8", "10", "12")
+  ) +
+  labs(
+    x = "Mortality rate by age group\nDeaths per 100 residents",
+    y = ""
+  ) +
+  # scale_fill_brewer(palette = "Dark2") +
+    scale_fill_grey() +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 15)
+  )
+# 
+# dev.off()
+```
+
+Afrikaans:
+
+```{r}
+data_paarl_2 <- read_rds("data/Paarl_for_Johan_June_2022_2.rds") %>%
+  mutate(
+    race = ifelse(race == "White", "Wit", "Bruin"),
+    period = ifelse(period == "Pre-pandemic", "Prepandemies", "Pandemies"),
+    age = str_replace(age, "Years and Over", "jaar en ouer"),
+    age = str_replace(age, "Years", "jaar")
+  )
+
+data_male_2 <- read_rds("data/Paarl_for_Johan_June_2022_2_male.rds") %>%
+  mutate(
+    race = ifelse(race == "White", "Wit", "Bruin"),
+    period = ifelse(period == "Pre-pandemic", "Prepandemies", "Pandemies"),
+    age = str_replace(age, "Years and Over", "jaar en ouer"),
+    age = str_replace(age, "Years", "jaar")
+  )
+
+data_female_2 <- read_rds("data/Paarl_for_Johan_June_2022_2_female.rds") %>%
+  mutate(
+    race = ifelse(race == "White", "Wit", "Bruin"),
+    period = ifelse(period == "Pre-pandemic", "Prepandemies", "Pandemies"),
+    age = str_replace(age, "Years and Over", "jaar en ouer"),
+    age = str_replace(age, "Years", "jaar")
+  )
+
+# jpeg(filename = "figures/paarl_mortality_v1.jpeg",
+#      units = "in",
+#      width = 8, 
+#      height = 6,
+#      res = 1000)
+# 
+data_paarl_2 %>%
+  ggplot(aes(y = age, x = pct, fill = sex)) +
+  geom_bar(data = subset(data_male_2, sex == "Male"), stat = "identity") +
+  geom_bar(data = subset(data_female_2, sex == "Female"), stat = "identity") +
+  geom_vline(xintercept = 0, lty = 2) +
+  facet_grid(race~period) +
+  scale_x_continuous(
+    breaks = seq(-12, 12, 2),
+    labels = c("12", "10", "8", "6", "4", "2", "0", "2", "4", "6", "8", "10", "12")
+  ) +
+  labs(
+    x = "Sterftekoers volgens ouderdomsgroep\nSterftes per 100 inwoners",
+    y = ""
+  ) +
+  # scale_fill_brewer(palette = "Dark2") +
+    scale_fill_grey() +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 15)
+  )
 # 
 # dev.off()
 ```
