@@ -119,15 +119,22 @@ df_plot %>%
   theme(legend.text = element_text(size = 15))
 
 # dev.off()
+```
 
-# jpeg(filename = "figures/Oudtshoorn_fouries_v2.jpeg",
-#      units = "in",
-#      width = 8, 
-#      height = 6,
-#      res = 1000)
+Afrikaans
+
+```{r}
+# change dates on axis
+Sys.setlocale("LC_ALL", "Afrikaans_South Africa")
 
 df_plot <- df_plot %>%
   mutate(sex = ifelse(sex == "Male", "Manlik", "Vroulik"))
+
+jpeg(filename = "figures/Oudtshoorn_fouries_v2.jpeg",
+     units = "in",
+     width = 8,
+     height = 6,
+     res = 1000)
 
 df_plot %>% 
   ggplot(aes(x = death_date, y = age_years, shape = sex)) +
@@ -144,7 +151,7 @@ df_plot %>%
   ) +
   theme(legend.text = element_text(size = 15))
 
-# dev.off()
+dev.off()
 ```
 
 ### Mortality rates in Paarl by age group and race
@@ -245,7 +252,7 @@ data_female_2 <- read_rds("data/Paarl_for_Johan_June_2022_2_female.rds") %>%
     age = str_replace(age, "Years", "jaar")
   )
 
-# jpeg(filename = "figures/paarl_mortality_v1.jpeg",
+# jpeg(filename = "figures/paarl_mortality_v2.jpeg",
 #      units = "in",
 #      width = 8, 
 #      height = 6,

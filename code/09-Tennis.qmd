@@ -1,0 +1,133 @@
+---
+title: "Tennis"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+## Purpose
+
+BMI of tennis players at wimbledon.
+
+## Planning
+
+Get the data - rvest
+
+```{r}
+url <- "https://www.atptour.com/en/stats/service-games-won"
+
+html <- read_html(url)
+```
+
+```{r}
+table <- html %>%
+  html_nodes(".stats-listing-row") %>%
+  html_text()
+
+table <- table[[1]]
+
+table %>% 
+  as_tibble() %>% 
+  separate_rows(value, sep = "\\n") %>% 
+  mutate(value = str_squish(value))
+```
+
+#statsListingTableContent a
+
+
+```{r}
+url <- "https://www.atptour.com/en/stats/service-games-won"
+
+html <- read_html(url)
+
+players <- html %>% 
+  html_nodes(".stats-listing-name") %>% 
+  html_children() %>% 
+  html_attr("href")
+
+players <- players %>% 
+  as_tibble() %>% 
+  rename(url = value) %>% 
+  mutate(url = str_c("https://www.atptour.com", url))
+
+```
+
+
+
+Next get stats from players
+
+player-profile-hero-table
+
+```{r}
+url <- "https://www.atptour.com/en/players/ivo-karlovic/k336/overview"
+
+html <- read_html(url)
+
+table <- html %>% 
+  html_nodes(".player-profile-hero-table") %>% 
+  html_table() 
+
+table <- table[[1]]
+
+table <- table %>% 
+  pivot_longer(everything()) %>% 
+  mutate(value = str_remove_all(value, "  ")) %>% 
+  separate(value, into = c("field", "value"), sep = "\r\n\r\n") %>% 
+  mutate(value = str_squish(value)) %>% 
+  select(field, value)
+
+get_player_info <- function(url) {
+  message("Getting player info from ", url)
+  
+  html <- read_html(url)
+
+  table <- html %>%
+    html_nodes(".player-profile-hero-table") %>%
+    html_table()
+
+  table <- table[[1]]
+
+  table <- table %>%
+    pivot_longer(everything()) %>%
+    mutate(value = str_remove_all(value, "  ")) %>%
+    separate(value, into = c("field", "value"), sep = "\r\n\r\n") %>%
+    mutate(value = str_squish(value)) %>%
+    select(field, value) %>% 
+    filter(!is.na(value))
+  
+  table
+}
+```
+
+Iterate
+
+```{r}
+players_info <- players %>% 
+  mutate(info = map(url, possibly(get_player_info, "failed")))
+
+players_info <- players_info %>% 
+  unnest(info) %>% 
+  pivot_wider(names_from = field, values_from = value)
+
+players_info_short <- players_info %>% 
+  janitor::clean_names() %>% 
+  select(url, height, weight)
+
+df <- players_info_short
+
+df <- df %>% 
+  mutate(height = str_extract(height, "\\d\\d\\dcm"),
+         height = parse_number(height),
+         weight = str_extract(weight, "\\(\\d.*kg"),
+         weight = parse_number(weight))
+
+df %>% 
+  mutate(bmi = weight / (height/100)^2) %>% 
+  ggplot(aes(bmi)) +
+  geom_histogram()
+
+```
+
