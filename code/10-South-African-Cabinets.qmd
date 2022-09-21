@@ -1,0 +1,155 @@
+---
+title: "10-South-African-Cabinets"
+format: html
+---
+## Purpose
+
+Graphic showing size and age of South African cabinets over time.
+
+Wikipedia has a bunch of nice tables. Gonna scrape.
+
+Start with 1910 cabinet.
+
+```{r}
+library(tidyverse)
+library(rvest)
+
+```
+
+### Initial attempt
+
+```{r}
+url <- "https://en.wikipedia.org/wiki/Second_Cabinet_of_Cyril_Ramaphosa"
+
+html <- read_html(url)
+```
+
+```{r}
+tables <- html %>% 
+  html_table()
+
+tables[[2]]
+
+tables <- html %>% 
+  html_nodes(".wikitable") %>% 
+  html_table()
+
+table <- tables[[2]]
+
+table %>% 
+  select(Minister) %>% 
+  mutate(minister = str_squish(str_remove_all(Minister, "The Hon.|His Excellency")),
+         url = str_c("https://en.wikipedia.org/wiki/", URLencode(minister))) %>% 
+  pull(url)
+
+html %>% 
+  html_nodes(".wikitable") %>% 
+  html_children() %>% 
+  html_children() %>% 
+  html_attr("href")
+
+```
+
+```{r}
+link_nodes <- html %>%
+  html_nodes(".wikitable") %>% 
+  html_nodes(xpath = "//table//a")  
+
+link_text  <- link_nodes %>% html_text()
+
+index <- (which(link_text == "hier") + 1):(which(link_text == "N\u00e4chste") - 1)
+link_nodes <- link_nodes[index]
+dates <- link_nodes %>% 
+          html_nodes(xpath = "//table//a/parent::td/preceding-sibling::td/font") %>%
+          html_text()
+df <- tibble(Datum = dates[-1], 
+             Veranstaltungstitel = link_nodes %>% html_text(),
+             link = link_nodes %>% html_attr("href"))
+```
+
+
+
+I want to automate the table info
+
+```{r}
+get_cabinet_member_names <- function(url_in) {
+  html <- read_html(url_in)
+
+  tables <- html %>%
+    html_table()
+
+  table_number <- tables %>%
+    map_dbl(length) %>%
+    as_tibble() %>%
+    mutate(table_number = row_number()) %>%
+    filter(value == max(value)) %>%
+    pull(table_number)
+
+  table <- tables %>%
+    pluck(table_number) %>%
+    janitor::clean_names()
+
+  table
+}
+
+```
+
+
+```{r}
+wiki_articles <- tibble(
+  titles = c(
+    "First Cabinet of Louis.Botha", "Second Cabet of Louis Botha",
+    "First Cabinet of Jan Smuts",
+    "Second Cabinet of Jan Smuts", "First Cabinet of J.B.M Hertzog",
+    "Second Cabinet of J.B.M Hertzog",
+    "Third Cabinet of J.B.M Hertzog",
+    "Fourth Cabinet of J.B.M Hertzog",
+    "Third Cabinet of Jan Smuts", "First Cabinet of D.F. Malan",
+    "Second Cabinet of D.F. Malan",
+    "Cabinet of Hans Strydom",
+    "First Cabinet of Hendrik Verwoerd",
+    "Second Cabinet of Hendrik Verwoerd", "First Cabinet of B.J. Vorster",
+    "Second Cabinet of B.J. Vorster",
+    "Third Cabinet of B.J. Vorster",
+    "First Cabinet of P.W. Botha", "Second Cabinet of P.W. Botha",
+    "Cabinet of F.W. de Klerk",
+    "Cabinet of Nelson Mandela",
+    "First Cabinet of Thabo Mbeki", "Second Cabinet of Thabo Mbeki",
+    "Cabinet of Kgalema Motlanthe",
+    "First Cabinet of Jacob Zuma",
+    "Second Cabinet of Jacob Zuma", "First Cabinet of Cyril Ramaphosa",
+    "Second Cabinet of Cyril Ramaphosa"
+  ),
+  years = c(
+    "1910–1915", "1915–1919", "1920–1921", "1921–1924",
+    "1924–1929", "1929–1933", "1933–1938",
+    "1938–1943", "1943–1948", "1948–1953",
+    "1953–1958", "1958–1961", "1961–1966", "1966",
+    "1966–1970", "1970–1974", "1974–1978",
+    "1981–1984", "1984–1989", "1989–1994", "1994–1999",
+    "1999–2004", "2004–2008", "2008–2009",
+    "2009–2014", "2014–2018", "2018–2019",
+    "2019–"
+  )
+)
+
+wiki_articles %>% 
+  mutate(url = str_c(titles),
+         url_encoded = str_c("https://en.wikipedia.org/wiki/", URLencode(url))) %>% 
+  pull(url_encoded)
+
+
+html <- read_html("https://en.wikipedia.org/wiki/Cabinet%20of%20Nelson%20Mandela")
+
+html %>% 
+  html_table()
+
+get_cabinet_member_names("https://en.wikipedia.org/wiki/Cabinet%20of%20Nelson%20Mandela")
+get_cabinet_member_names("https://en.wikipedia.org/wiki/Cabinet_of_F.W._de_Klerk")
+```
+
+
+```{r}
+
+```
+
