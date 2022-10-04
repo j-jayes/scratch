@@ -67,12 +67,16 @@ df <- tibble(Datum = dates[-1],
              link = link_nodes %>% html_attr("href"))
 ```
 
+```{r}
+
+```
 
 
 I want to automate the table info
 
 ```{r}
 get_cabinet_member_names <- function(url_in) {
+  message("Getting data from ", url_in)
   html <- read_html(url_in)
 
   tables <- html %>%
@@ -98,26 +102,33 @@ get_cabinet_member_names <- function(url_in) {
 ```{r}
 wiki_articles <- tibble(
   titles = c(
-    "First Cabinet of Louis.Botha", "Second Cabet of Louis Botha",
+    "First Cabinet of Louis Botha", 
+    "Second Cabinet of Louis Botha",
     "First Cabinet of Jan Smuts",
-    "Second Cabinet of Jan Smuts", "First Cabinet of J.B.M Hertzog",
-    "Second Cabinet of J.B.M Hertzog",
-    "Third Cabinet of J.B.M Hertzog",
-    "Fourth Cabinet of J.B.M Hertzog",
-    "Third Cabinet of Jan Smuts", "First Cabinet of D.F. Malan",
+    "Second Cabinet of Jan Smuts", 
+    "First_Cabinet_of_J._B._M._Hertzog",
+    "Second_Cabinet_of_J._B._M._Hertzog",
+    "Third_Cabinet_of_J._B._M._Hertzog",
+    "Fourth_Cabinet_of_J._B._M._Hertzog",
+    "Third Cabinet of Jan Smuts", 
+    "First Cabinet of D.F. Malan",
     "Second Cabinet of D.F. Malan",
     "Cabinet of Hans Strydom",
     "First Cabinet of Hendrik Verwoerd",
-    "Second Cabinet of Hendrik Verwoerd", "First Cabinet of B.J. Vorster",
+    "Second Cabinet of Hendrik Verwoerd", 
+    "First Cabinet of B.J. Vorster",
     "Second Cabinet of B.J. Vorster",
     "Third Cabinet of B.J. Vorster",
-    "First Cabinet of P.W. Botha", "Second Cabinet of P.W. Botha",
+    "First Cabinet of P.W. Botha", 
+    "Second Cabinet of P.W. Botha",
     "Cabinet of F.W. de Klerk",
     "Cabinet of Nelson Mandela",
-    "First Cabinet of Thabo Mbeki", "Second Cabinet of Thabo Mbeki",
+    "First_Cabinet_of_Thabo_Mbeki", 
+    "Second_Cabinet_of_Thabo_Mbeki",
     "Cabinet of Kgalema Motlanthe",
     "First Cabinet of Jacob Zuma",
-    "Second Cabinet of Jacob Zuma", "First Cabinet of Cyril Ramaphosa",
+    "Second Cabinet of Jacob Zuma", 
+    "First Cabinet of Cyril Ramaphosa",
     "Second Cabinet of Cyril Ramaphosa"
   ),
   years = c(
@@ -133,23 +144,41 @@ wiki_articles <- tibble(
   )
 )
 
-wiki_articles %>% 
+wiki_articles <- wiki_articles %>% 
   mutate(url = str_c(titles),
-         url_encoded = str_c("https://en.wikipedia.org/wiki/", URLencode(url))) %>% 
-  pull(url_encoded)
+         url_encoded = str_c("https://en.wikipedia.org/wiki/", URLencode(url)))
 
 
-html <- read_html("https://en.wikipedia.org/wiki/Cabinet%20of%20Nelson%20Mandela")
-
-html %>% 
-  html_table()
-
-get_cabinet_member_names("https://en.wikipedia.org/wiki/Cabinet%20of%20Nelson%20Mandela")
-get_cabinet_member_names("https://en.wikipedia.org/wiki/Cabinet_of_F.W._de_Klerk")
 ```
 
 
 ```{r}
-
+df_wiki_articles <- wiki_articles %>% 
+  mutate(data = map(url_encoded, possibly(get_cabinet_member_names, "failed")))
 ```
+
+
+```{r}
+df_wiki_articles %>% 
+  filter(data == "failed") %>% 
+  pull(url_encoded)
+```
+
+
+```{r}
+df_wiki_articles_sans_mbeki <- df_wiki_articles %>% 
+  filter(!str_detect(titles, "Mbeki"))
+```
+
+
+```{r}
+df_wiki_articles_sans_mbeki %>%
+  slice(6) %>%
+  unnest(data) %>%
+  select(minister) %>%
+  distinct()
+```
+
+
+
 

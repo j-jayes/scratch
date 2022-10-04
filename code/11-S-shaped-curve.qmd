@@ -1,0 +1,52 @@
+---
+title: "Untitled"
+format: html
+---
+
+## Purpose
+
+S shaped curve for fourndations essay 3
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+df <- tibble(x = 1:100) %>% 
+  mutate(x = x / 100)
+
+b = 3
+
+df <- df %>% 
+  mutate(y = 1/(1+(x/(1-x))^-b))
+
+```
+
+
+Plot
+
+```{r}
+
+annotations <- tibble(
+  x = c(.25, .75),
+  y = c(.25, .75),
+  label = c(
+    "High returns on a low base",
+    "Low returns on a high base"
+  )
+)
+
+df %>%
+  ggplot(aes(x, y)) +
+  geom_line() +
+  geom_text(aes(x, y, label = label), data = annotations) +
+  labs(
+    x = "Investment in education",
+    y = "Returns to education"
+  ) +
+  geom_vline(xintercept = .5, lty = 2, alpha = .5) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank()
+  )
+```
+
