@@ -1,0 +1,266 @@
+---
+title: "12-XML-parsing"
+format: html
+---
+
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+library(rvest)
+```
+
+## How to get the XML data from the OCR done on the newspapers
+
+url looks like:
+
+https://data.kb.se/dark-99732/bib4345612_18730208_0_32_0002_alto.xml
+
+
+```{r}
+library(XML)
+xml <- XML::xmlParse("data/bib4345612_18730208_0_32_0001_alto.xml")
+
+xml_data <- xmlToList(xml)
+
+```
+
+
+```{r}
+listviewer::jsonedit(xml_data)
+```
+
+```{r}
+xml_data$Layout$Page$PrintSpace$ComposedBlock
+
+composed_blocks <- xml_data[["Layout"]][["Page"]][["PrintSpace"]] %>% enframe()
+
+composed_blocks %>% 
+  unnest_auto(value)
+
+composed_blocks %>% 
+  slice(6) %>% 
+  pull(value) %>% 
+  enframe() %>% 
+  unnest(value) %>% 
+  slice(1) %>% 
+  pluck(2)
+```
+
+## Swedish langage models on data.kb.se
+
+https://data.kb.se/dataset/7mf75j765jqnqcjq 
+
+
+
+Dagens Nyheter  1869-01-16
+
+https://data.kb.se/dark-3673919 
+
+Dagens Nyheter  1870-08-04
+
+https://data.kb.se/dark-3669732
+
+Okay the purpose here is to take th XML and make it into text, in the right order.
+
+It works well on [this page](https://data.kb.se/dark-3669729/viewer?item=1)
+
+```{r}
+xml <- XML::xmlParse("data/bib13991099_18700805_0_1709_0001_alto.xml")
+
+# xml <- xml2::read_xml("data/bib13991099_18700805_0_1709_0001_alto.xml")
+
+getEncoding(xml)
+
+xml_data <- xmlToList(xml)
+
+listviewer::jsonedit(xml_data)
+
+composed_blocks <- xml_data[["Layout"]][["Page"]][["PrintSpace"]] %>% enframe()
+
+tbl <- composed_blocks %>%
+  filter(name != ".attrs") %>%
+  mutate(textblock = row_number()) %>%
+  unchop(value)
+
+tbl_2 <- tbl %>% 
+  pluck(2) %>% 
+  enframe() %>% 
+  bind_cols(tbl %>% select(textblock)) %>% 
+  filter(name != ".attrs")
+
+tbl_2 %>% 
+  count(textblock)
+
+test <- tbl_2 %>% 
+  # here we are selecting only one text block. If I can fix this I will.
+  filter(textblock == 1) %>% 
+  filter(name != "Illustration") %>% 
+  unchop(value) %>% 
+  pluck(2) %>% 
+  enframe() %>% 
+  filter(name != ".attrs") %>% 
+  mutate(textline = row_number()) %>% 
+  unchop(value) %>% 
+  # wider here keeps together the lines, as we can get each string from the line, and arrange by HPOS and VPOS.
+  unnest_wider(value)
+
+```
+
+
+
+```{r}
+test %>%
+  mutate(
+    CONTENT = stringi::stri_encode(CONTENT, "utf-8"),
+    across(HPOS:HEIGHT, parse_number)
+  ) %>%
+  mutate(
+    id_k = str_remove(ID, "[0-9].*"),
+    id_v = as.numeric(str_remove_all(ID, "[a-zA-Z]"))
+  ) %>% 
+  filter(id_k == "STR")
+```
+
+
+
+## What to do next??
+
+Function to Visualize positions of blocks on page.
+
+Scraper or use API to get the files
+
+Check that complex page with adverts works.
+
+### API
+
+Works see [here](https://data.kb.se/docs#/default/get_file__package_id___file_name__get)
+
+To get the files if you know the package ID and the file_name - can probably get these with the search API.
+
+```{r}
+library(httr)
+
+id = "bib13991099_18700808_0_1711_0001"
+
+
+```
+
+
+### Does it work with complicated pages?? Let's try 
+
+```{r}
+xml <- XML::xmlParse("data/bib13991099_18700805_0_1709_0001_alto.xml")
+
+# xml <- xml2::read_xml("data/bib13991099_18700805_0_1709_0001_alto.xml")
+
+getEncoding(xml)
+
+xml_data <- xmlToList(xml)
+
+listviewer::jsonedit(xml_data)
+
+composed_blocks <- xml_data[["Layout"]][["Page"]][["PrintSpace"]] %>% enframe()
+
+tbl <- composed_blocks %>%
+  filter(name != ".attrs") %>%
+  mutate(textblock = row_number()) %>%
+  unchop(value)
+
+tbl_2 <- tbl %>% 
+  pluck(2) %>% 
+  enframe() %>% 
+  bind_cols(tbl %>% select(textblock)) %>% 
+  filter(name != ".attrs")
+
+tbl_2 %>% 
+  count(textblock)
+
+test <- tbl_2 %>% 
+  # here we are selecting only one text block. If I can fix this I will.
+  filter(textblock == 1) %>% 
+  filter(name != "Illustration") %>% 
+  unchop(value) %>% 
+  pluck(2) %>% 
+  enframe() %>% 
+  filter(name != ".attrs") %>% 
+  mutate(textline = row_number()) %>% 
+  unchop(value) %>% 
+  # wider here keeps together the lines, as we can get each string from the line, and arrange by HPOS and VPOS.
+  unnest_wider(value)
+
+```
+
+
+
+```{r}
+test %>%
+  mutate(
+    CONTENT = stringi::stri_encode(CONTENT, "utf-8"),
+    across(HPOS:HEIGHT, parse_number)
+  ) %>%
+  mutate(
+    id_k = str_remove(ID, "[0-9].*"),
+    id_v = as.numeric(str_remove_all(ID, "[a-zA-Z]"))
+  ) %>% 
+  filter(id_k == "STR")
+```
+
+
+Positioning words
+
+```{r}
+test %>%
+  # filter(textline < 100) %>%
+  # filter(value_id %in% c("ID", "HPOS", "VPOS", "WIDTH", "HEIGHT", "CONTENT")) %>%
+  # pivot_wider(names_from = value_id, values_from = value) %>%
+  # filter(!is.na(CONTENT)) %>%
+  mutate(
+    CONTENT = stringi::stri_encode(CONTENT, "utf-8"),
+    across(HPOS:HEIGHT, parse_number)
+  ) %>%
+  ggplot(aes(x = HPOS, y = VPOS, label = CONTENT)) +
+  geom_label()
+
+
+# test %>% 
+#   filter(value_id == "CONTENT") %>% 
+#   mutate(text = paste0(value, collapse = " ")) %>% 
+#   distinct(text) %>%
+#   ungroup() %>% view()
+#   mutate(text = stringi::stri_encode(text, "utf-8")) %>% view(text)
+
+
+```
+
+
+```{r}
+tbl <- tbl_2 %>%
+  unchop(value)
+
+text <- tbl %>%
+  pluck(2) %>%
+  enframe() %>%
+  bind_cols(tbl %>% select(textblock))
+
+
+text <- text %>% 
+  filter(name != ".attrs") %>% 
+  unnest_longer(value) %>% 
+  filter(value_id == "String") %>% 
+  unnest_auto(value)
+
+text %>% 
+  select(textblock, CONTENT) %>% 
+  group_by(textblock) %>% 
+  mutate(text = paste0(CONTENT, collapse = " ")) %>% 
+  distinct(textblock, text) %>% 
+  ungroup() %>% 
+  mutate(text = stringi::stri_encode(text, "utf-8")) %>% pull(text)
+
+
+
+```
+

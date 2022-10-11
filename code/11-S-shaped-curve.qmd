@@ -13,7 +13,7 @@ theme_set(theme_light())
 df <- tibble(x = 1:100) %>% 
   mutate(x = x / 100)
 
-b = 3
+b = 2
 
 df <- df %>% 
   mutate(y = 1/(1+(x/(1-x))^-b))
@@ -24,10 +24,9 @@ df <- df %>%
 Plot
 
 ```{r}
-
 annotations <- tibble(
   x = c(.25, .75),
-  y = c(.25, .75),
+  y = c(.35, .65),
   label = c(
     "High returns on a low base",
     "Low returns on a high base"
@@ -36,17 +35,17 @@ annotations <- tibble(
 
 df %>%
   ggplot(aes(x, y)) +
-  geom_line() +
+  geom_line(colour = "midnightblue", cex = 2) +
   geom_text(aes(x, y, label = label), data = annotations) +
   labs(
     x = "Investment in education",
-    y = "Returns to education"
+    y = "Returns to education investment"
   ) +
   geom_vline(xintercept = .5, lty = 2, alpha = .5) +
   theme(
     panel.grid = element_blank(),
     axis.text = element_blank(),
     axis.ticks = element_blank()
-  )
+  ) 
 ```
 
