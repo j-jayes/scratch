@@ -152,61 +152,140 @@ id = "bib13991099_18700808_0_1711_0001"
 ### Does it work with complicated pages?? Let's try 
 
 ```{r}
-xml <- XML::xmlParse("data/bib13991099_18700805_0_1709_0001_alto.xml")
+file_path <- "data/bib13991099_18700805_0_1709_0004_alto.xml"
 
-# xml <- xml2::read_xml("data/bib13991099_18700805_0_1709_0001_alto.xml")
+parse_xml <- function(file_path) {
+  message("Reading XML from ", file_path)
+  xml <- XML::xmlParse(file_path)
+  xml_data <- xmlToList(xml)
 
-getEncoding(xml)
+  composed_blocks <- xml_data[["Layout"]][["Page"]][["PrintSpace"]] %>% enframe()
 
-xml_data <- xmlToList(xml)
+  tbl <- composed_blocks %>%
+    filter(name != ".attrs") %>%
+    mutate(textblock = row_number()) %>%
+    unchop(value)
 
-listviewer::jsonedit(xml_data)
+  tbl_2 <- tbl %>%
+    pluck(2) %>%
+    enframe() %>%
+    bind_cols(tbl %>% select(textblock)) %>%
+    filter(name != ".attrs")
 
-composed_blocks <- xml_data[["Layout"]][["Page"]][["PrintSpace"]] %>% enframe()
+  n_textblocks <- tbl_2 %>%
+    summarise(n_tb = n_distinct(textblock)) %>%
+    pull(n_tb)
+  
+  loop_textblocks <- 1:n_textblocks
+  
+  get_paper_text <- function(tb) {
+    message("Getting text from ", tb)
+    tbl_2 %>%
+      # here we are selecting only one text block. If I can fix this I will.
+      filter(textblock == tb) %>%
+      filter(name != "Illustration") %>%
+      unchop(value) %>%
+      pluck(2) %>%
+      enframe() %>%
+      filter(name != ".attrs") %>%
+      mutate(textline = row_number()) %>%
+      unchop(value) %>%
+      # wider here keeps together the lines, as we can get each string from the line, and arrange by HPOS and VPOS.
+      unnest_wider(value) %>%
+      mutate(
+        CONTENT = stringi::stri_encode(CONTENT, "utf-8"),
+        # SUBS_CONTENT = stringi::stri_encode(SUBS_CONTENT, "utf-8"),
+        across(HPOS:HEIGHT, parse_number)
+      ) %>%
+      mutate(
+        id_k = str_remove(ID, "[0-9].*"),
+        id_v = as.numeric(str_remove_all(ID, "[a-zA-Z]"))
+      ) %>%
+      filter(id_k == "STR") %>%
+      mutate(textblock = tb) %>% 
+      relocate(textblock, .before = textline)
+  }
+  
+  df_text <- map_dfr(.x = loop_textblocks,
+          .f = get_paper_text)
 
-tbl <- composed_blocks %>%
-  filter(name != ".attrs") %>%
-  mutate(textblock = row_number()) %>%
-  unchop(value)
-
-tbl_2 <- tbl %>% 
-  pluck(2) %>% 
-  enframe() %>% 
-  bind_cols(tbl %>% select(textblock)) %>% 
-  filter(name != ".attrs")
-
-tbl_2 %>% 
-  count(textblock)
-
-test <- tbl_2 %>% 
-  # here we are selecting only one text block. If I can fix this I will.
-  filter(textblock == 1) %>% 
-  filter(name != "Illustration") %>% 
-  unchop(value) %>% 
-  pluck(2) %>% 
-  enframe() %>% 
-  filter(name != ".attrs") %>% 
-  mutate(textline = row_number()) %>% 
-  unchop(value) %>% 
-  # wider here keeps together the lines, as we can get each string from the line, and arrange by HPOS and VPOS.
-  unnest_wider(value)
-
+  df_text
+}
 ```
-
 
 
 ```{r}
+test <- parse_xml(file_path = file_path)
+
 test %>%
-  mutate(
-    CONTENT = stringi::stri_encode(CONTENT, "utf-8"),
-    across(HPOS:HEIGHT, parse_number)
-  ) %>%
-  mutate(
-    id_k = str_remove(ID, "[0-9].*"),
-    id_v = as.numeric(str_remove_all(ID, "[a-zA-Z]"))
-  ) %>% 
-  filter(id_k == "STR")
+  group_by(textblock) %>%
+  arrange(textline, id_v) %>%
+  mutate(text = paste0(CONTENT, collapse = " ")) %>%
+  ungroup() %>%
+  distinct(textblock, text) %>% 
+  DT::datatable(rownames = F,
+                colnames = c("Text block", "Text"))
 ```
+
+### Visualize blocks on page
+
+```{r}
+viz_text_blocks <- function(tbl) {
+  tbl %>%
+    group_by(textblock) %>%
+    summarise(
+      xmin = min(HPOS),
+      xmax = max(HPOS),
+      ymin = min(VPOS),
+      ymax = max(VPOS),
+      xlab = (xmin + xmax) / 2,
+      ylab = (ymin + ymax) / 2
+    ) %>%
+    ggplot(aes(
+      xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax,
+      label = textblock,
+      fill = factor(textblock)
+    )) +
+    geom_rect(alpha = .5, show.legend = F) +
+    geom_label(aes(x = xlab, y = ylab), show.legend = F) +
+    coord_equal() +
+    labs(
+      x = NULL,
+      y = NULL,
+      title = "Position of text blocks on page"
+    )
+}
+
+viz_text_blocks(test)
+
+```
+
+
+```{r}
+test %>% 
+  filter(textblock == 2) %>% 
+  group_by(ID) %>% 
+   mutate(
+    xmin = min(HPOS),
+    xmax = max(HPOS),
+    ymin = min(VPOS),
+    ymax = max(VPOS),
+    xlab = (xmin + xmax) / 2,
+    ylab = (ymin + ymax) / 2
+  ) %>% 
+  ggplot(aes(x = xlab, y = ylab, label = CONTENT)) +
+  geom_text()
+```
+
+Try again with "data/bib13991099_18700805_0_1709_0001_alto.xml"
+
+```{r}
+test <- parse_xml(file_path = "data/bib13991099_18700805_0_1709_0001_alto.xml")
+
+```
+
+
+So I should have some metric for Words per size of box and then drop silly ones.
 
 
 Positioning words
