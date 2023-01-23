@@ -1,0 +1,31 @@
+---
+title: "13-UK-Prime-Ministers"
+format: html
+---
+
+```{r}
+library(tidyverse)
+
+library(rvest)
+```
+
+```{r}
+url <- "https://en.wikipedia.org/wiki/List_of_prime_ministers_of_the_United_Kingdom"
+
+html <- read_html(url)
+
+tables <- html %>% 
+  html_nodes(".wikitable") %>% 
+  html_table()
+
+table <- tables[[2]] 
+
+table %>% as_tibble()
+```
+
+```{r}
+html %>% 
+  html_nodes(".anchor") %>% 
+  html_element("title")
+```
+

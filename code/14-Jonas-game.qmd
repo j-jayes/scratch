@@ -1,0 +1,70 @@
+---
+title: "Untitled"
+format: html
+---
+
+Following Jonas game can we make it a shiny app.
+
+### Starting state
+
+Economy is 100
+Environment is 10
+
+### Players
+
+3 types of consumers;
+- consumes 5
+- consumes 3 or 5
+- consumes 3
+
+4 types of institutional player
+- government decides how much to fund university
+- industry funds corporate researcher and decide how they innovate
+- university decides how to innovate
+- corporate researcher innovates
+
+### Innovations
+
+As university or corporate researcher you take as many cards as you are allocated.
+
+```{r}
+library(tidyverse)
+
+cards <- tibble(
+  suit = c(
+    rep("Clubs", 13),
+    rep("Diamonds", 13),
+    rep("Hearts", 13),
+    rep("Spades", 13)
+  ),
+  number = rep(c(1:10, "J", "Q", "K"), 4),
+  value = rep(c(1:10, rep(10, 3)), 4)
+)
+
+```
+
+### Description of a round
+
+```{r}
+g_exp = 30
+
+i_exp = 30
+
+uni_inov <- cards %>% sample_n(size = g_exp / 5)
+
+corp_inov <- cards %>% sample_n(size = g_exp / 5)
+
+uni_inov %>%
+  count(value) %>%
+  filter(n > 1) %>%
+  mutate(outcome = value * n) %>%
+  pull(outcome)
+
+corp_inov %>%
+  count(value) %>%
+  filter(n > 1) %>%
+  mutate(outcome = value * n) %>%
+  pull(outcome)
+```
+
+

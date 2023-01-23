@@ -3,13 +3,31 @@ title: "12-XML-parsing"
 format: html
 ---
 
+## Purpose
+
+I want to get information about the jobs advertised in Sweden to track how descriptions for jobs changed over time. I was inspired by the paper [*Running out of time: using job ads to analyse the demand for messengers in the twentieth century* by Håkansson, Karlsson and La Mela](https://doi.org/10.1080/03585522.2022.2106300) that focusses specifically on messengers, and uses data from the *Svenska dagstidningar* database described by Karlsson [here](https://www.historisktidskrift.se/index.php/june20/article/view/291/245).
+
+Luckily, a number of the newspapers are digitized by the [National Library of Sweden](https://tidningar.kb.se/).
+
+### Digitized newspapers
+
+The repository of digitized newspapers is accessible in two ways. First, you can use a graphical user interface to search for specific terms, as shown in the image below. You can filter by publication date and newspaper. 
+
+![](https://github.com/j-jayes/img-repo/raw/e609f77e0966af123264bd284f498f7d158439ba/images/Svenska-dagstidningar.PNG)
+
+The advantage of this way of accessing the material is that it is easy to find out if the kind of information you are searching for is accessible. 
+
+The downside is that collecting this information into a useable format is difficult. You can email yourself an image of the page of the newspaper, but it is not machine readable in this format. 
+
+The alternative way of accessing the data is to use the [API](https://data.kb.se/api) created by the National Library.
+
+The remainder of this document shows the process of accessing the data this way.
+
+
+
 
 ```{r}
 library(tidyverse)
-```
-
-```{r}
-library(rvest)
 ```
 
 ## How to get the XML data from the OCR done on the newspapers
@@ -143,7 +161,7 @@ To get the files if you know the package ID and the file_name - can probably get
 ```{r}
 library(httr)
 
-id = "bib13991099_18700808_0_1711_0001"
+id = "bib13991099_18700808_0_1711_0004"
 
 
 ```
@@ -152,7 +170,7 @@ id = "bib13991099_18700808_0_1711_0001"
 ### Does it work with complicated pages?? Let's try 
 
 ```{r}
-file_path <- "data/bib13991099_18700805_0_1709_0004_alto.xml"
+file_path <- "data/bib13434192_18990409_0_95_0005_alto.xml"
 
 parse_xml <- function(file_path) {
   message("Reading XML from ", file_path)
@@ -262,19 +280,25 @@ viz_text_blocks(test)
 
 
 ```{r}
-test %>% 
-  filter(textblock == 2) %>% 
-  group_by(ID) %>% 
-   mutate(
-    xmin = min(HPOS),
-    xmax = max(HPOS),
-    ymin = min(VPOS),
-    ymax = max(VPOS),
-    xlab = (xmin + xmax) / 2,
-    ylab = (ymin + ymax) / 2
-  ) %>% 
-  ggplot(aes(x = xlab, y = ylab, label = CONTENT)) +
-  geom_text()
+viz_text_raw <- function(tbl, tb) {
+  test %>%
+    filter(textblock == tb) %>%
+    group_by(ID) %>%
+    mutate(
+      xmin = min(HPOS),
+      xmax = max(HPOS),
+      ymin = min(VPOS),
+      ymax = max(VPOS),
+      xlab = (xmin + xmax) / 2,
+      ylab = (ymin + ymax) / 2
+    ) %>%
+    ggplot(aes(x = xlab, y = ylab, label = CONTENT)) +
+    geom_text()
+}
+
+viz_text_raw(test, 1)
+  
+
 ```
 
 Try again with "data/bib13991099_18700805_0_1709_0001_alto.xml"
@@ -282,10 +306,94 @@ Try again with "data/bib13991099_18700805_0_1709_0001_alto.xml"
 ```{r}
 test <- parse_xml(file_path = "data/bib13991099_18700805_0_1709_0001_alto.xml")
 
+test %>%
+  group_by(textblock) %>%
+  arrange(textline, id_v) %>%
+  mutate(text = paste0(CONTENT, collapse = " ")) %>%
+  ungroup() %>%
+  distinct(textblock, text) %>% 
+  DT::datatable(rownames = F,
+                colnames = c("Text block", "Text"))
+
+viz_text_blocks(test)
+
+viz_text_raw(test, 2)
+
 ```
 
 
 So I should have some metric for Words per size of box and then drop silly ones.
+
+### Clustering
+
+```{r}
+library(tidymodels)
+
+df_clust <- test %>% 
+  select(HPOS:VPOS, CONTENT, textblock)
+
+df_clust <- df_clust %>% 
+  filter(textblock == 2)
+
+kclust <- kmeans(df_clust %>% select(HPOS, VPOS), centers = 6)
+
+augment(kclust, df_clust) %>% 
+  ggplot(aes(x = HPOS, y = VPOS, label = CONTENT, colour = .cluster)) +
+  geom_text()
+
+```
+
+
+```{r}
+kclusts <-
+  tibble(k = 1:9) %>%
+  mutate(
+    kclust = map(k, ~ kmeans(df_clust %>% select(HPOS, VPOS), centers = .x)),
+    tidied = map(kclust, tidy),
+    augmented = map(kclust, augment, df_clust)
+  )
+
+assignments <-
+  kclusts %>%
+  unnest(cols = c(augmented))
+
+assignments %>%
+  ggplot(aes(x = HPOS, y = VPOS, label = CONTENT, colour = .cluster)) +
+  geom_text() +
+  facet_wrap(~k)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Positioning words

@@ -1,0 +1,38 @@
+---
+title: "Roadways"
+format: html
+---
+
+## Purpose
+
+Plot for  Daan on population and roads
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+## Road data -
+
+Two sources: CIA Factbook and Wikipedia.
+
+```{r}
+url <- "https://en.wikipedia.org/wiki/List_of_countries_by_road_network_size"
+
+html <- read_html(url)
+
+tables <- html %>% 
+  html_table()
+
+table <- tables[[2]]
+
+table %>% 
+  as_tibble(.name_repair = "minimal") %>% 
+  janitor::clean_names() %>% 
+  filter(row_number() != 1) %>% 
+  rename(total = 2,
+         density = density_km_100_km2) %>%
+  mutate(across(.cols = c(total, density, paved_km, unpaved_km,
+                          controlled_access_km, source_year), ~ str_remove_all(.x, ",") %>% parse_number())) %>% view()
+```
+
