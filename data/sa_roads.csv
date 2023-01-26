@@ -1,0 +1,16 @@
+number,length_km,length_mi,route
+N1,1940,1210,"Cape Town–Worcester–Beaufort West–Colesberg–Bloemfontein–Kroonstad–Johannesburg–Roodepoort–Pretoria–Polokwane–Musina–Beit Bridge–(Beitbridge, Zimbabwe)"
+N2,2255,1401,Cape Town–Somerset West–George–Port Elizabeth–King William's Town–East London–Mthatha–Kokstad–Port Shepstone–Durban–KwaDukuza–Empangeni–eMkhondo–Ermelo
+N3,578,359,Durban–Pietermaritzburg–Harrismith–Johannesburg
+N4,718,446,"(Lobatse, Botswana)–Skilpadshek–Zeerust–Rustenburg–Pretoria–eMalahleni–Nelspruit–Komatipoort–(Maputo, Mozambique)"
+N5,235,146,Winburg–Bethlehem–Harrismith
+N6,538,334,East London–Queenstown–Aliwal North–Bloemfontein
+N7,666,414,"Cape Town–Clanwilliam–Springbok–Vioolsdrif–(Keetmanshoop, Namibia)"
+N8,583,362,"Groblershoop–Kimberley–Bloemfontein–Ladybrand–Maseru Bridge–(Maseru, Lesotho)"
+N9,517,321,George–Graaf-Reinet–Middelburg (EC)–Colesberg
+N10,1000,620,"Port Elizabeth–Cradock–Middelburg (EC)–De Aar–Prieska–Upington–Nakop–(Keetmanshoop, Namibia)"
+N11,773,480,"Ladysmith–Newcastle–Volksrust–Ermelo–Middelburg (MP)–Mokopane–Groblersbrug–(Palapye, Botswana)"
+N12,1342,834,George–Oudtshoorn–Beaufort West–Kimberley–Klerksdorp–Potchefstroom–Johannesburg–eMalahleni
+N14,1186,737,Springbok–Upington–Vryburg–Krugersdorp–Pretoria
+N17,330,210,"Johannesburg–Springs–Ermelo–Oshoek–(Mbabane, Eswatini)"
+N18,317,197,"Warrenton–Vryburg–Mahikeng–Ramatlabama–(Lobatse, Botswana)"

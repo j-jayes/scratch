@@ -94,3 +94,31 @@ df %>%
   write_csv("data/roads.csv")
 ```
 
+
+## Table of routes in South Africa
+
+```{r}
+library(tidyverse)
+library(rvest)
+
+url <- "https://en.wikipedia.org/wiki/National_routes_(South_Africa)"
+
+html <- read_html(url)
+
+tables <- html %>% 
+  html_table()
+
+table <- tables[[2]]
+
+df <- table %>% 
+  janitor::clean_names() %>% 
+  filter(between(row_number(), 1, 15)) %>% 
+  mutate(across(c(length_km, length_mi), parse_number)) %>% 
+  select(number:southern_or_western_terminus) %>% 
+  rename(route = southern_or_western_terminus)
+
+df %>% 
+  write_csv("data/sa_roads.csv")
+``` 
+
+
