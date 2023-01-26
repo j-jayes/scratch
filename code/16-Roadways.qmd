@@ -26,13 +26,70 @@ tables <- html %>%
 
 table <- tables[[2]]
 
-table %>% 
+df <- table %>% 
   as_tibble(.name_repair = "minimal") %>% 
   janitor::clean_names() %>% 
   filter(row_number() != 1) %>% 
   rename(total = 2,
          density = density_km_100_km2) %>%
   mutate(across(.cols = c(total, density, paved_km, unpaved_km,
-                          controlled_access_km, source_year), ~ str_remove_all(.x, ",") %>% parse_number())) %>% view()
+                          controlled_access_km), ~ str_remove_all(.x, ",") %>% parse_number()),
+         across(.cols = contains("_2"), ~ as.numeric(str_remove(.x, "%"))),
+         source_year = as.numeric(str_extract(source_year, "\\d\\d\\d\\d")),
+         country = str_squish(str_remove(country, "\\*")))
+
+library(countrycode)
+
+df <- df %>% 
+  mutate(iso3c = countrycode(country, "country.name", "iso3c"))
+
+
+
+```
+
+Join to GDP per capita and Population
+
+```{r}
+gdp <- read_csv("data/API_NY.GDP.PCAP.CD_DS2_en_csv_v2_4770417.csv", skip = 4)
+
+gdp <- gdp %>%
+  pivot_longer(-c(`Country Name`:`Indicator Code`))
+
+gdp <- gdp %>% 
+  mutate(iso3c = countrycode(`Country Name`, "country.name", "iso3c")) %>% 
+  select(iso3c, year = name, value)
+
+gdp <- gdp %>% 
+  filter(!is.na(value)) %>% 
+  rename(gdp_pc = value) %>% 
+  mutate(source_year = as.numeric(year)) %>% 
+  select(-year)
+```
+
+```{r}
+pop <- read_csv("data/API_SP.POP.TOTL_DS2_en_csv_v2_4770387.csv", skip = 4)
+
+pop <- pop %>%
+  pivot_longer(-c(`Country Name`:`Indicator Code`))
+
+pop <- pop %>% 
+  mutate(iso3c = countrycode(`Country Name`, "country.name", "iso3c")) %>% 
+  select(iso3c, year = name, value)
+
+pop <- pop %>% 
+  filter(!is.na(value)) %>% 
+  rename(pop = value) %>% 
+  mutate(source_year = as.numeric(year)) %>% 
+  select(-year)
+```
+
+
+```{r}
+df %>% 
+  filter(!is.na(paved_km)) %>% 
+  left_join(gdp, by = c("iso3c", "source_year")) %>% 
+  left_join(pop, by = c("iso3c", "source_year")) %>%   
+  distinct(country, total, .keep_all = T) %>% 
+  write_csv("data/roads.csv")
 ```
 
