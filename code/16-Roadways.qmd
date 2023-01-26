@@ -90,6 +90,7 @@ df %>%
   left_join(gdp, by = c("iso3c", "source_year")) %>% 
   left_join(pop, by = c("iso3c", "source_year")) %>%   
   distinct(country, total, .keep_all = T) %>% 
+  mutate(continent = countrycode(iso3c, "iso3c", "continent")) %>% 
   write_csv("data/roads.csv")
 ```
 
