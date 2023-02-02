@@ -1,0 +1,40 @@
+---
+title: "SEHM wordcloud"
+format: html
+---
+
+## purpose
+
+Wordcloud of common terms in SEHM session proposals
+
+```{r}
+library(tidyverse)
+library(tidytext)
+
+df <- readxl::read_excel("data/session_descriptions.xlsx")
+```
+
+```{r}
+words <- df %>% 
+  unnest_tokens(word, session_description) %>% 
+  anti_join(stop_words)
+
+words %>% 
+  mutate(word = str_to_title(word)) %>% 
+  count(word, sort = T)
+
+library(wordcloud)
+
+words %>%
+  mutate(word = str_to_title(word)) %>%
+  count(word, sort = T) %>%
+  filter(n > 2,
+         word != "Bengtsson") %>%
+  with(wordcloud(word,
+    n,
+    max.words = 60,
+    colors = brewer.pal(8, "Paired"),
+    rot.per = 0.2
+  ))
+```
+

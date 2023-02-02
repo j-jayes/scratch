@@ -1,0 +1,159 @@
+---
+title: "Shapefiles"
+format: html
+execute: 
+  echo: true
+---
+
+## Purpose
+
+Transform two shapefiles to the same coordinate system and plot them together.
+
+### Getting started
+
+We load the `tidyverse` for data manipulation, the `sf` package fo working with maps and set the ggplot theme to a light one for more attractive plots.
+
+```{r}
+library(tidyverse)
+library(sf)
+theme_set(theme_light())
+```
+
+### Read in the shapefiles
+
+We read in our shapefiles with the `st_read()` function, and ask for output of the crs with the `st_crs()` function so that we can see what it is.
+
+```{r, include=FALSE}
+library(rnaturalearth)
+
+sweden_map <- ne_countries(country = "sweden", type = "countries", returnclass = "sf", scale = "medium") %>% 
+  as_tibble() %>% 
+  st_sf() %>% 
+  st_transform(3006) %>% 
+  st_set_crs(3006)
+
+sweden_map %>% 
+  st_write(here::here("data", "sweden_map.shp"), delete_dsn = TRUE)
+
+norway_map <- ne_countries(country = "norway", type = "countries", returnclass = "sf", scale = "medium") %>% 
+  as_tibble() %>% 
+  st_sf() %>% 
+  st_transform(4326) %>% 
+  st_set_crs(4326)
+
+norway_map %>% 
+  st_write(here::here("data", "norway_map.shp"), delete_dsn = TRUE)
+```
+
+For Sweden we can see that it is **SWEREF99 TM** a projection favoured by the statistics body in Sweden.
+
+```{r}
+sweden_map <- st_read(here::here("data", "sweden_map.shp"))
+
+sweden_map %>% 
+  st_crs()
+```
+
+For Norway it is **WGS 84**, a very common projection with full name **World Geodetic System 1984**.
+
+```{r}
+norway_map <- st_read(here::here("data", "norway_map.shp"))
+
+norway_map %>% 
+  st_crs()
+```
+
+Let's have a quick look at them side by side.
+
+```{r}
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "Sweden"
+#|   - "Norway"
+
+ggplot()+ 
+  geom_sf(data = sweden_map) +
+  labs(title = "Sweden",
+       subtitle = "CRS = SWEREF99")
+
+ggplot()+ 
+  geom_sf(data = norway_map) +
+  labs(title = "Norway",
+       subtitle = "CRS = WGS84")
+```
+
+
+### Set the crs as the same
+
+We'll use EPSG 4326 or WGS84. We can use the `st_transform()` function, specifying the crs that we want for our new map object, which we name `sweden_map_4326` to avoid confusion.
+
+This is what the CRS now looks like for Sweden - the same as the one for Norway.
+
+```{r}
+sweden_map_4326 <- st_transform(sweden_map, crs = 4326)
+
+sweden_map_4326 %>% 
+  st_crs()
+```
+
+### Let's plot them together
+
+We can plot the together and choose some nice colours from the national flags for the fill aesthetic.
+
+```{r}
+ggplot() +
+  geom_sf(data = sweden_map_4326, fill = "#03558A") +
+  geom_sf(data = norway_map, fill = "#B40C2E") +
+  labs(title = "")
+```
+
+### Write out the file for Sweden individually
+
+We can save the shapefile for Sweden with the `st_write()` command if we want to keep the maps separate.
+
+```{r}
+sweden_map_4326 %>% 
+  st_write(here::here("data", "sweden_map_4326.shp"), delete_dsn = TRUE)
+```
+
+### Join the maps together
+
+Alternatively we can join together the maps as one object and then save one shapefile with the maps combined. 
+
+To do this, we first bind the two objects together using `bind_rows()` command and write it out with the same `st_write()` command.
+
+```{r}
+combined_map <- bind_rows(norway_map, sweden_map_4326)
+
+combined_map %>% st_write(here::here("data", "shapefile_combined.shp"), delete_dsn = TRUE)
+```
+
+If we want to get rid of the borders between our objects, we can use the `st_union()` command:
+
+```{r}
+union_map <- st_union(norway_map, sweden_map_4326)
+```
+
+We can compare the outputs here:
+
+```{r}
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "Output from `bind_rows`"
+#|   - "Output from `st_union`"
+
+ggplot() +
+  geom_sf(data = combined_map, aes(fill = sovereignt)) +
+  scale_fill_manual(values = c("#B40C2E", "#03558A")) +
+  labs(fill = "Country")
+
+ggplot() +
+  geom_sf(data = union_map, aes(fill = sovereignt)) +
+  scale_fill_manual(values = c("darkgreen")) +
+  labs(fill = "Country")
+```
+
+### Conclusion
+
+Here we learned how to make it possible to plot maps with two different projections together by making use of the `st_transform()` command in R. We learned how to save the two maps as separate features in a shapefile, as well as how to combine them togther.
+
