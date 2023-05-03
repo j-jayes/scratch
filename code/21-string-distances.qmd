@@ -8,7 +8,9 @@ When comparing strings of unequal length, you can use the concept of [edit dista
 The most common method to calculate edit distance is the Levenshtein distance, which measures the number of single-character edits (insertions, deletions, or substitutions) required to change one string into the other.
 
 In your example, the distance between "bottle" and "battleship" can be computed as follows:
+
 1. Substitute 'a' after the first character of "bottle" (1 operation)
+
 2. Add 'ship' to the end of 'battle' (4 operations)
 
 In total, it takes 5 operations to transform "bottle" into "battle", which is a substring of "battleship".
