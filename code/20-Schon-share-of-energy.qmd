@@ -1,0 +1,88 @@
+---
+title: "Energy share graph"
+format: html
+---
+
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+library(showtext)
+library(ggtext)
+## Loading Google fonts (https://fonts.google.com/)
+font_add_google("IBM Plex Mono", "ibm")
+font_add_google("Roboto", "roboto")
+
+showtext_opts(dpi = 300)
+showtext_auto(enable = TRUE)
+```
+
+
+```{r}
+df <- readxl::read_excel((here::here("data", "lennart-schon-industry-electricity-share.xlsx")))
+
+df <- df %>% 
+  group_by(industry) %>% 
+  mutate(year = case_when(
+  year == min(year) ~ 1900,
+  year == max(year) ~ 1930,
+  TRUE ~ year
+))
+
+
+df %>% ggplot(aes(year, value, colour = industry)) +
+  geom_line() +
+  scale_color_brewer(palette = "Dark2") +
+  labs(x = NULL, y = NULL, title = "Electricity as a share of energy use in different industries", colour = "Industry", caption = "Source: Lennart Schön") +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  gghighlight::gghighlight(label_params = list(size = 8), line_label_type = "text_path") +
+  theme(
+    # panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    plot.title = element_markdown(size = 32, family = 'roboto'),
+    plot.title.position = "plot",
+    legend.position = "none",
+    text = element_text(family = 'ibm', size = 18)
+  ) 
+
+
+ggsave(filename = here::here("figures/schon-energy-share.jpeg"), device = "jpeg", width = 290, height = 231, units = "mm", dpi = 300)
+
+```
+
+
+
+
+```{r}
+df <- readxl::read_excel((here::here("data", "vattenfall-electricity-share.xlsx")))
+
+df <- df %>% 
+  mutate(year = case_when(
+  year == min(year) ~ 1900,
+  year == max(year) ~ 1946,
+  TRUE ~ year
+))
+
+df %>% ggplot(aes(year, value)) +
+  geom_line(colour = "midnightblue", cex = 3) +
+  scale_color_brewer(palette = "Dark2") +
+  labs(x = NULL, y = NULL, title = "Share of households in agriculural areas with electricity",
+       caption = "Source: Vattenfall's archive") +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  gghighlight::gghighlight(label_params = list(size = 8)) +
+  theme(
+    # panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    plot.title = element_markdown(size = 32, family = 'roboto'),
+    plot.title.position = "plot",
+    legend.position = "none",
+    text = element_text(family = 'ibm', size = 18)
+  ) 
+
+ggsave(filename = here::here("figures/vattenfall-electricity-share.jpeg"), device = "jpeg", width = 290, height = 231, units = "mm", dpi = 300)
+```
+
+

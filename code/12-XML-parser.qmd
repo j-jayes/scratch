@@ -1,30 +1,38 @@
 ---
-title: "12-XML-parsing"
-format: html
+title: "Swedish daily newspapers data parser"
+format: 
+    pdf:
+      documentclass: scrreprt
+      toc: true
+execute: 
+  eval: true
+  echo: false
+  message: false
+  warning: false
 ---
 
 ## Purpose
 
 I want to get information about the jobs advertised in Sweden to track how descriptions for jobs changed over time. I was inspired by the paper [*Running out of time: using job ads to analyse the demand for messengers in the twentieth century* by Håkansson, Karlsson and La Mela](https://doi.org/10.1080/03585522.2022.2106300) that focusses specifically on messengers, and uses data from the *Svenska dagstidningar* database described by Karlsson [here](https://www.historisktidskrift.se/index.php/june20/article/view/291/245).
 
-Luckily, a number of the newspapers are digitized by the [National Library of Sweden](https://tidningar.kb.se/).
+Luckily, a number of the newspapers are digitized by the [Royal Library of Sweden](https://tidningar.kb.se/).
 
 ### Digitized newspapers
 
 The repository of digitized newspapers is accessible in two ways. First, you can use a graphical user interface to search for specific terms, as shown in the image below. You can filter by publication date and newspaper. 
 
-![](https://github.com/j-jayes/img-repo/raw/e609f77e0966af123264bd284f498f7d158439ba/images/Svenska-dagstidningar.PNG)
+```{r}
+knitr::include_graphics(here::here("images/Svenska-dagstidningar.png"))
+```
+
 
 The advantage of this way of accessing the material is that it is easy to find out if the kind of information you are searching for is accessible. 
 
-The downside is that collecting this information into a useable format is difficult. You can email yourself an image of the page of the newspaper, but it is not machine readable in this format. 
+The downside is that collecting this information into a usable format is difficult. You can email yourself an image of the page of the newspaper, but it is not machine readable in this format. 
 
 The alternative way of accessing the data is to use the [API](https://data.kb.se/api) created by the National Library.
 
 The remainder of this document shows the process of accessing the data this way.
-
-
-
 
 ```{r}
 library(tidyverse)
@@ -32,69 +40,74 @@ library(tidyverse)
 
 ## How to get the XML data from the OCR done on the newspapers
 
-url looks like:
+The url looks like:
 
-https://data.kb.se/dark-99732/bib4345612_18730208_0_32_0002_alto.xml
+"https://data.kb.se/dark-99732/bib4345612_18730208_0_32_0002_alto.xml"
 
+You can parse the xml file the the **XML** package in R.
 
 ```{r}
 library(XML)
-xml <- XML::xmlParse("data/bib4345612_18730208_0_32_0001_alto.xml")
+xml <- XML::xmlParse(here::here("data/bib4345612_18730208_0_32_0001_alto.xml"))
 
 xml_data <- xmlToList(xml)
-
-```
-
-
-```{r}
-listviewer::jsonedit(xml_data)
 ```
 
 ```{r}
-xml_data$Layout$Page$PrintSpace$ComposedBlock
+# listviewer::jsonedit(xml_data)
+```
+
+This is what the data looks like. It has a series of elements called `ComposedBlock` which store the data from each page of the newspaper.
+
+```{r}
+# xml_data$Layout$Page$PrintSpace$ComposedBlock
 
 composed_blocks <- xml_data[["Layout"]][["Page"]][["PrintSpace"]] %>% enframe()
 
-composed_blocks %>% 
+composed_blocks %>%
+  filter(name != ".attrs") %>%
   unnest_auto(value)
 
-composed_blocks %>% 
-  slice(6) %>% 
-  pull(value) %>% 
-  enframe() %>% 
-  unnest(value) %>% 
-  slice(1) %>% 
-  pluck(2)
+# composed_blocks %>% 
+#   slice(6) %>% 
+#   pull(value) %>% 
+#   enframe() %>% 
+#   unnest(value) %>% 
+#   slice(1) %>% 
+#   pluck(2)
 ```
 
-## Swedish langage models on data.kb.se
+<!-- ## Swedish langage models on data.kb.se -->
 
-https://data.kb.se/dataset/7mf75j765jqnqcjq 
+<!-- https://data.kb.se/dataset/7mf75j765jqnqcjq  -->
 
+<!-- Dagens Nyheter  1869-01-16 -->
 
+<!-- https://data.kb.se/dark-3673919  -->
 
-Dagens Nyheter  1869-01-16
+<!-- Dagens Nyheter  1870-08-04 -->
 
-https://data.kb.se/dark-3673919 
+<!-- https://data.kb.se/dark-3669732 -->
 
-Dagens Nyheter  1870-08-04
-
-https://data.kb.se/dark-3669732
-
-Okay the purpose here is to take th XML and make it into text, in the right order.
+The purpose here is to take the XML and make it into text, in the right order such that each article follows on from the previous.
 
 It works well on [this page](https://data.kb.se/dark-3669729/viewer?item=1)
 
 ```{r}
-xml <- XML::xmlParse("data/bib13991099_18700805_0_1709_0001_alto.xml")
+knitr::include_graphics(here::here("images/newspaper_1.png"))
+```
+
+
+```{r}
+xml <- XML::xmlParse(here::here("data/bib13991099_18700805_0_1709_0001_alto.xml"))
 
 # xml <- xml2::read_xml("data/bib13991099_18700805_0_1709_0001_alto.xml")
 
-getEncoding(xml)
+# getEncoding(xml)
 
 xml_data <- xmlToList(xml)
 
-listviewer::jsonedit(xml_data)
+# listviewer::jsonedit(xml_data)
 
 composed_blocks <- xml_data[["Layout"]][["Page"]][["PrintSpace"]] %>% enframe()
 
@@ -109,8 +122,8 @@ tbl_2 <- tbl %>%
   bind_cols(tbl %>% select(textblock)) %>% 
   filter(name != ".attrs")
 
-tbl_2 %>% 
-  count(textblock)
+# tbl_2 %>% 
+#   count(textblock)
 
 test <- tbl_2 %>% 
   # here we are selecting only one text block. If I can fix this I will.
@@ -127,7 +140,7 @@ test <- tbl_2 %>%
 
 ```
 
-
+It returns a dataframe with the location of each word on the page, as well as a word confidence score, for how certain the OCR process is about the content of a particular word.
 
 ```{r}
 test %>%
@@ -139,9 +152,9 @@ test %>%
     id_k = str_remove(ID, "[0-9].*"),
     id_v = as.numeric(str_remove_all(ID, "[a-zA-Z]"))
   ) %>% 
-  filter(id_k == "STR")
+  filter(id_k == "STR") %>% 
+  select(VPOS, WIDTH, HEIGHT, CONTENT, WC)
 ```
-
 
 
 ## What to do next??
@@ -163,14 +176,13 @@ library(httr)
 
 id = "bib13991099_18700808_0_1711_0004"
 
-
 ```
 
 
 ### Does it work with complicated pages?? Let's try 
 
 ```{r}
-file_path <- "data/bib13434192_18990409_0_95_0005_alto.xml"
+file_path <- here::here("data/bib13434192_18990409_0_95_0005_alto.xml")
 
 parse_xml <- function(file_path) {
   message("Reading XML from ", file_path)
@@ -219,9 +231,10 @@ parse_xml <- function(file_path) {
         id_k = str_remove(ID, "[0-9].*"),
         id_v = as.numeric(str_remove_all(ID, "[a-zA-Z]"))
       ) %>%
-      filter(id_k == "STR") %>%
+      filter(!is.na(CONTENT)) %>%
       mutate(textblock = tb) %>% 
-      relocate(textblock, .before = textline)
+      relocate(textblock, .before = textline) %>% 
+      mutate(across(c("HPOS", "VPOS", "WIDTH", "HEIGHT"), as.numeric))
   }
   
   df_text <- map_dfr(.x = loop_textblocks,
@@ -241,11 +254,15 @@ test %>%
   mutate(text = paste0(CONTENT, collapse = " ")) %>%
   ungroup() %>%
   distinct(textblock, text) %>% 
-  DT::datatable(rownames = F,
-                colnames = c("Text block", "Text"))
+  mutate(text = str_squish(text)) %>% 
+  knitr::kable(col.names = c("Text block", "Text"))
+  # DT::datatable(rownames = F,
+                # colnames = c("Text block", "Text"))
 ```
 
 ### Visualize blocks on page
+
+Here is where the blocks fit on the newspaper page:
 
 ```{r}
 viz_text_blocks <- function(tbl) {
@@ -278,6 +295,7 @@ viz_text_blocks(test)
 
 ```
 
+Here is where the text fits on the page.
 
 ```{r}
 viz_text_raw <- function(tbl, tb) {
@@ -293,7 +311,8 @@ viz_text_raw <- function(tbl, tb) {
       ylab = (ymin + ymax) / 2
     ) %>%
     ggplot(aes(x = xlab, y = ylab, label = CONTENT)) +
-    geom_text()
+    geom_text() +
+    labs(title = "Location of text on page")
 }
 
 viz_text_raw(test, 1)
@@ -301,68 +320,68 @@ viz_text_raw(test, 1)
 
 ```
 
-Try again with "data/bib13991099_18700805_0_1709_0001_alto.xml"
+<!-- Try again with "data/bib13991099_18700805_0_1709_0001_alto.xml" -->
 
-```{r}
-test <- parse_xml(file_path = "data/bib13991099_18700805_0_1709_0001_alto.xml")
+<!-- ```{r} -->
+<!-- test <- parse_xml(file_path = "data/bib13991099_18700805_0_1709_0001_alto.xml") -->
 
-test %>%
-  group_by(textblock) %>%
-  arrange(textline, id_v) %>%
-  mutate(text = paste0(CONTENT, collapse = " ")) %>%
-  ungroup() %>%
-  distinct(textblock, text) %>% 
-  DT::datatable(rownames = F,
-                colnames = c("Text block", "Text"))
+<!-- test %>% -->
+<!--   group_by(textblock) %>% -->
+<!--   arrange(textline, id_v) %>% -->
+<!--   mutate(text = paste0(CONTENT, collapse = " ")) %>% -->
+<!--   ungroup() %>% -->
+<!--   distinct(textblock, text) %>%  -->
+<!--   DT::datatable(rownames = F, -->
+<!--                 colnames = c("Text block", "Text")) -->
 
-viz_text_blocks(test)
+<!-- viz_text_blocks(test) -->
 
-viz_text_raw(test, 2)
+<!-- viz_text_raw(test, 2) -->
 
-```
+<!-- ``` -->
 
 
-So I should have some metric for Words per size of box and then drop silly ones.
+<!-- So I should have some metric for Words per size of box and then drop silly ones. -->
 
-### Clustering
+<!-- ### Clustering -->
 
-```{r}
-library(tidymodels)
+<!-- ```{r} -->
+<!-- library(tidymodels) -->
 
-df_clust <- test %>% 
-  select(HPOS:VPOS, CONTENT, textblock)
+<!-- df_clust <- test %>%  -->
+<!--   select(HPOS:VPOS, CONTENT, textblock) -->
 
-df_clust <- df_clust %>% 
-  filter(textblock == 2)
+<!-- df_clust <- df_clust %>%  -->
+<!--   filter(textblock == 2) -->
 
-kclust <- kmeans(df_clust %>% select(HPOS, VPOS), centers = 6)
+<!-- kclust <- kmeans(df_clust %>% select(HPOS, VPOS), centers = 6) -->
 
-augment(kclust, df_clust) %>% 
-  ggplot(aes(x = HPOS, y = VPOS, label = CONTENT, colour = .cluster)) +
-  geom_text()
+<!-- augment(kclust, df_clust) %>%  -->
+<!--   ggplot(aes(x = HPOS, y = VPOS, label = CONTENT, colour = .cluster)) + -->
+<!--   geom_text() -->
 
-```
+<!-- ``` -->
 
 
-```{r}
-kclusts <-
-  tibble(k = 1:9) %>%
-  mutate(
-    kclust = map(k, ~ kmeans(df_clust %>% select(HPOS, VPOS), centers = .x)),
-    tidied = map(kclust, tidy),
-    augmented = map(kclust, augment, df_clust)
-  )
+<!-- ```{r} -->
+<!-- kclusts <- -->
+<!--   tibble(k = 1:9) %>% -->
+<!--   mutate( -->
+<!--     kclust = map(k, ~ kmeans(df_clust %>% select(HPOS, VPOS), centers = .x)), -->
+<!--     tidied = map(kclust, tidy), -->
+<!--     augmented = map(kclust, augment, df_clust) -->
+<!--   ) -->
 
-assignments <-
-  kclusts %>%
-  unnest(cols = c(augmented))
+<!-- assignments <- -->
+<!--   kclusts %>% -->
+<!--   unnest(cols = c(augmented)) -->
 
-assignments %>%
-  ggplot(aes(x = HPOS, y = VPOS, label = CONTENT, colour = .cluster)) +
-  geom_text() +
-  facet_wrap(~k)
+<!-- assignments %>% -->
+<!--   ggplot(aes(x = HPOS, y = VPOS, label = CONTENT, colour = .cluster)) + -->
+<!--   geom_text() + -->
+<!--   facet_wrap(~k) -->
 
-```
+<!-- ``` -->
 
 
 
@@ -396,58 +415,58 @@ assignments %>%
 
 
 
-Positioning words
+<!-- Positioning words -->
 
-```{r}
-test %>%
-  # filter(textline < 100) %>%
-  # filter(value_id %in% c("ID", "HPOS", "VPOS", "WIDTH", "HEIGHT", "CONTENT")) %>%
-  # pivot_wider(names_from = value_id, values_from = value) %>%
-  # filter(!is.na(CONTENT)) %>%
-  mutate(
-    CONTENT = stringi::stri_encode(CONTENT, "utf-8"),
-    across(HPOS:HEIGHT, parse_number)
-  ) %>%
-  ggplot(aes(x = HPOS, y = VPOS, label = CONTENT)) +
-  geom_label()
+<!-- ```{r} -->
+<!-- test %>% -->
+<!--   # filter(textline < 100) %>% -->
+<!--   # filter(value_id %in% c("ID", "HPOS", "VPOS", "WIDTH", "HEIGHT", "CONTENT")) %>% -->
+<!--   # pivot_wider(names_from = value_id, values_from = value) %>% -->
+<!--   # filter(!is.na(CONTENT)) %>% -->
+<!--   mutate( -->
+<!--     CONTENT = stringi::stri_encode(CONTENT, "utf-8"), -->
+<!--     across(HPOS:HEIGHT, parse_number) -->
+<!--   ) %>% -->
+<!--   ggplot(aes(x = HPOS, y = VPOS, label = CONTENT)) + -->
+<!--   geom_label() -->
 
 
-# test %>% 
-#   filter(value_id == "CONTENT") %>% 
-#   mutate(text = paste0(value, collapse = " ")) %>% 
-#   distinct(text) %>%
-#   ungroup() %>% view()
-#   mutate(text = stringi::stri_encode(text, "utf-8")) %>% view(text)
+<!-- # test %>%  -->
+<!-- #   filter(value_id == "CONTENT") %>%  -->
+<!-- #   mutate(text = paste0(value, collapse = " ")) %>%  -->
+<!-- #   distinct(text) %>% -->
+<!-- #   ungroup() %>% view() -->
+<!-- #   mutate(text = stringi::stri_encode(text, "utf-8")) %>% view(text) -->
 
 
-```
+<!-- ``` -->
 
 
-```{r}
-tbl <- tbl_2 %>%
-  unchop(value)
+<!-- ```{r} -->
+<!-- tbl <- tbl_2 %>% -->
+<!--   unchop(value) -->
 
-text <- tbl %>%
-  pluck(2) %>%
-  enframe() %>%
-  bind_cols(tbl %>% select(textblock))
+<!-- text <- tbl %>% -->
+<!--   pluck(2) %>% -->
+<!--   enframe() %>% -->
+<!--   bind_cols(tbl %>% select(textblock)) -->
 
 
-text <- text %>% 
-  filter(name != ".attrs") %>% 
-  unnest_longer(value) %>% 
-  filter(value_id == "String") %>% 
-  unnest_auto(value)
+<!-- text <- text %>%  -->
+<!--   filter(name != ".attrs") %>%  -->
+<!--   unnest_longer(value) %>%  -->
+<!--   filter(value_id == "String") %>%  -->
+<!--   unnest_auto(value) -->
 
-text %>% 
-  select(textblock, CONTENT) %>% 
-  group_by(textblock) %>% 
-  mutate(text = paste0(CONTENT, collapse = " ")) %>% 
-  distinct(textblock, text) %>% 
-  ungroup() %>% 
-  mutate(text = stringi::stri_encode(text, "utf-8")) %>% pull(text)
+<!-- text %>%  -->
+<!--   select(textblock, CONTENT) %>%  -->
+<!--   group_by(textblock) %>%  -->
+<!--   mutate(text = paste0(CONTENT, collapse = " ")) %>%  -->
+<!--   distinct(textblock, text) %>%  -->
+<!--   ungroup() %>%  -->
+<!--   mutate(text = stringi::stri_encode(text, "utf-8")) %>% pull(text) -->
 
 
 
-```
+<!-- ``` -->
 

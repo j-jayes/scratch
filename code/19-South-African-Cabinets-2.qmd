@@ -1,0 +1,132 @@
+---
+title: "Untitled"
+format: html
+---
+
+## Purpose
+
+Data on SA Cabinet
+
+### Second cabinet of Louis Botha
+
+```{r}
+library(tidyverse)
+
+data <- tribble(
+  ~Post, ~Minister, ~Term_Start, ~Term_End, ~Party,
+  "Prime Minister", "Gen. Jan Smuts", 1919, NA, "SAP",
+  "Prime Minister", "Gen. Louis Botha", 1910, 1919, "SAP",
+  "Minister of Agriculture", "The Hon. H.C. van Heerden MP", 1913, 1920, "SAP",
+  "Minister of Defence", "The Hon. Hendrik Mentz MP", 1919, NA, "SAP",
+  "Minister of Defence", "The Hon. Jan Smuts MP", 1912, 1919, "SAP",
+  "Minister of Education", "The Hon. F.S. Malan MP", 1910, NA, "SAP",
+  "Minister of Finance", "The Hon. Thomas Orr MP", 1917, 1920, "SAP",
+  "Minister of Finance", "The Hon. Henry Burton MP", 1915, 1917, "SAP",
+  "Minister of Public Health (newly formed)", "The Hon. Thomas Watt MP", 1919, NA, "SAP",
+  "Minister of Interior Affairs", "The Hon. Thomas Watt MP", 1919, NA, "SAP",
+  "Minister of Interior Affairs", "Gen. Jan Smuts", 1913, 1919, "SAP",
+  "Minister of Justice", "The Hon. Nicolaas de Wet MP", 1913, NA, "SAP",
+  "Minister of Lands and Irrigation", "The Hon. Hendrik Mentz MP", 1915, NA, "SAP",
+  "Minister of Mines and Industry", "The Hon. F.S. Malan MP", 1912, NA, "SAP",
+  "Minister of Native Affairs", "Gen. Jan Smuts", 1919, NA, "SAP",
+  "Minister of Native Affairs", "Gen. Louis Botha", 1912, 1919, "SAP",
+  "Minister of Posts and Telegraphs", "The Hon. Thomas Orr MP", 1919, 1920, "SAP",
+  "Minister of Posts and Telegraphs", "The Hon. J.H.M. Beck MP", 1915, 1919, "SAP",
+  "Minister of Public Works", "The Hon. Thomas Watt MP", 1912, 1920, "SAP",
+  "Minister of Railways and Harbours", "The Hon. Henry Burton MP", 1912, NA, "SAP"
+)
+
+data %>% 
+  mutate(title = "Second Cabinet of Louis Botha",
+         url = "https://en.wikipedia.org/wiki/Second_Cabinet_of_Louis_Botha")
+```
+
+### First Cabinet of Jan Smuts
+
+```{r}
+library(tibble)
+
+data <- tribble(
+  ~Post, ~Minister, ~Term_Start, ~Term_End, ~Party,
+  "Prime Minister", "Gen. Jan Smuts", 1919, NA, "SAP",
+  "Minister of Native Affairs", "Gen. Jan Smuts", 1919, NA, "SAP",
+  "Minister of Agriculture", "The Hon. F.S. Malan MP", 1920, 1921, "SAP",
+  "Minister of Defence", "The Hon. Hendrik Mentz MP", 1919, NA, "SAP",
+  "Minister of Education", "The Hon. F.S. Malan MP", 1910, 1921, "SAP",
+  "Minister of Finance", "The Hon. Henry Burton MP", 1920, NA, "SAP",
+  "Minister of Public Health", "The Hon. Thomas Watt MP", 1919, 1921, "SAP",
+  "Minister of Interior Affairs", "The Hon. Thomas Watt MP", 1919, 1921, "SAP",
+  "Minister of Justice", "The Hon. Nicolaas de Wet MP", 1913, NA, "SAP",
+  "Minister of Lands and Irrigation", "The Hon. Hendrik Mentz MP", 1916, 1921, "SAP",
+  "Minister of Mines and Industry", "The Hon. F.S. Malan MP", 1912, NA, "SAP",
+  "Minister of Posts and Telegraphs", "The Hon. Jacobus Arnoldus Graaff MP", 1920, 1921, "SAP",
+  "Minister of Public Works", "The Hon. Jacobus Arnoldus Graaff MP", 1920, 1921, "SAP",
+  "Minister of Railways and Harbours", "The Hon. Henry Burton MP", 1912, 1921, "SAP"
+)
+
+data %>% 
+  mutate(title = "First Cabinet of Jan Smuts",
+         url = "https://en.wikipedia.org/wiki/First_Cabinet_of_Jan_Smuts")
+```
+
+
+### Second Cabinet of Jan Smuts
+
+
+```{r}
+library(tibble)
+
+data <- tibble(
+  Post = c("Prime Minister", "Minister of Agriculture", "Minister of Defence", 
+           "Minister of Education", "Minister of Finance", "Minister of Public Health", 
+           "Minister of Interior Affairs", "Minister of Justice", "Minister of Lands and Irrigation", 
+           "Minister of Mines and Industry", "Minister of Native Affairs", "Minister of Posts and Telegraphs", 
+           "Minister of Public Works", "Minister of Railways and Harbours"),
+  Minister = c("Gen. Jan Smuts", "The Hon. Deneys Reitz MP", "The Hon. Hendrik Mentz MP", 
+               "The Hon. Patrick Duncan MP", "The Hon. Henry Burton MP", "The Hon. Patrick Duncan MP", 
+               "The Hon. Patrick Duncan MP", "The Hon. Nicolaas de Wet MP", "The Hon. Deneys Reitz MP", 
+               "The Hon. F.S. Malan MP", "Gen. Jan Smuts", "The Hon. Thomas Watt MP", 
+               "The Hon. Thomas Watt MP", "The Hon. John W. Jagger MP"),
+  Term_Start = c(1919, 1921, 1919, 1921, 1920, 1921, 1921, 1913, 1921, 1912, 1919, 1921, 1921, 1921),
+  Term_End = c(1924, 1924, 1924, 1924, 1924, 1924, 1924, 1924, 1924, 1924, 1924, 1924, 1924, 1924),
+  Party = c("SAP", "SAP", "SAP", "SAP", "SAP", "SAP", "SAP", "SAP", "SAP", "SAP", "SAP", "SAP", "SAP", "SAP")
+)
+
+
+
+data %>% 
+  mutate(title = "Second Cabinet of Jan Smuts",
+         url = "https://en.wikipedia.org/wiki/Second_Cabinet_of_Jan_Smuts")
+```
+
+
+```{r}
+
+data <- tribble(
+  ~Post, ~Minister,                                    ~Start_Year, ~End_Year, ~Party,
+  "Prime Minister", "Gen. J. B. M. Hertzog",              1924,       1929,     "National Party",
+  "Minister of Native Affairs", "Gen. J. B. M. Hertzog",  1924,       1929,     "National Party",
+  "Minister of Agriculture", "The Hon. Jan Kemp MP",      1924,       1929,     "National Party",
+  "Minister of Defence", "The Hon. Frederic Creswell MP", 1924,       1929,     "Labour Party",
+  "Minister of Labour", "The Hon. Frederic Creswell MP",  1925,       1929,     "Labour Party",
+  "Minister of Education", "The Hon. D. F. Malan MP",     1924,       1929,     "National Party",
+  "Minister of Interior Affairs", "The Hon. D. F. Malan MP",   1924,  1929,     "National Party",
+  "Minister of Public Health", "The Hon. D. F. Malan MP",      1924,  1929,     "National Party",
+  "Minister of Finance", "The Hon. N. C. Havenga MP",          1924,  1929,     "National Party",
+  "Minister of Justice", "The Hon. Tielman Roos MP",           1924,  1929,     "National Party",
+  "Minister of Lands", "The Hon. P.G.W. Grobler MP",           1924,  1929,     "National Party",
+  "Minister of Mines and Industry", "The Hon. F.W. Beyers MP", 1924,  1929,     "National Party",
+  "Minister of Posts and Telegraphs", "The Hon. Thomas Boydell MP", 1924, 1925, "Labour Party",
+  "Minister of Public Works", "The Hon. Thomas Boydell MP",   1924, 1925,     "Labour Party",
+  "Minister of Railways and Harbours", "The Hon. Charl W. Malan MP", 1924, 1929, "National Party",
+  "Minister of External Affairs", "Gen. J. B. M. Hertzog",   1927,  1929,     "National Party",
+  "Minister of Irrigation", "The Hon. E. G. Jansen MP",       1928,  1929,     "National Party",
+  "Minister of Posts and Telegraphs", "The Hon. H. W. Sampson MP", 1928, 1929, "Labour Party"
+)
+
+data %>% 
+  mutate(title = "First Cabinet of J. B. M. Hertzog",
+         url = "https://en.wikipedia.org/wiki/First_Cabinet_of_J._B._M")
+
+```
+

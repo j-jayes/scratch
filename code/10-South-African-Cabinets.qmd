@@ -180,5 +180,94 @@ df_wiki_articles_sans_mbeki %>%
 ```
 
 
+```{r}
+url <- "https://en.wikipedia.org/wiki/Cabinet_of_South_Africa"
+
+html <- read_html(url)
+
+html %>% 
+  html_nodes(".wikitable") %>% 
+  html_table()
+```
+
+
+Help from Chat GPT
+
+```{r}
+url <- "https://en.wikipedia.org/wiki/First_Cabinet_of_Louis_Botha"
+
+html <- read_html(url)
+
+table <- html %>% 
+  html_nodes(".wikitable") %>% 
+  html_table() %>% 
+  magrittr::extract2(1) %>% 
+  janitor::clean_names() %>% 
+  select(-post)
+
+table %>% 
+  datapasta::dmdclip()
+```
+
+
+## Python
+
+```{python}
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+url = 'https://en.wikipedia.org/wiki/First_Cabinet_of_Louis_Botha'
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+# If the GET request is successful, the status code will be 200
+if response.status_code == 200:
+    # Parse the HTML content
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Find the wikitable
+    table = soup.select_one('.wikitable')
+
+    # Extract the table headers
+    headers = [header.get_text(strip=True) for header in table.find_all('th')]
+
+    # Extract the table rows
+    rows = []
+    for row in table.find_all('tr'):
+        cells = row.find_all('td')
+        if len(cells) > 0:
+            rows.append([cell.get_text(strip=True) for cell in cells])
+
+    # Create a pandas DataFrame with the extracted data
+    df = pd.DataFrame(rows, columns=headers)
+
+    # Print the DataFrame
+    print(df)
+else:
+    print('Failed to retrieve the content')
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
