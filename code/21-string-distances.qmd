@@ -19,7 +19,7 @@ In R, you can use the `stringdist` package to compute the Levenshtein distance b
 library(stringdist)
 
 # Define the strings
-string1 <- "battle"
+string1 <- "bottle"
 string2 <- "battleship"
 
 # Calculate the Levenshtein distance
