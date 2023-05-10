@@ -1,0 +1,194 @@
+---
+title: "Dr Matthew's next job"
+format: html
+---
+
+## Purpose
+
+My friend Matthew is looking to land a remote job in the United States. I wanted to use AI to help him in his job search.
+
+This document walks through how I would approach the problem with access to the AI tools as of May 2023.
+
+## Strategy
+
+I will make use of ChatGPT from OpenAI to do the business strategy section, and Bing's AI in creative mode for the sourcing of companies, as it has access to the internet.
+
+
+### Honing in on a sector
+
+I first begin by asking ChatGPT for some sectors that Matthew could work in given his skills:
+
+<b>Role: you are an expert in remote recruitment and business strategy. 
+
+My friend Matthew is looking to land a remote job in the United States.  I want you to help direct his job search and suggest strategies to find a job. I will give you his profile, and then I want you to suggest 8 areas of work that you think he could be suited to.
+
+Matthew has a bachelor's degree in commerce from the University of Cape Town, in South Africa, where he studied business, economics as well as healthcare economics. Subsequently, he studied for an MBChB (Bachelor of Medicine and Bachelor of Surgery) degree at the University of Cape Town medical school. After graduating, he worked for two years in a regional hospital in KwaDukuza, north of Durban, and for one year at Mitchell's Plain Community Health Centre. He is interested in Orthopedic surgery, sports medicine,  and treating mental health with ketamine. 
+
+The things that he values in the job which he hopes to land are:
+- work-life balance and a set number of hours per week, preferably hours when other people are also working (as opposed to night shifts)
+- good remuneration
+- possibilities for career progression towards a life when he can earn income from things other than his own labour.
+
+What kinds of jobs do you think he would be well suited for?</b>
+
+ChatGPT: 
+- Given Matthew's background in commerce, healthcare economics, and medicine, as well as his specific interests and values, I suggest the following eight areas of work that could be well-suited for him: 
+ 
+1. Healthcare consulting: Matthew can work as a remote healthcare consultant, helping hospitals, clinics, and other healthcare organizations to optimize their operations, reduce costs, and improve patient outcomes. 
+2. Medical sales representative: Matthew can work remotely as a medical sales representative for pharmaceutical or medical device companies, leveraging his healthcare knowledge to promote their products to healthcare providers. 
+3. Health economics and outcomes research (HEOR) analyst: Matthew can use his background in healthcare economics to help organizations evaluate the cost-effectiveness of medical treatments, interventions, and healthcare policies. 
+4. Remote medical coding: Matthew can work remotely as a medical coder, translating medical diagnoses, procedures, and other information into standardized codes for billing and data analysis purposes. 
+5. Online medical education and training: Matthew can develop and deliver remote medical education and training programs for healthcare professionals, medical students, and organizations, focusing on orthopedic surgery, sports medicine, or mental health treatment with ketamine. 
+6. Clinical research: Matthew can work remotely as a clinical research associate or coordinator, managing and overseeing clinical trials for pharmaceutical companies, medical device manufacturers, or research institutions. 
+7. Health informatics: With his medical background, Matthew can work in health informatics, focusing on the analysis, management, and optimization of health information and data for improved patient care and decision-making. 
+8. Remote utilization review: Matthew can work as a remote utilization review specialist, evaluating the medical necessity, appropriateness, and efficiency of healthcare services, procedures, and facilities.
+
+In pursuing any of these remote job opportunities, Matthew should leverage his medical and commerce background, as well as his specific interests in orthopedic surgery, sports medicine, and mental health treatment with ketamine. This will help him find a suitable position that aligns with his values and provides opportunities for career progression.
+
+### More about Health economics and outcomes research (HEOR) analysts
+
+Next I ask: <b>Great, can you tell me about some roles within the Health economics and outcomes research (HEOR) analyst space? Be specific about the skills needed and the work involved.</b>
+
+
+ChatGPT: 
+-Health Economics and Outcomes Research (HEOR) analysts play a crucial role in the healthcare industry, evaluating the cost-effectiveness, safety, and real-world outcomes of medical treatments, interventions, and healthcare policies. Some specific roles within the HEOR analyst space include:
+
+1. Health Economist: Health economists analyze healthcare data to assess the value of various healthcare interventions, including cost-effectiveness, cost-utility, and cost-benefit analyses. They use economic modeling techniques, such as decision-analytic models, budget impact models, and Markov models, to forecast the potential impact of healthcare interventions on patient outcomes and healthcare costs.
+
+Skills needed: Knowledge of healthcare economics, economic modeling techniques, data analysis, statistical software (e.g., R, STATA, SAS), and strong communication skills.
+
+2. Outcomes Researcher: Outcomes researchers focus on studying the real-world effectiveness and safety of healthcare interventions. They design, conduct, and analyze observational studies, patient registries, and retrospective database analyses to measure patient-reported outcomes, quality of life, and clinical endpoints.
+
+Skills needed: Study design, data collection and analysis, knowledge of patient-reported outcomes measures, experience with healthcare databases (e.g., claims data, electronic health records), and proficiency in statistical software.
+
+3. Market Access Analyst: Market access analysts help pharmaceutical and medical device companies develop strategies to ensure their products are available and accessible to patients. They research and analyze pricing, reimbursement, and health technology assessment (HTA) policies across different markets, and support the development of value dossiers and economic models to demonstrate the value of the product to payers and healthcare providers.
+
+Skills needed: Understanding of pricing and reimbursement policies, HTA processes, stakeholder engagement, value proposition development, and strong analytical and communication skills.
+
+4. Health Policy Analyst: Health policy analysts study healthcare policies and regulations to assess their impact on patient outcomes, healthcare costs, and access to care. They provide recommendations for policymakers and healthcare organizations based on their research findings and help develop evidence-based policies that improve the healthcare system.
+
+Skills needed: Knowledge of healthcare policies and regulations, research methods, data analysis, policy evaluation, and strong written and verbal communication skills.
+
+5. HEOR Project Manager: HEOR project managers oversee the planning, execution, and monitoring of HEOR projects, ensuring that they are completed on time, within budget, and meet the desired objectives. They coordinate the work of multidisciplinary teams, manage project timelines, and communicate progress and results to stakeholders.
+
+Skills needed: Project management, team coordination, budgeting, timeline management, problem-solving, and effective communication.
+
+Overall, professionals in the HEOR space should have a strong background in healthcare, economics, statistics, and research methods. They should also possess excellent analytical, problem-solving, and communication skills, as they often need to translate complex data into actionable insights for decision-makers in the healthcare industry.
+
+## Sourcing jobs
+
+Next I turn to Bing to find actual jobs that exist. Bing Chat in creative mode is an implementaion of OpenAI's GPT-4 model with access to the internet in real time.
+
+I ask it:
+
+<b>Can you tell me about some companies that I could work in a remote role in the United States for as a Health Economics and Outcomes Research (HEOR) analyst. The profile of the job is as follows: Health Economics and Outcomes Research (HEOR) analysts play a crucial role in the healthcare industry, evaluating the cost-effectiveness, safety, and real-world outcomes of medical treatments, interventions, and healthcare policies. Skills needed: Study design, data collection and analysis, great communication skills, knowledge of patient-reported outcomes measures, experience with healthcare databases (e.g., claims data, electronic health records), and proficiency in statistical software.</b>
+
+Bing reponds:
+
+Based on web search results, some of the companies that offer remote HEOR analyst jobs in the USA are:
+
+- **Tellus Solutions**: A consulting firm that provides HEOR services to biopharmaceutical clients. They are looking for HEOR analysts who can conduct health economics and outcomes research projects under the supervision of the manager to support the value proposition to payors, patients and providers¹.
+- **Komodo Health**: A healthcare data and analytics company that leverages real-world data to improve patient outcomes. They are looking for customer success associates who have experience in HEOR and real-world evidence and can partner closely with their life science customers².
+- **Siemens Healthineers**: A medical technology company that offers innovative solutions for diagnostic and therapeutic imaging, laboratory diagnostics and molecular medicine. They are looking for medical science liaisons who have expertise in HEOR and can develop and maintain peer-to-peer relationships with key clinicians and medical experts³.
+- **IndoMinds Solutions**: A data science and analytics company that provides solutions for healthcare, life sciences, retail, banking and insurance sectors. They are looking for healthcare data analysts who have experience in cleaning, reporting and uploading healthcare data in Snowflake.
+- **Rangam Consultants Inc.**: A staffing and recruitment company that specializes in sourcing talent for various industries. They are looking for patient reported outcomes managers who have knowledge of patient-reported outcomes measures and can support the development and implementation of PRO strategies.
+
+These are some examples of remote HEOR analyst jobs in the USA, but there may be more opportunities available on other platforms or websites. You can use keywords such as "remote HEOR analyst jobs in USA" or "HEOR analyst remote work" to find more listings.
+
+Source: Conversation with Bing, 2023/05/10(1) 8,000+ Heor Analyst jobs in United States (481 new) - LinkedIn. https://www.linkedin.com/jobs/heor-analyst-jobs Accessed 2023/05/10.
+(2) Remote Heor Jobs, Employment | Indeed.com. https://www.indeed.com/q-Remote-Heor-jobs.html Accessed 2023/05/10.
+(3) Heor Jobs in Remote, May 2023 | Glassdoor. https://www.glassdoor.com/Job/remote-heor-jobs-SRCH_IL.0,6_IS11047_KO7,11.htm Accessed 2023/05/10.
+
+### A wider net
+
+Next I want to widen the search, and ask for more companies with the exact information I want in markdown format:
+
+<b>Can you return to me a markdown table with 20 companies for whom I could be a remote Health Economics and Outcomes Research (HEOR) analyst, with a column for the company, a column for the kind of jobs I could work in, the approximate number of employees of each comapny, and a summary of what the comapny does?</b>
+
+Based on web search results, here is a markdown table with 20 companies for whom you could be a remote HEOR analyst, with a column for the company, a column for the kind of jobs you could work in, the approximate number of employees of each company, and a summary of what the company does:
+
+| Company | Job Title | Number of Employees | Summary |
+| --- | --- | --- | --- |
+| Tellus Solutions | HEOR, RWE | 51-200 | A consulting firm that provides HEOR services to biopharmaceutical clients |
+| Komodo Health | Customer Success Associate, HEOR/Real-world-evidence | 201-500 | A healthcare data and analytics company that leverages real-world data to improve patient outcomes |
+| Siemens Healthineers | Medical Science Liaison (Remote) | 10,001+ | A medical technology company that offers innovative solutions for diagnostic and therapeutic imaging, laboratory diagnostics and molecular medicine |
+| IndoMinds Solutions | Healthcare Data Analyst | 11-50 | A data science and analytics company that provides solutions for healthcare, life sciences, retail, banking and insurance sectors |
+| Rangam Consultants Inc. | Patient Reported Outcomes Manager (PRO/HEOR) or HEOR Project Manager | 201-500 | A staffing and recruitment company that specializes in sourcing talent for various industries |
+| Bristol Myers Squibb | Director, WW HEOR Patient-Reported Outcomes Assessment- Remote | 10,001+ | A global biopharmaceutical company that discovers, develops and delivers innovative medicines for serious diseases |
+| Trinity Life Sciences | Analyst | 201-500 | A global life sciences consulting firm that provides strategic and tactical insights to pharmaceutical and biotech companies |
+| Costello Medical | Analyst | 201-500 | A medical communications agency that provides scientific support to the healthcare industry in the analysis, interpretation and communication of clinical and health economic data |
+| CornerStone Professional Placement | Outcomes Analyst | 51-200 | A professional staffing agency that connects employers with qualified candidates in various fields |
+| Red Carrot | Analyst | 11-50 | A marketing and advertising agency that helps clients create engaging campaigns and experiences |
+| Touchdown Ventures | Analyst | 11-50 | A venture capital firm that partners with corporations to manage their venture capital programs |
+| Moonshot | Analyst | 11-50 | A digital product studio that helps clients create impactful products and services using human-centered design and emerging technologies |
+| Chicago Cubs | Analyst, Baseball Sciences | 501-1000 | A professional baseball team that competes in Major League Baseball |
+| Los Angeles Dodgers | Junior Analyst, Baseball Strategy & Information | 501-1000 | A professional baseball team that competes in Major League Baseball |
+| KITE Scouting | Startup Analyst | 11-50 | A platform that connects startups with corporate innovation teams and investors |
+| minds + assembly | Analyst | 11-50 | A strategic consultancy that helps clients solve complex business challenges using data-driven insights and creative solutions |
+| SAGE Therapeutics | Senior Manager/Associate Director HEOR - Remote Opportunity! or Director/Senior Director HEOR - Remote Opportunity! or Senior Director/Director HEOR - Remote Opportunity! or Associate Director/Director HEOR - Remote Opportunity! or Senior Manager/Associate Director HEOR - Remote Opportunity!
+
+Source: Conversation with Bing, 2023/05/10(1) 8,000+ Heor Analyst jobs in United States (481 new) - LinkedIn. https://www.linkedin.com/jobs/heor-analyst-jobs Accessed 2023/05/10.
+(2) Remote Heor Jobs, Employment | Indeed.com. https://www.indeed.com/q-Remote-Heor-jobs.html Accessed 2023/05/10.
+(3) Heor Jobs in Remote, May 2023 | Glassdoor. https://www.glassdoor.com/Job/remote-heor-jobs-SRCH_IL.0,6_IS11047_KO7,11.htm Accessed 2023/05/10.
+
+## Writing application letters
+
+Finally, I want to use ChatGPT's conversation history to write an application letter. I go to the same conversation window and ask:
+
+<b>Great, can you write Matthew an application letter to apply for a job at Siemens Healthineers?
+
+Siemens Healthineers are a medical technology company that offers innovative solutions for diagnostic and therapeutic imaging, laboratory diagnostics and molecular medicine. They are looking for medical science liaisons who have expertise in HEOR and can develop and maintain peer-to-peer relationships with key clinicians and medical experts.
+
+Be concise in your writing, write in the style of Steven Pinker, but do not use too many big words. </b>
+
+ChatGPT:
+-Subject: Application for Medical Science Liaison (HEOR) at Siemens Healthineers
+
+Dear Hiring Manager,
+
+Allow me to cut right to the chase: I am thrilled to apply for the Medical Science Liaison position with a focus on Health Economics and Outcomes Research (HEOR) at Siemens Healthineers. As a medical professional who has navigated the crossroads of commerce, healthcare economics, and medicine, I have honed a skillset that not only matches but thrives in the dynamic environment of this role.
+
+I bring to the table a Bachelor's degree in Commerce and an MBChB from the University of Cape Town, coupled with three invigorating years of hands-on healthcare experience. My background has fostered a deep understanding of the intricate dance between healthcare economics, patient outcomes, and groundbreaking medical solutions.
+
+Envision me as your Medical Science Liaison, championing Siemens Healthineers' cutting-edge diagnostic and therapeutic technologies, backed by my HEOR expertise. I have a knack for distilling complex healthcare data into sharp insights and conveying them with clarity and enthusiasm to diverse stakeholders—clinicians, medical experts, and policymakers alike.
+
+My zeal for orthopedic surgery, sports medicine, and mental health treatment with ketamine places me in a unique position to build robust relationships with key opinion leaders in these fields. I fully grasp the significance of nurturing these connections to share knowledge and accelerate the adoption of trailblazing medical solutions that elevate patient outcomes and curtail healthcare costs.
+
+To sum it up: I'm eager to channel my expertise as a Medical Science Liaison at Siemens Healthineers, where I can play a pivotal role in reshaping patient care through the promotion of avant-garde medical technologies. Thank you for considering my application. I can hardly wait to explore my suitability for this position with you in greater detail.
+
+Sincerely,
+
+Matthew
+
+## Strategies
+
+Finally I ask ChatGPT for some strategies to make the job search more efficient:
+
+<b>Can you give me some strategies to make my job search more efficient?</b>
+
+ChatGPT:
+- To enhance the effectiveness of a job search, consider employing the following strategies: 
+
+1. Define your goals: Before starting your job search, take the time to define your goals and objectives clearly. Identify the industries, job roles, and work environment that align with your skills, values, and interests. 
+
+2. Customize your resume and cover letter: Tailor your resume and cover letter to each job application. Highlight the skills, experiences, and accomplishments that are most relevant to the specific job role and company. 
+
+3. Develop a strong online presence: Create a professional online presence on platforms such as LinkedIn, and ensure your profile is up-to-date and showcases your skills and experiences. Engage with your network, share relevant content, and follow companies and influencers in your industry. 
+4. Network: Build and maintain connections with professionals in your industry, both online and offline. Attend networking events, join industry groups, and leverage social media platforms to connect with others in your field. 
+
+5. Utilize job search platforms: Make use of job search websites, company career portals, and job aggregator websites to find job listings that match your criteria. Set up job alerts to receive notifications for new job openings that fit your preferences. 
+
+6. Research target companies: Conduct thorough research on the companies you are interested in working for. Understand their values, culture, and recent developments to better tailor your application and prepare for interviews. 
+
+7. Reach out to your network: Reach out to your personal and professional network to inquire about potential job opportunities. Many positions are filled through referrals or word-of-mouth, so don't hesitate to ask for help or information from your contacts. 
+
+8. Prepare for interviews: Practice answering common interview questions, and research the company and role to demonstrate your knowledge during interviews. Be prepared to discuss your experiences, skills, and accomplishments in detail. 
+
+9. Follow up: After submitting an application or completing an interview, follow up with a thank-you email, expressing your gratitude for the opportunity and reiterating your interest in the position. 
+
+10. Stay organized: Keep track of your job applications, follow-ups, and interviews. Use a spreadsheet or project management tool to help you stay organized and manage your job search effectively. 
+
+11. Continue developing your skills: While searching for a job, consider enhancing your skills through online courses, certifications, or workshops. This can make you a more competitive candidate and expand your job prospects.
+
+By incorporating these strategies into your job search, you can increase your chances of finding a job that aligns with your skills, interests, and career goals.
+
