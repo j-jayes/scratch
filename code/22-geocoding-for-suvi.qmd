@@ -1,0 +1,158 @@
+---
+title: "Geocoding for Suvi"
+format: html
+execute: 
+  echo: true
+---
+
+## Purpose
+
+Geocoding some Swedish place names for Suvi.
+
+## Data
+
+
+```{python}
+import pandas as pd
+# read in data from C:\Users\User\Documents\Recon\scratch\data\locations.xlsx
+locations_df = pd.read_excel('C:\\Users\\User\\Documents\\Recon\\scratch\\data\\locations.xlsx')
+
+locations_df.head()
+
+```
+
+```{python}
+#| eval: false
+import requests
+import pandas as pd
+
+# Define the geocoding function
+def geocode(address, county, api_key):
+    full_address = f"{address}, {county}, Sweden"
+    url = 'https://maps.googleapis.com/maps/api/geocode/json'
+    params = {'address': full_address, 'key': api_key}
+    response = requests.get(url, params=params)
+    data = response.json()
+    if data['status'] == 'OK':
+        lat = data['results'][0]['geometry']['location']['lat']
+        lng = data['results'][0]['geometry']['location']['lng']
+        return lat, lng
+    else:
+        return None, None
+
+# Get unique combinations of address and county
+unique_locations_df = locations_df.drop_duplicates(subset=['address', 'county'])
+
+# Google Maps Geocoding API key
+api_key = 'YOUR_API_KEY'  # Replace with your Google API key
+
+# Initialize the columns for latitude and longitude
+unique_locations_df['Latitude'] = None
+unique_locations_df['Longitude'] = None
+
+# Loop over the unique combinations and geocode each one
+for idx, row in unique_locations_df.iterrows():
+    address = row['address']
+    county = row['county']
+    lat, lng = geocode(address, county, api_key)
+    unique_locations_df.loc[idx, 'Latitude'] = lat
+    unique_locations_df.loc[idx, 'Longitude'] = lng
+
+# Save the geocoded data to a new Excel file
+output_file_path = '../data/geocoded_locations.xlsx'  # Update with the desired output file path
+unique_locations_df.to_excel(output_file_path, index=False)
+
+
+```
+
+
+```{python}
+import pandas as pd
+
+# Define the bounds of Sweden
+sweden_bounds = {
+    'north_lat': 69.06,
+    'south_lat': 55.34,
+    'west_lng': 10.57,
+    'east_lng': 24.17
+}
+
+# Load the geocoded data
+file_path = '../data/geocoded_locations.xlsx'  # Update with the path to your Excel file with geocoded locations
+geocoded_df = pd.read_excel(file_path)
+
+# Loop over the rows and check the bounds
+for idx, row in geocoded_df.iterrows():
+    lat = row['Latitude']
+    lng = row['Longitude']
+    address = row['address']
+    county = row['county']
+    
+    # Check if the coordinates are within the bounds of Sweden
+    if lat and lng:
+        if not (sweden_bounds['south_lat'] <= lat <= sweden_bounds['north_lat'] and sweden_bounds['west_lng'] <= lng <= sweden_bounds['east_lng']):
+            print(f"{address}, {county} is out of the bounds of Sweden")
+
+```
+
+None are outside of Sweden, so we can proceed.
+
+## Make a map
+
+```{python}
+import folium
+from folium import Marker
+# Create a base map; initially centered on a default location
+m = folium.Map(location=[20,0], zoom_start=2)
+
+# List to hold the lat-long values, which will be used to fit the map to bounds of the data.
+lat_lng_list = []
+
+# Add markers to the map for each geocoded location
+for idx, row in geocoded_df.iterrows():
+    if row['Latitude'] and row['Longitude']:
+        # Appending the latitude, longitude values to lat_lng_list
+        lat_lng_list.append([row['Latitude'], row['Longitude']])
+
+        # Creating a popup string containing place name and arbitrary value
+        popup_str = f"{row['address']}"
+
+        # Adding a marker to the map with the popup
+        Marker([row['Latitude'], row['Longitude']], popup=popup_str).add_to(m)
+
+# Fitting the map to the bounds of the geocoded locations
+if lat_lng_list:
+    m.fit_bounds(lat_lng_list)
+
+# Display the map
+m
+
+```
+
+
+```{python}
+# eval: false
+import pandas as pd
+
+# Load the original data
+original_file_path = '../data/locations.xlsx'  # Update with the path to your original Excel file
+locations_df = pd.read_excel(original_file_path)
+
+# Load the geocoded data
+geocoded_file_path = '../data/geocoded_locations.xlsx'  # Update with the path to your Excel file with geocoded locations
+geocoded_df = pd.read_excel(geocoded_file_path)
+
+# Merge the original DataFrame with the geocoded DataFrame based on address and county
+merged_df = pd.merge(locations_df, geocoded_df[['address', 'county', 'Latitude', 'Longitude']], on=['address', 'county'], how='left')
+
+# At this point, each row in merged_df will have the Latitude and Longitude associated with its address and county
+# If you want to get unique id with its corresponding Latitude and Longitude, you can do the following:
+
+# Drop duplicate ids (if any) and keep the columns 'id', 'Latitude', 'Longitude'
+id_coordinates_df = merged_df.drop_duplicates(subset='id')[['id', 'Latitude', 'Longitude']]
+
+# Save the id with coordinates to a new Excel file
+output_file_path = '../data/id_with_coordinates.xlsx'  # Update with the desired output file path
+id_coordinates_df.to_excel(output_file_path, index=False)
+
+```
