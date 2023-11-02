@@ -34,7 +34,9 @@ df <- df %>%
 df %>% ggplot(aes(year, value, colour = industry)) +
   geom_line() +
   scale_color_brewer(palette = "Dark2") +
-  labs(x = NULL, y = NULL, title = "Electricity as a share of energy use in different industries", colour = "Industry", caption = "Source: Lennart Schön") +
+  labs(x = NULL, y = "Electricity as a share of energy use", colour = "Industry", 
+  # caption = "Source: Lennart Schön"
+  ) +
   scale_y_continuous(labels = scales::percent_format(scale = 1)) +
   gghighlight::gghighlight(label_params = list(size = 8), line_label_type = "text_path") +
   theme(
@@ -48,7 +50,9 @@ df %>% ggplot(aes(year, value, colour = industry)) +
   ) 
 
 
-ggsave(filename = here::here("figures/schon-energy-share.jpeg"), device = "jpeg", width = 290, height = 231, units = "mm", dpi = 300)
+ggsave(filename = here::here("figures/00-schon-energy-shares-no-title.jpeg"), device = "jpeg", width = 290, height = 231, units = "mm", dpi = 300)
+
+df %>% filter(year == 1930) %>% ungroup() %>% summarise(mean(value))
 
 ```
 
