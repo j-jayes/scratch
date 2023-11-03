@@ -1,0 +1,131 @@
+---
+title: "Hisco to Hisclass abbreviation"
+format: gfm
+---
+
+## Overview
+
+This R project aims to process historical international standard classification of occupations (HISCO) codes to social-economic status (hisclass) levels. The project includes transforming HISCO codes from an Excel spreadsheet into two hisclass levels: 12-level and 7-level classifications, and then mapping these to their respective abbreviated titles.
+
+## Installation
+
+Before running the script, you need to ensure that you have R installed on your system. The following R packages are required:
+
+- `tidyverse`
+- `devtools`
+- `hisco`
+- `readxl`
+- `here`
+
+You can install these packages using the following commands in your R console:
+
+```R
+install.packages("tidyverse")
+install.packages("devtools")
+install.packages("readxl")
+install.packages("here")
+devtools::install_github("junkka/hisco")
+```
+
+## Usage
+
+The script can be broken down into several steps:
+
+1. **Setting up the environment:** Loading the necessary libraries.
+2. **Creating lookup tables:** Define mappings between HISCO codes and hisclass levels (both 12-level and 7-level).
+3. **Reading the data:** Import the HISCO codes from an Excel file.
+4. **Processing the data:** Apply the mappings to convert HISCO codes to hisclass levels and join the data with the lookup tables to get the desired outputs.
+
+### Code Breakdown
+
+- **Environment Setup:** The required libraries are loaded into the R environment.
+  
+- **Lookup Table Creation:** `hisclass_12_tbl` and `hisclass_7_tbl` tibbles are created using predefined mappings to associate numerical hisclass identifiers with their corresponding titles.
+
+- **Data Reading:** HISCO codes are read from an Excel file located in the "data" directory relative to the project root.
+
+- **Data Processing:** HISCO codes are converted to hisclass 12 levels using the `hisco_to_ses()` function. Then the data is joined with `hisclass_table` to populate both hisclass 12 and hisclass 7 levels and their corresponding titles.
+
+## Data Files
+
+The script assumes that there is an Excel file named `hisco_to_hisclass.xlsx` in the `data` directory of your project. The file should contain HISCO codes to be processed.
+
+## Running the Script
+
+To run the script, open the R file in your R environment and execute the code. Ensure that your current working directory is set to the project root and that the `data` folder with the Excel file is correctly placed in the root.
+
+
+## What will we use?
+
+```{r}
+library(tidyverse)
+
+# Data for the first part
+hisclass_12_numbers <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+hisclass_12_labels <- c("Higher managers", "Higher professionals", "Lower managers", 
+              "Lower professionals, clerical and sales personnel",
+              "Lower clerical and sales personnel", "Foremen", 
+              "Medium-skilled workers", "Farmers and fishermen", 
+              "Low-skilled workers", "Low-skilled farm workers", 
+              "Unskilled workers", "Unskilled farm workers")
+
+# Data for the second part
+hisclass_7_numbers <- c(1, 2, 3, 4, 5, 6, 7)
+hisclass_7_labels <- c("Elite", "White collar", "Foremen", 
+              "Medium-skilled workers", "Farmers and fishermen", 
+              "Low-skilled workers", "Unskilled workers")
+
+# Creating the tibbles
+hisclass_12_tbl <- tibble(hisclass_12 = hisclass_12_numbers, Title_hisclass_12 = hisclass_12_labels)
+hisclass_7_tbl <- tibble(hisclass_7 = hisclass_7_numbers, Title_hisclass_7 = hisclass_7_labels)
+
+hisclass_table <- hisclass_12_tbl %>%
+  mutate(cross_walk = case_when(
+    hisclass_12 %in% c(1, 2) ~ 1,
+    hisclass_12 %in% c(3, 4, 5) ~ 2,
+    hisclass_12 %in% c(6) ~ 3,
+    hisclass_12 %in% c(7) ~ 4,
+    hisclass_12 %in% c(8) ~ 5,
+    hisclass_12 %in% c(9, 10) ~ 6,
+    hisclass_12 %in% c(11, 12) ~ 7,
+  )) %>% 
+  inner_join(hisclass_7_tbl, by = c("cross_walk" = "hisclass_7")) %>% 
+  rename("hisclass_7" = "cross_walk")
+
+
+
+```
+
+
+## Getting Hisclass from HISCO
+
+```{r}
+library(devtools)
+install_github("junkka/hisco")
+library(hisco)
+```
+
+## Read in data from excel
+
+```{r}
+library(here)
+df <- readxl::read_excel(here("data", "hisco_to_hisclass.xlsx"))
+
+```
+
+## Process
+
+What we want to do is create two more columns - one for the hisclass at 12 level, and one for the the hisclass at 7 level.
+
+To do this, we need to use the `hisco_to_ses(hisco_codes, "hisclass")` function. 
+
+```{r}
+df %>% 
+  mutate(hisclass_12 = hisco_to_ses(hisco, "hisclass")) %>% 
+  inner_join(hisclass_table)
+```
+
+
+
+
+
