@@ -1,0 +1,37 @@
+age_group_label,age_group_index,country,age_specific_death_rate
+0-4,0,United States of America,0.04
+5-9,1,United States of America,0.02
+10-14,2,United States of America,0.02
+15-19,3,United States of America,0.02
+20-24,4,United States of America,0.06
+25-29,5,United States of America,0.11
+30-34,6,United States of America,0.29
+35-39,7,United States of America,0.56
+40-44,8,United States of America,1.42
+45-49,9,United States of America,4.0
+50-54,10,United States of America,14.13
+55-59,11,United States of America,37.22
+60-64,12,United States of America,66.48
+65-69,13,United States of America,108.66
+70-74,14,United States of America,213.1
+75-79,15,United States of America,333.06
+80-84,16,United States of America,491.1
+85+,17,United States of America,894.45
+0-4,0,Uganda,0.4
+5-9,1,Uganda,0.17
+10-14,2,Uganda,0.07
+15-19,3,Uganda,0.23
+20-24,4,Uganda,0.38
+25-29,5,Uganda,0.4
+30-34,6,Uganda,0.75
+35-39,7,Uganda,1.11
+40-44,8,Uganda,2.04
+45-49,9,Uganda,5.51
+50-54,10,Uganda,13.26
+55-59,11,Uganda,33.25
+60-64,12,Uganda,69.62
+65-69,13,Uganda,120.78
+70-74,14,Uganda,229.88
+75-79,15,Uganda,341.06
+80-84,16,Uganda,529.31
+85+,17,Uganda,710.4

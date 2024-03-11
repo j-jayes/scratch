@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jonathan Jayes">
+<meta name="dcterms.date" content="2024-03-10">
+
+<title>Data analysis exercise: Our World in Data Junior Data Scientist application</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="28-owid-data-exercise_files/libs/clipboard/clipboard.min.js"></script>
+<script src="28-owid-data-exercise_files/libs/quarto-html/quarto.js"></script>
+<script src="28-owid-data-exercise_files/libs/quarto-html/popper.min.js"></script>
+<script src="28-owid-data-exercise_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="28-owid-data-exercise_files/libs/quarto-html/anchor.min.js"></script>
+<link href="28-owid-data-exercise_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="28-owid-data-exercise_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="28-owid-data-exercise_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="28-owid-data-exercise_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="28-owid-data-exercise_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<meta name="mermaid-theme" content="forest">
+<script src="28-owid-data-exercise_files/libs/quarto-diagram/mermaid.min.js"></script>
+<script src="28-owid-data-exercise_files/libs/quarto-diagram/mermaid-init.js"></script>
+<link href="28-owid-data-exercise_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data analysis exercise: Our World in Data Junior Data Scientist application</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jonathan Jayes </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 10, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="purpose" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
+<p>This quarto document contains the code and analysis that calculates both the crude death rate and the age-standardized death rate for all ages in both the United States and Uganda for 2019 due to Chronic obstructive pulmonary disease (COPD).</p>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p>I find that despite the age-specific death rates being similar for the two countries, the crude death rate is much higher in the United States than in Uganda (57.2 vs 5.8 deaths per 100,000 people). This is due to the fact that the United States has a much older population than Uganda (as shown in <a href="#fig-age">Figure&nbsp;2</a>). The age-standardized death rate, which accounts for the differences in age structure between the two countries, is very similar for the USA and Uganda (28.4 vs 28.7 deaths per 100,000) – which makes sense because it is just a weighted average of the age-specific death rates.</p>
+</section>
+<section id="context" class="level3">
+<h3 class="anchored" data-anchor-id="context">Context</h3>
+<p>COPD is a type of obstructive lung disease characterized by long-term breathing problems and poor airflow.</p>
+<p>The main cause of COPD, especially in developed countries, is tobacco smoking, while in developing areas, exposure to fumes from burning fuel for cooking and heating in poorly ventilated homes is a significant contributor.</p>
+</section>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">Data</h3>
+<p>In addition to the age-specific mortality rates provided with the exercise instructions, I make use of the <a href="https://population.un.org/wpp/Download/Standard/Population/">World Population Prospects 2022 data from the United Nations</a>, which contains the population of both the United States and Uganda by age group for 2019<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. I also make use of the <a href="https://cdn.who.int/media/docs/default-source/gho-documents/global-health-estimates/gpe_discussion_paper_series_paper31_2001_age_standardization_rates.pdf">WHO World Standard Population from Table 1 in ‘Ahmad OB, Boschi-Pinto C, Lopez AD, Murray CJ, Lozano R, Inoue M (2001). Age standardization of rates: a new WHO standard.’</a> to calculate the age-standardized death rates.</p>
+</section>
+<section id="steps-taken" class="level3">
+<h3 class="anchored" data-anchor-id="steps-taken">Steps taken</h3>
+<p>As shown in the mermaid diagram below, to calculate the crude death rate, I first multiply the age-specific death rates by the population of each age group, sum the results, and then divide by the total population. I then multiply by 100,000 to get the rate per 100,000.</p>
+<p>To calculate the age-standardized death rate, I multiply the age-specific death rates by the WHO world standard population and sum the results. I then divide by the total WHO world standard population.</p>
+<p>The code is broken into functions that read, transform, and analyze the data. The analysis is then run, and the results are printed. Finally, the age-specific death rates and the population structure are plotted.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>graph TD;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ASDR[Age-Specific Death Rate - ASDR] --&gt;|Aggregate Deaths and Population by Age| CDR[Crude Death Rate - CDR];</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ASDR --&gt;|Multiply Standard Population Weights by ASDR| SDR[Standardized Death Rate - SDR];</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    ASDR -.-&gt; P_total[Population by age];</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    P_total -.-&gt; CDR;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    ASDR -.-&gt; P_std[Standard Population Distribution];</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    P_std -.-&gt; SDR;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    classDef formula fill:#87CEEB,stroke:#333;</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    class ASDR,CDR,SDR formula;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">graph TD;
+    ASDR[Age-Specific Death Rate - ASDR] --&gt;|Aggregate Deaths and Population by Age| CDR[Crude Death Rate - CDR];
+    ASDR --&gt;|Multiply Standard Population Weights by ASDR| SDR[Standardized Death Rate - SDR];
+    ASDR -.-&gt; P_total[Population by age];
+    P_total -.-&gt; CDR;
+    ASDR -.-&gt; P_std[Standard Population Distribution];
+    P_std -.-&gt; SDR;
+
+    classDef formula fill:#87CEEB,stroke:#333;
+    class ASDR,CDR,SDR formula;
+
+</pre>
+</div>
+<p>Flowchart showing the steps taken to calculate the crude death rate and the age-standardized death rate. Note that the green boxes indicate additional data. The solid lines indicate calculations</p>
+</div>
+</div>
+</div>
+</section>
+<section id="analysis" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary libraries</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define functions to read, transform, and analyze the data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_and_prepare_data(filepath, sheet, skiprows):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read the population data file, skip initial rows, and prepare initial DataFrame</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_excel(filepath, sheet_name<span class="op">=</span>sheet, skiprows<span class="op">=</span>skiprows)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.replace(<span class="st">"*"</span>, <span class="st">""</span>).<span class="bu">str</span>.replace(<span class="st">","</span>, <span class="st">""</span>).<span class="bu">str</span>.strip().<span class="bu">str</span>.lower().<span class="bu">str</span>.replace(<span class="st">" "</span>, <span class="st">"_"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    df.rename(columns<span class="op">=</span>{<span class="st">"region_subregion_country_or_area"</span>: <span class="st">"country"</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_and_transform_data(df):</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter for USA and UGA, and then for the year 2019</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    df_filtered <span class="op">=</span> df[(df[<span class="st">"iso3_alpha-code"</span>].isin([<span class="st">"USA"</span>, <span class="st">"UGA"</span>])) <span class="op">&amp;</span> (df[<span class="st">"year"</span>] <span class="op">==</span> <span class="dv">2019</span>)]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Pivot longger and rename columns so that they are easier to work with</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    id_vars <span class="op">=</span> df_filtered.columns[:<span class="dv">11</span>]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    df_long <span class="op">=</span> df_filtered.melt(id_vars<span class="op">=</span>id_vars, var_name<span class="op">=</span><span class="st">'age_group'</span>, value_name<span class="op">=</span><span class="st">'population'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    df_long.rename(columns<span class="op">=</span>{<span class="st">'age_group'</span>: <span class="st">'age_group_label'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert population and pivot wider to have separate columns for USA and UGA</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    df_long[<span class="st">'population'</span>] <span class="op">=</span> df_long[<span class="st">'population'</span>] <span class="op">*</span> <span class="dv">1000</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    df_long <span class="op">=</span> df_long.pivot(index<span class="op">=</span><span class="st">'age_group_label'</span>, columns<span class="op">=</span><span class="st">'country'</span>, values<span class="op">=</span><span class="st">'population'</span>).reset_index()</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    df_long.rename(columns<span class="op">=</span>{<span class="st">'United States of America'</span>: <span class="st">'population_usa'</span>, <span class="st">'Uganda'</span>: <span class="st">'population_uga'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df_long</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> aggregate_and_reorder(df):</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Aggregate and reorder based because we need to aggregate the top four age groups to just one</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    df.loc[df[<span class="st">'age_group_label'</span>].isin([<span class="st">'85-89'</span>, <span class="st">'90-94'</span>, <span class="st">'95-99'</span>, <span class="st">'100+'</span>]), <span class="st">'age_group_label'</span>] <span class="op">=</span> <span class="st">'85+'</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.groupby(<span class="st">'age_group_label'</span>).<span class="bu">sum</span>().reset_index()</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Mapping in order to sort the age groups</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    age_group_mapping <span class="op">=</span> {</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">'0-4'</span>: <span class="dv">0</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">'5-9'</span>: <span class="dv">1</span>,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">'10-14'</span>: <span class="dv">2</span>,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="st">'15-19'</span>: <span class="dv">3</span>,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        <span class="st">'20-24'</span>: <span class="dv">4</span>,</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        <span class="st">'25-29'</span>: <span class="dv">5</span>,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">'30-34'</span>: <span class="dv">6</span>,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="st">'35-39'</span>: <span class="dv">7</span>,</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="st">'40-44'</span>: <span class="dv">8</span>,</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="st">'45-49'</span>: <span class="dv">9</span>,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        <span class="st">'50-54'</span>: <span class="dv">10</span>,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        <span class="st">'55-59'</span>: <span class="dv">11</span>,</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>        <span class="st">'60-64'</span>: <span class="dv">12</span>,</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        <span class="st">'65-69'</span>: <span class="dv">13</span>,</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>        <span class="st">'70-74'</span>: <span class="dv">14</span>,</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>        <span class="st">'75-79'</span>: <span class="dv">15</span>,</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        <span class="st">'80-84'</span>: <span class="dv">16</span>,</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>        <span class="st">'85+'</span>: <span class="dv">17</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'age_group_index'</span>] <span class="op">=</span> df[<span class="st">'age_group_label'</span>].<span class="bu">map</span>(age_group_mapping)</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    df.sort_values(by<span class="op">=</span><span class="st">'age_group_index'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define functions to integrate additional data and calculate the death rates</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> integrate_additional_data(df_final):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define additional datasets to merge with the population data</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    age_specific_death_rates <span class="op">=</span> {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Age group (years)'</span>: [<span class="st">'0-4'</span>, <span class="st">'5-9'</span>, <span class="st">'10-14'</span>, <span class="st">'15-19'</span>, <span class="st">'20-24'</span>, <span class="st">'25-29'</span>, <span class="st">'30-34'</span>, <span class="st">'35-39'</span>, <span class="st">'40-44'</span>, <span class="st">'45-49'</span>, <span class="st">'50-54'</span>, <span class="st">'55-59'</span>, <span class="st">'60-64'</span>, <span class="st">'65-69'</span>, <span class="st">'70-74'</span>, <span class="st">'75-79'</span>, <span class="st">'80-84'</span>, <span class="st">'85+'</span>],</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Death rate, United States, 2019'</span>: [<span class="fl">0.04</span>, <span class="fl">0.02</span>, <span class="fl">0.02</span>, <span class="fl">0.02</span>, <span class="fl">0.06</span>, <span class="fl">0.11</span>, <span class="fl">0.29</span>, <span class="fl">0.56</span>, <span class="fl">1.42</span>, <span class="fl">4.00</span>, <span class="fl">14.13</span>, <span class="fl">37.22</span>, <span class="fl">66.48</span>, <span class="fl">108.66</span>, <span class="fl">213.10</span>, <span class="fl">333.06</span>, <span class="fl">491.10</span>, <span class="fl">894.45</span>],</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Death rate, Uganda, 2019'</span>: [<span class="fl">0.40</span>, <span class="fl">0.17</span>, <span class="fl">0.07</span>, <span class="fl">0.23</span>, <span class="fl">0.38</span>, <span class="fl">0.40</span>, <span class="fl">0.75</span>, <span class="fl">1.11</span>, <span class="fl">2.04</span>, <span class="fl">5.51</span>, <span class="fl">13.26</span>, <span class="fl">33.25</span>, <span class="fl">69.62</span>, <span class="fl">120.78</span>, <span class="fl">229.88</span>, <span class="fl">341.06</span>, <span class="fl">529.31</span>, <span class="fl">710.40</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    df_age_specific_death_rates <span class="op">=</span> pd.DataFrame(age_specific_death_rates)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    df_age_specific_death_rates[<span class="st">'age_group_index'</span>] <span class="op">=</span> df_age_specific_death_rates.index</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    df_age_specific_death_rates.rename(columns<span class="op">=</span>{<span class="st">'Age group (years)'</span>: <span class="st">'age_group_label'</span>, <span class="st">'Death rate, United States, 2019'</span>: <span class="st">'asdr_usa'</span>, <span class="st">'Death rate, Uganda, 2019'</span>: <span class="st">'asdr_uga'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    who_world_standard <span class="op">=</span> {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">'age_group_label'</span>: [<span class="st">'0-4'</span>, <span class="st">'5-9'</span>, <span class="st">'10-14'</span>, <span class="st">'15-19'</span>, <span class="st">'20-24'</span>, <span class="st">'25-29'</span>, <span class="st">'30-34'</span>, <span class="st">'35-39'</span>, <span class="st">'40-44'</span>, <span class="st">'45-49'</span>, <span class="st">'50-54'</span>, <span class="st">'55-59'</span>, <span class="st">'60-64'</span>, <span class="st">'65-69'</span>, <span class="st">'70-74'</span>, <span class="st">'75-79'</span>, <span class="st">'80-84'</span>, <span class="st">'85+'</span>],</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">'who_world_standard_pop'</span>: [<span class="fl">8.86</span>, <span class="fl">8.69</span>, <span class="fl">8.60</span>, <span class="fl">8.47</span>, <span class="fl">8.22</span>, <span class="fl">7.93</span>, <span class="fl">7.61</span>, <span class="fl">7.15</span>, <span class="fl">6.59</span>, <span class="fl">6.04</span>, <span class="fl">5.37</span>, <span class="fl">4.55</span>, <span class="fl">3.72</span>, <span class="fl">2.96</span>, <span class="fl">2.21</span>, <span class="fl">1.52</span>, <span class="fl">0.91</span>, <span class="fl">0.63</span>]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    df_who_world_standard <span class="op">=</span> pd.DataFrame(who_world_standard)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Perform merges</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    merged_data <span class="op">=</span> pd.merge(df_final, df_age_specific_death_rates, on<span class="op">=</span>[<span class="st">'age_group_label'</span>, <span class="st">'age_group_index'</span>])</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    merged_data <span class="op">=</span> pd.merge(merged_data, df_who_world_standard, on<span class="op">=</span><span class="st">'age_group_label'</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> merged_data</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_death_rates(merged_data):</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Crude Death Rate calculations</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the total deaths from the age-specific death rates and population</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Divide the total deaths by the total population and multiply by 100,000 to get the crude death rate</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    total_deaths_us <span class="op">=</span> (merged_data[<span class="st">'asdr_usa'</span>] <span class="op">*</span> merged_data[<span class="st">'population_usa'</span>] <span class="op">/</span> <span class="dv">100000</span>).<span class="bu">sum</span>()</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    total_population_us <span class="op">=</span> merged_data[<span class="st">'population_usa'</span>].<span class="bu">sum</span>()</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    crude_death_rate_us <span class="op">=</span> (total_deaths_us <span class="op">/</span> total_population_us) <span class="op">*</span> <span class="dv">100000</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    total_deaths_uganda <span class="op">=</span> (merged_data[<span class="st">'asdr_uga'</span>] <span class="op">*</span> merged_data[<span class="st">'population_uga'</span>] <span class="op">/</span> <span class="dv">100000</span>).<span class="bu">sum</span>()</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    total_population_uganda <span class="op">=</span> merged_data[<span class="st">'population_uga'</span>].<span class="bu">sum</span>()</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    crude_death_rate_uganda <span class="op">=</span> (total_deaths_uganda <span class="op">/</span> total_population_uganda) <span class="op">*</span> <span class="dv">100000</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Age-Standardized Death Rate calculations</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the standardized death rate for each country by multiplying the age-specific death rates by the WHO world standard population and summing the results</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    standard_population_total <span class="op">=</span> merged_data[<span class="st">'who_world_standard_pop'</span>].<span class="bu">sum</span>()</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    standardized_death_rate_us <span class="op">=</span> ((merged_data[<span class="st">'asdr_usa'</span>] <span class="op">*</span> merged_data[<span class="st">'who_world_standard_pop'</span>]).<span class="bu">sum</span>() <span class="op">/</span> standard_population_total)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    standardized_death_rate_uganda <span class="op">=</span> ((merged_data[<span class="st">'asdr_uga'</span>] <span class="op">*</span> merged_data[<span class="st">'who_world_standard_pop'</span>]).<span class="bu">sum</span>() <span class="op">/</span> standard_population_total)</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Round to one decimal place</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    crude_death_rate_us <span class="op">=</span> <span class="bu">round</span>(crude_death_rate_us, <span class="dv">1</span>)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    crude_death_rate_uganda <span class="op">=</span> <span class="bu">round</span>(crude_death_rate_uganda, <span class="dv">1</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    standardized_death_rate_us <span class="op">=</span> <span class="bu">round</span>(standardized_death_rate_us, <span class="dv">1</span>)</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    standardized_death_rate_uganda <span class="op">=</span> <span class="bu">round</span>(standardized_death_rate_uganda, <span class="dv">1</span>)</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make a table with the results</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> {</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        <span class="st">'country'</span>: [<span class="st">'United States of America'</span>, <span class="st">'Uganda'</span>],</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        <span class="st">'crude_death_rate'</span>: [crude_death_rate_us, crude_death_rate_uganda],</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>        <span class="st">'standardized_death_rate'</span>: [standardized_death_rate_us, standardized_death_rate_uganda]</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    df_results <span class="op">=</span> pd.DataFrame(results)</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the analysis</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>filepath <span class="op">=</span> <span class="st">"../data/owid/WPP2022_POP_F02_1_POPULATION_5-YEAR_AGE_GROUPS_BOTH_SEXES.xlsx"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> read_and_prepare_data(filepath, <span class="st">"Estimates"</span>, <span class="dv">16</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df_transformed <span class="op">=</span> filter_and_transform_data(df)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df_final <span class="op">=</span> aggregate_and_reorder(df_transformed)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>merged_data <span class="op">=</span> integrate_additional_data(df_final)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df_results <span class="op">=</span> calculate_death_rates(merged_data)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    country  crude_death_rate  standardized_death_rate
+0  United States of America              57.2                     28.4
+1                    Uganda               5.8                     28.7</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define functions to plot the series</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_age_specific_death_rates(merged_data):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    ax.plot(merged_data[<span class="st">'age_group_label'</span>], merged_data[<span class="st">'asdr_usa'</span>], label<span class="op">=</span><span class="st">'ASDR USA'</span>, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    ax.plot(merged_data[<span class="st">'age_group_label'</span>], merged_data[<span class="st">'asdr_uga'</span>], label<span class="op">=</span><span class="st">'ASDR Uganda'</span>, marker<span class="op">=</span><span class="st">'x'</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Age Group'</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Age-Specific Death Rate (per 100,000)'</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">'Comparison of Age-Specific Death Rates between USA and Uganda (2019)'</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_tick(value, _):</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Convert the tick value to a string indicating the number in thousands with a 'K' suffix, a space as a thousands separator, and no decimal places."""</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f'</span><span class="sc">{</span>value<span class="op">/</span><span class="dv">1000</span><span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">K'</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_population_structure_horizontal_dodged(merged_data):</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set the height of the bars</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    bar_height <span class="op">=</span> <span class="fl">0.35</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the positions of the bars on the y-axis</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    index <span class="op">=</span> np.arange(<span class="bu">len</span>(merged_data[<span class="st">'age_group_label'</span>]))</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plotting both sets of bars side by side</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    ax.barh(index <span class="op">-</span> bar_height<span class="op">/</span><span class="dv">2</span>, merged_data[<span class="st">'population_usa'</span>], height<span class="op">=</span>bar_height, label<span class="op">=</span><span class="st">'USA Population'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    ax.barh(index <span class="op">+</span> bar_height<span class="op">/</span><span class="dv">2</span>, merged_data[<span class="st">'population_uga'</span>], height<span class="op">=</span>bar_height, label<span class="op">=</span><span class="st">'Uganda Population'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adding labels, title, and legend</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Age Group'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Population (in thousands)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">'Population Structure Comparison between USA and Uganda (2019)'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    ax.set_yticks(index)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    ax.set_yticklabels(merged_data[<span class="st">'age_group_label'</span>], fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting the x-axis labels as numbers in thousands</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    ax.xaxis.set_major_formatter(ticker.FuncFormatter(format_tick))</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="#fig-death-rates">Figure&nbsp;1</a> shows that the age-specific death rates for the two countries are quite similar, and <a href="#fig-age">Figure&nbsp;2</a> shows the population structure for the two countries. Uganda has a much younger population than the United States, which is why the crude death rate is much higher in the United States than in Uganda.</p>
+<div class="cell page-columns page-full" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_age_specific_death_rates(merged_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-page">
+<div id="fig-death-rates" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="28-owid-data-exercise_files/figure-html/fig-death-rates-output-1.png" width="950" height="566" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Comparison of Age-Specific Death Rates between USA and Uganda (2019) showing that death rates are much greater among older age groups in both countries.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell page-columns page-full" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_population_structure_horizontal_dodged(merged_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-page">
+<div id="fig-age" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="28-owid-data-exercise_files/figure-html/fig-age-output-1.png" width="950" height="758" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Comparison of Population Structure in USA and Uganda (2019)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Specifically, we need the file containing “Total population (both sexes combined) by five-year age group. De facto population as of 1 July of the year indicated classified by five-year age groups (0-4, 5-9, 10-14, …, 95-99, 100+). Data are presented in thousands.”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
