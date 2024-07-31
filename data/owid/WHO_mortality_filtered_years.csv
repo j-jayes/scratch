@@ -1,0 +1,43 @@
+region_code,region_name,country_code,country_name,year,sex,age_group_code,age_group,number,percentage_of_causespecific_deaths_out_of_total_deaths,agestandardized_death_rate_per_100_000_standard_population,death_rate_per_100_000_population
+CSA,Central and South America,ARG,Argentina,1970,All,Age_all,[All],757.0,0.34075461,3.33386463,3.18777109
+CSA,Central and South America,ARG,Argentina,1979,All,Age_all,[All],548.0,0.23326494,2.11642261,1.97186139
+CSA,Central and South America,ARG,Argentina,1986,All,Age_all,[All],369.0,0.15400732,1.27933579,1.20050363
+CSA,Central and South America,ARG,Argentina,2011,All,Age_all,[All],318.0,0.10040573,0.78946805,0.76959379
+CSA,Central and South America,BRA,Brazil,1979,All,Age_all,[All],2609.0,0.36710182,2.33852008,2.20085014
+CSA,Central and South America,BRA,Brazil,1986,All,Age_all,[All],1814.0,0.22382351,1.35325638,1.33767426
+CSA,Central and South America,BRA,Brazil,2011,All,Age_all,[All],1680.0,0.14352865,0.79529196,0.85057031
+CSA,Central and South America,CHL,Chile,1970,All,Age_all,[All],439.0,0.52785994,5.46453431,4.68586555
+CSA,Central and South America,CHL,Chile,1979,All,Age_all,[All],176.0,0.23726711,1.58299838,1.61209068
+CSA,Central and South America,CHL,Chile,1986,All,Age_all,[All],129.0,0.17864809,0.96820357,1.05504212
+CSA,Central and South America,CHL,Chile,2011,All,Age_all,[All],46.0,0.0484287,0.26487462,0.26692081
+CSA,Central and South America,COL,Colombia,1986,All,Age_all,[All],625.0,0.42707009,2.10994495,2.13129457
+CSA,Central and South America,COL,Colombia,2011,All,Age_all,[All],459.0,0.23439535,0.96621659,1.00519575
+CSA,Central and South America,ECU,Ecuador,1970,All,Age_all,[All],529.0,0.87445243,10.97157909,8.71588776
+CSA,Central and South America,ECU,Ecuador,1979,All,Age_all,[All],424.0,0.70724425,6.29637516,5.24817428
+CSA,Central and South America,ECU,Ecuador,1986,All,Age_all,[All],330.0,0.64760484,4.18496437,3.42082349
+CSA,Central and South America,ECU,Ecuador,2011,All,Age_all,[All],239.0,0.38360298,1.53551045,1.5678419
+CSA,Central and South America,GUF,French Guiana,1970,All,Age_all,[All],3.0,0.84507042,6.55023047,6.25912789
+CSA,Central and South America,GUF,French Guiana,1979,All,Age_all,[All],0.0,0.0,0.0,0.0
+CSA,Central and South America,GUF,French Guiana,2011,All,Age_all,[All],0.0,0.0,0.0,0.0
+CSA,Central and South America,GUY,Guyana,1979,All,Age_all,[All],8.0,0.14787431,1.22225076,0.92485549
+CSA,Central and South America,GUY,Guyana,2011,All,Age_all,[All],14.0,0.25969208,1.81408381,1.86163281
+CSA,Central and South America,PRY,Paraguay,2011,All,Age_all,[All],94.0,0.36581569,1.47931241,1.48405993
+CSA,Central and South America,PER,Peru,2011,All,Age_all,[All],148.0,0.15281047,0.50302013,0.50573535
+CSA,Central and South America,SUR,Suriname,1979,All,Age_all,[All],6.0,0.23300971,2.25959453,1.67215692
+CSA,Central and South America,SUR,Suriname,1986,All,Age_all,[All],7.0,0.34965035,1.76875528,1.8709574
+CSA,Central and South America,SUR,Suriname,2011,All,Age_all,[All],7.0,0.23419204,1.32768506,1.30797359
+CSA,Central and South America,URY,Uruguay,1970,All,Age_all,[All],50.0,0.18910741,1.78789872,1.7324417
+CSA,Central and South America,URY,Uruguay,1986,All,Age_all,[All],14.0,0.04865842,0.52079199,0.46133061
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1970,All,Age_all,[All],362.0,0.5280894,4.05416888,3.52140078
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1979,All,Age_all,[All],292.0,0.39628147,2.29656688,2.00673493
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1986,All,Age_all,[All],296.0,0.37737773,1.67600464,1.66383739
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2011,All,Age_all,[All],436.0,0.30485247,1.44741129,1.50928379
+CSA,Central and South America,ARG,Argentina,2017,All,Age_all,[All],246.0,0.0719955,0.57469103,0.55989079
+CSA,Central and South America,BRA,Brazil,2017,All,Age_all,[All],1874.0,0.14276311,0.85625784,0.90168192
+CSA,Central and South America,CHL,Chile,2017,All,Age_all,[All],58.0,0.05451743,0.3124735,0.31401528
+CSA,Central and South America,COL,Colombia,2017,All,Age_all,[All],485.0,0.21307068,0.94925626,0.99162052
+CSA,Central and South America,ECU,Ecuador,2017,All,Age_all,[All],211.0,0.30470634,1.22074342,1.25704773
+CSA,Central and South America,GUY,Guyana,2017,All,Age_all,[All],22.0,0.39419459,2.57428404,2.83789676
+CSA,Central and South America,PER,Peru,2017,All,Age_all,[All],315.0,0.26002542,0.97598162,1.00177145
+CSA,Central and South America,PRY,Paraguay,2017,All,Age_all,[All],100.0,0.34457806,1.41826246,1.45622705
+CSA,Central and South America,URY,Uruguay,2017,All,Age_all,[All],8.0,0.024116,0.25151998,0.23278544

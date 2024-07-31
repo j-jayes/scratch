@@ -1,0 +1,71 @@
+country_code,year,region_subregion_country_or_area,female_population
+ARG,1970.0,Argentina,12005.045
+ARG,1979.0,Argentina,13991.784
+ARG,1986.0,Argentina,15626.548
+ARG,2011.0,Argentina,20996.869
+ARG,2017.0,Argentina,22249.068
+BOL,1970.0,Bolivia (Plurinational State of),2315.329
+BOL,1979.0,Bolivia (Plurinational State of),2819.329
+BOL,1986.0,Bolivia (Plurinational State of),3265.226
+BOL,2011.0,Bolivia (Plurinational State of),5159.435
+BOL,2017.0,Bolivia (Plurinational State of),5686.999
+BRA,1970.0,Brazil,48249.51
+BRA,1979.0,Brazil,59950.908
+BRA,1986.0,Brazil,70158.889
+BRA,2011.0,Brazil,100509.285
+BRA,2017.0,Brazil,105937.948
+CHL,1970.0,Chile,4910.882
+CHL,1979.0,Chile,5669.474
+CHL,1986.0,Chile,6289.102
+CHL,2011.0,Chile,8651.769
+CHL,2017.0,Chile,9254.199
+COL,1970.0,Colombia,10455.025
+COL,1979.0,Colombia,12771.02
+COL,1986.0,Colombia,14966.988
+COL,2011.0,Colombia,22903.701
+COL,2017.0,Colombia,24477.1
+ECU,1970.0,Ecuador,3081.41
+ECU,1979.0,Ecuador,3949.122
+ECU,1986.0,Ecuador,4730.153
+ECU,2011.0,Ecuador,7615.672
+ECU,2017.0,Ecuador,8346.245
+FLK,1970.0,Falkland Islands (Malvinas),1.073
+FLK,1979.0,Falkland Islands (Malvinas),1.065
+FLK,1986.0,Falkland Islands (Malvinas),1.105
+FLK,2011.0,Falkland Islands (Malvinas),1.597
+FLK,2017.0,Falkland Islands (Malvinas),1.801
+GUF,1970.0,French Guiana,21.992
+GUF,1979.0,French Guiana,31.146
+GUF,1986.0,French Guiana,44.068
+GUF,2011.0,French Guiana,117.24
+GUF,2017.0,French Guiana,135.4
+GUY,1970.0,Guyana,354.307
+GUY,1979.0,Guyana,389.95
+GUY,1986.0,Guyana,387.598
+GUY,2011.0,Guyana,374.34
+GUY,2017.0,Guyana,389.97
+PRY,1970.0,Paraguay,1208.811
+PRY,1979.0,Paraguay,1488.649
+PRY,1986.0,Paraguay,1798.423
+PRY,2011.0,Paraguay,2902.421
+PRY,2017.0,Paraguay,3161.074
+PER,1970.0,Peru,6740.704
+PER,1979.0,Peru,8518.709
+PER,1986.0,Peru,10116.701
+PER,2011.0,Peru,14829.974
+PER,2017.0,Peru,15939.422
+SUR,1970.0,Suriname,187.536
+SUR,1979.0,Suriname,188.441
+SUR,1986.0,Suriname,196.637
+SUR,2011.0,Suriname,275.035
+SUR,2017.0,Suriname,294.024
+URY,1970.0,Uruguay,1404.415
+URY,1979.0,Uruguay,1495.122
+URY,1986.0,Uruguay,1552.762
+URY,2011.0,Uruguay,1739.923
+URY,2017.0,Uruguay,1767.547
+VEN,1970.0,Venezuela (Bolivarian Republic of),5646.328
+VEN,1979.0,Venezuela (Bolivarian Republic of),7368.909
+VEN,1986.0,Venezuela (Bolivarian Republic of),8907.283
+VEN,2011.0,Venezuela (Bolivarian Republic of),14591.553
+VEN,2017.0,Venezuela (Bolivarian Republic of),15379.664

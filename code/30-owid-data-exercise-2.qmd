@@ -1,0 +1,322 @@
+---
+title: "Untitled"
+format: html
+---
+
+## Part 1: indicator comparison
+
+In this part, we would like you to consider two indicators from the World Health Organization (WHO) that measure maternal deaths (deaths during and after pregnancy).
+
+You should explore both indicators and the relevant documentation (linked to below) before answering the multiple-choice questions that follow.
+
+- The first indicator is the maternal mortality ratio: https://data.who.int/indicators/i/AC597B1
+= The second is the crude death rate from maternal conditions, from the WHO Mortality Database: https://platform.who.int/mortality/themes/theme-details/topics/topic-details/MDB/maternal-conditions (Note: for the WHO Mortality Database you will need to alter the 'Data type' drop down to view the relevant indicator - 'Death rate per 100,000 population')
+
+### Notes:
+
+Maternal mortality ratio (per 100 000 live births). Number of maternal deaths during a given time period per 100 000 live births during the same time period. 
+
+The second is the crude death rate from maternal conditions. 
+
+<blockquote>
+
+Maternal mortality
+
+Maternal mortality relates to the death of women during or shortly after pregnancy.
+
+This is defined differently by different organizations.
+
+According to the ICD-11, maternal deaths are defined as the deaths of women while pregnant or within 42 days of termination of pregnancy, from maternal conditions, but excluding accidental or incidental causes of death.
+
+Maternal conditions are defined from the “underlying cause of death” on death certificates.
+
+In the WHO Mortality Database and IHME GBD (estimates up to 2019), maternal deaths up to 1 year of termination of pregnancy are also included.
+
+In countries where cause of death data is lacking, estimates (such as in the WHO GHO and IHME GBD) include deaths during or shortly after pregnancy, irrespective of the cause — this means they include causes incidental to the pregnancy.
+
+
+#### Two additional indicators of maternal mortality are commonly used:
+
+Maternal Mortality Rate — which refers to the number of pregnancy-related deaths in a year divided by the number of women of reproductive age (normally 15 to 49 years old) alive that year
+Maternal Mortality Ratio — which is a ratio comparing the number of pregnancy-related deaths to the number of births in the same period
+
+[source](https://ourworldindata.org/maternal-mortality)
+
+So the maternal mortality ratio depends on the number of children that a woman has. 
+
+so we would expect that in countries where women have more children, the crude death rate from maternal conditions would be higher than other countries with low birth rates.
+
+"Maternal mortality is higher in poorer regions, and the overall risks tend to be higher where women have more children. These amplify the differences in risk between high and low-income countries."
+
+</blockquote>
+
+So the crude death rate from maternal conditions 
+
+#### On crude maternal death rates:
+
+"Maternal deaths comprise deaths of women who are pregnant or within 42 days of the termination of the pregnancy, from any cause related to or aggravated by the pregnancy or its management (other than unintentional injuries or incidental causes). Thus, under ICD rules, a death caused by an existing cardiac disease that was aggravated by a pregnancy is be included here. In practice, maternal deaths are often undercounted in death certificate data. Late maternal deaths, which occur between 42 days and 1 year after the termination of the pregnancy, are included here as well."
+
+### Quesionts:
+
+1. If you were comparing maternal deaths to deaths from other causes, which indicator would you use? 
+
+a. Maternal mortality ratio (deaths per 100,000 live births)
+b. Crude death rate from maternal conditions (deaths per 100,000 people)
+
+Answer: I would choose the crude death rate from maternal conditions because it is a rate per 100,000 people, which allows for comparison with other causes of death.
+b. 
+
+2. Which indicator is best suited to making international comparisons?
+a. Maternal mortality ratio (deaths per 100,000 live births)
+b. Crude death rate from maternal conditions (deaths per 100,000 people)
+
+Answer: I would choose the maternal mortality ratio because it is a ratio that is standardized by the number of live births, which allows comparison between countries with different numbers of children born per woman.
+a.
+
+3. Which indicator is more likely to be an underestimate of the true rate or ratio?
+a. Maternal mortality ratio (deaths per 100,000 live births)
+b. Crude death rate from maternal conditions (deaths per 100,000 people)
+
+
+
+4. The numerator of which indicator(s) is the output of a statistical model?
+a. Maternal mortality ratio (deaths per 100,000 live births)
+b. Crude death rate from maternal conditions (deaths per 100,000 people)
+c. Both
+d. Neither
+
+Both numerators are "the number of pregnancy-related deaths" - it is just a count. I would say neither. 
+d. 
+
+5. Which indicator(s) include only maternal deaths during pregnancy and up to 42 days after a pregnancy has ended?
+a. Maternal mortality ratio (deaths per 100,000 live births)
+b. Crude death rate from maternal conditions (deaths per 100,000 people)
+c. Both
+d. Neither
+
+Maternal mortality ratio. 
+a. 
+
+
+6. Which indicator(s) would be impacted if its definition were changed to include a broader range of maternal deaths during pregnancy?
+a. Maternal mortality ratio (deaths per 100,000 live births)
+b. Crude death rate from maternal conditions (deaths per 100,000 people)
+c. Both
+d. Neither
+
+Both
+c.
+
+Considering the reported data on death registrations here, which of these countries is likely to have the highest true crude death rate from maternal conditions in 2021?
+Saudi Arabia
+Oman
+Serbia
+
+Saudi Arabia reports 50% of deaths, Oman 60% and Serbia 95%. So Saudia Arabia is undercounting deaths, hence without info on crude death rates, we assume that the true rate is higher than reported.
+
+Thinking about just the maternal mortality ratio, which of these factors would cause it to decline in the short term (select any that apply)
+The definition of maternal mortality is broadened to include deaths up to 1 year after the end of pregnancy
+Women are delaying childbirth to a later age
+New medical advances lead to improved maternal healthcare
+Birth registration is improved and more births are registered
+A country experiences a large influx of young male migrants
+
+
+
+## Part 2: Calculating a regional aggregate
+
+At Our World in Data, we often need to aggregate country-level data to broader regional aggregates, such as continents or income groups. 
+
+Using the data from the WHO Mortality Database, we would like you to write a python script to calculate the crude death rate from maternal conditions, per 100,000 females, for the continent of South America. 
+
+You should use the following resources: 
+- WHO Mortality Database - Number of deaths from maternal conditions - available here 
+- UN WPP - Population values (as of 1 July) - available here
+- Our World in Data's definition of continents - available here 
+
+The aggregate should only be calculated for years when there is data available for any combination of countries such that at least 80% of the female population of South America for that year is represented in the data. 
+
+Please submit the values you have calculated for the years listed below, with values rounded to two decimal places. If there is not sufficient data available to calculate an aggregate for a given year, please write ‘NA’.
+
+
+## Part 3: data visualization
+
+For this final part, we'd like you to visualize the maternal mortality ratio (from Part 1 of this challenge) in a scatterplot with life expectancy.
+
+The visualization should fit the following brief:
+- You should use the 'Female Life Expectancy at Birth (years)' indicator, from the UN WPP dataset used in Part 2
+- It should be a simple, static scatter plot, with a focus on clarity
+- It should feature a title, subtitle, and — if you feel it is needed — a footnote
+- Feel free to add any annotations to the visualization
+
+You can use any tools you would like to create the visualization; for example, DataWrapper, Tableau, R, or any other.
+
+Please upload your visualization as a .png file in the box below. You do not need to provide any code, etc. that you used to produce the visualization.
+
+
+```{r}
+library(tidyverse)
+
+df_life_expectancy <- readxl::read_excel(here::here("data/owid/WPP2022_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT_REV1.xlsx"), skip = 16)
+
+df_life_expectancy <- df_life_expectancy %>% 
+janitor::clean_names()
+
+df_life_expectancy <- df_life_expectancy %>% 
+filter(year >= 1985) %>%
+select(region_subregion_country_or_area, type, year, 
+female_life_expectancy = female_life_expectancy_at_birth_years, 
+female_population = female_population_as_of_1_july_thousands) %>% 
+mutate(across(c(female_life_expectancy, female_population), ~parse_number(.)),
+female_population = female_population / 1000)
+
+library(countrycode)
+
+df_life_expectancy <- df_life_expectancy %>% 
+filter(type == "Country/Area") %>%
+mutate(iso_3c = countrycode::countrycode(region_subregion_country_or_area, origin = "country.name", destination = "iso3c")) 
+
+df_life_expectancy <- df_life_expectancy %>% 
+filter(!is.na(iso_3c)) 
+
+df_life_expectancy <- df_life_expectancy %>% 
+select(year, female_life_expectancy, female_population, iso_3c)
+```
+
+First we want to check when we have data available for the maternal mortality ratio.
+
+
+
+```{r}
+df_mortality_ratio <- read_csv(here::here("data/owid/maternal_mortality_ratio.csv"))
+
+df_mortality_ratio <- df_mortality_ratio  %>% 
+janitor::clean_names() 
+
+# add a column to the data frame using countrycode from geo_name_short to iso_3c
+df_mortality_ratio$iso_3c <- countrycode::countrycode(df_mortality_ratio$geo_name_short, origin = "country.name", destination = "iso3c")
+
+df_continents <- read_csv(here::here("data/owid/continents-according-to-our-world-in-data.csv")) %>% 
+janitor::clean_names() %>% 
+select(entity, code, continent)
+
+df_mortality_ratio <- df_mortality_ratio %>% 
+filter(iso_3c %in% df_continents$code) 
+
+# join to get continent
+df_mortality_ratio <- df_mortality_ratio %>%
+left_join(df_continents, by = c("iso_3c" = "code"))
+
+# rename dim_time to year
+df_mortality_ratio <- df_mortality_ratio %>%
+rename(year = dim_time,
+country = geo_name_short)
+
+df_mortality_ratio <- df_mortality_ratio %>% 
+select(year, country, continent, iso_3c, mmr = value_numeric) 
+```
+
+Join df_mortality_ratio and df_life_expectancy
+
+
+```{r}
+df <- df_mortality_ratio %>%
+inner_join(df_life_expectancy, by = c("iso_3c", "year"))
+
+library(ggrepel)
+theme_set(theme_light())
+
+library(showtext)
+library(ggtext)
+## Loading Google fonts (https://fonts.google.com/)
+font_add_google("IBM Plex Mono", "ibm")
+font_add_google("Roboto", "roboto")
+
+showtext_opts(dpi = 300)
+showtext_auto(enable = TRUE)
+
+```
+
+
+
+```{r}
+country_labels <- df %>%
+    filter(year == 2020) %>%
+    group_by(continent) %>%
+    arrange(desc(female_population)) %>%
+    slice_head(n = 4) %>%
+    ungroup()
+
+df_plot <- df %>%
+    filter(year == 2020) %>%
+    mutate(
+        continent = fct_reorder(continent, mmr, .fun = mean),
+        label = case_when(
+            country %in% country_labels$country ~ country,
+            TRUE ~ NA_character_
+        )
+    ) %>% 
+    mutate(label = case_when(
+        label == "United Kingdom of Great Britain and Northern Ireland" ~ "UK",
+        label == "United States of America" ~ "USA",
+        label == "Russian Federation" ~ "Russia",
+        TRUE ~ label
+    ))
+
+
+
+df_plot %>%
+    ggplot(aes(x = female_life_expectancy, y = mmr)) +
+    geom_point(aes(color = continent, size = female_population), alpha = .7) +
+    geom_text_repel(aes(label = label, colour = continent), box.padding = 0.5, show.legend = F,
+    # bg.color = "grey20",
+    # bg.r = .01,
+    family = "ibm",
+) +
+    scale_colour_brewer(palette = "Dark2") +
+    scale_y_log10(labels = scales::number_format()) +
+    scale_size_continuous(range = c(1, 12), labels = scales::number_format(suffix = "m"), breaks = c(5, 100, 500)) +
+    theme(
+        legend.position = "right",
+        text = element_text(family = "ibm", size = 12),
+        plot.title.position = "plot",
+        plot.title=element_text(face='bold')
+    ) +
+    guides(colour = guide_legend(reverse = T, order = 1)) +
+    labs(
+        x = "Female life expectancy at birth\n",
+        y = "Maternal mortality ratio\n(Note the logged y-axis)",
+        title = "Maternal mortality ratio vs female life expectancy at birth, 2020",
+        subtitle = "Maternal mortality ratio is the number of pregnancy-related deaths per 100,000 live births. \nLife expectancy at birth is defined as how long, on average, a newborn can expect to live,\nif current death rates do not change",
+        colour = "Continent",
+        size = "Female population",
+        caption = "Data sources: female life expectancy from  UN WPP dataset.\nMaternal mortality ratio from WHO Global Health Observatory Data Repository."
+    )
+
+ggsave(here::here("data/owid/maternal_mortality_ratio_and_life_expectancy.png"), width = 10, height = 7)
+
+
+```
+
+
+Histogram
+
+```{r}
+df %>% 
+filter(year == 2000) %>%  
+mutate(continent = fct_reorder(continent, mmr, .fun = mean)) %>%
+ggplot(aes(mmr, fill = continent)) +
+geom_histogram(bins = 15) +
+scale_x_log10() 
+```
+
+
+
+
+```{r}
+df_pop <- read_csv(here::here("data/owid/filtered_female_population_years.csv"))
+
+df_pop %>% 
+ggplot(aes(year, y = female_population)) +
+geom_area (aes(fill = region_subregion_country_or_area), alpha = 0.5) 
+```

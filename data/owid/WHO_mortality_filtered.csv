@@ -1,0 +1,546 @@
+region_code,region_name,country_code,country_name,year,sex,age_group_code,age_group,number,percentage_of_causespecific_deaths_out_of_total_deaths,agestandardized_death_rate_per_100_000_standard_population,death_rate_per_100_000_population
+CSA,Central and South America,ARG,Argentina,1966,All,Age_all,[All],520.0,0.33789711,2.39638521,2.31234436
+CSA,Central and South America,ARG,Argentina,1967,All,Age_all,[All],542.0,0.2935426,2.48863884,2.37719298
+CSA,Central and South America,ARG,Argentina,1968,All,Age_all,[All],785.0,0.36800383,3.36478635,3.39650398
+CSA,Central and South America,ARG,Argentina,1969,All,Age_all,[All],748.0,0.33511794,3.17840038,3.1927608
+CSA,Central and South America,ARG,Argentina,1970,All,Age_all,[All],757.0,0.34075461,3.33386463,3.18777109
+CSA,Central and South America,ARG,Argentina,1977,All,Age_all,[All],605.0,0.25325782,2.39500149,2.24823486
+CSA,Central and South America,ARG,Argentina,1978,All,Age_all,[All],562.0,0.24070378,2.18413303,2.05484461
+CSA,Central and South America,ARG,Argentina,1979,All,Age_all,[All],548.0,0.23326494,2.11642261,1.97186139
+CSA,Central and South America,ARG,Argentina,1980,All,Age_all,[All],485.0,0.20114049,1.86997682,1.73539673
+CSA,Central and South America,ARG,Argentina,1981,All,Age_all,[All],472.0,0.19511872,1.80346372,1.67155384
+CSA,Central and South America,ARG,Argentina,1982,All,Age_all,[All],464.0,0.19945151,1.69652145,1.59133
+CSA,Central and South America,ARG,Argentina,1983,All,Age_all,[All],395.0,0.15746839,1.41195485,1.33310834
+CSA,Central and South America,ARG,Argentina,1984,All,Age_all,[All],386.0,0.15169855,1.35089239,1.28266049
+CSA,Central and South America,ARG,Argentina,1985,All,Age_all,[All],386.0,0.16138406,1.3258209,1.2629237
+CSA,Central and South America,ARG,Argentina,1986,All,Age_all,[All],369.0,0.15400732,1.27933579,1.20050363
+CSA,Central and South America,ARG,Argentina,1987,All,Age_all,[All],325.0,0.13111818,1.10796868,1.04374077
+CSA,Central and South America,ARG,Argentina,1988,All,Age_all,[All],330.0,0.13046108,1.10603785,1.04645632
+CSA,Central and South America,ARG,Argentina,1989,All,Age_all,[All],346.0,0.13795028,1.14883725,1.08362042
+CSA,Central and South America,ARG,Argentina,1990,All,Age_all,[All],353.0,0.1374632,1.16924135,1.09213539
+CSA,Central and South America,ARG,Argentina,1991,All,Age_all,[All],334.0,0.13149813,1.09855492,1.01313435
+CSA,Central and South America,ARG,Argentina,1992,All,Age_all,[All],328.0,0.12607965,1.00884863,0.98141887
+CSA,Central and South America,ARG,Argentina,1993,All,Age_all,[All],309.0,0.1168675,0.92538735,0.91233602
+CSA,Central and South America,ARG,Argentina,1994,All,Age_all,[All],265.0,0.10433769,0.8202559,0.77218277
+CSA,Central and South America,ARG,Argentina,1995,All,Age_all,[All],290.0,0.10895252,0.88580429,0.83409073
+CSA,Central and South America,ARG,Argentina,1996,All,Age_all,[All],317.0,0.11907624,0.95321008,0.90007212
+CSA,Central and South America,ARG,Argentina,1997,All,Age_all,[All],265.0,0.09781846,0.76284073,0.74318314
+CSA,Central and South America,ARG,Argentina,1998,All,Age_all,[All],260.0,0.09279749,0.77793832,0.72095137
+CSA,Central and South America,ARG,Argentina,1999,All,Age_all,[All],287.0,0.09912172,0.84401007,0.78700821
+CSA,Central and South America,ARG,Argentina,2000,All,Age_all,[All],245.0,0.08840042,0.71169565,0.6644827
+CSA,Central and South America,ARG,Argentina,2001,All,Age_all,[All],309.0,0.10806425,0.88892842,0.82895934
+CSA,Central and South America,ARG,Argentina,2002,All,Age_all,[All],356.0,0.12225695,0.99432066,0.94475445
+CSA,Central and South America,ARG,Argentina,2003,All,Age_all,[All],321.0,0.10633717,0.89032095,0.84278805
+CSA,Central and South America,ARG,Argentina,2004,All,Age_all,[All],313.0,0.10651367,0.85883426,0.81315657
+CSA,Central and South America,ARG,Argentina,2005,All,Age_all,[All],290.0,0.09892175,0.78255734,0.74563678
+CSA,Central and South America,ARG,Argentina,2006,All,Age_all,[All],341.0,0.11665578,0.90516268,0.86790801
+CSA,Central and South America,ARG,Argentina,2007,All,Age_all,[All],332.0,0.10580931,0.865001,0.83660299
+CSA,Central and South America,ARG,Argentina,2008,All,Age_all,[All],319.0,0.10644794,0.82127493,0.79590501
+CSA,Central and South America,ARG,Argentina,2009,All,Age_all,[All],422.0,0.1397962,1.07430884,1.04241832
+CSA,Central and South America,ARG,Argentina,2010,All,Age_all,[All],331.0,0.10464815,0.8309028,0.80937502
+CSA,Central and South America,ARG,Argentina,2011,All,Age_all,[All],318.0,0.10040573,0.78946805,0.76959379
+CSA,Central and South America,ARG,Argentina,2012,All,Age_all,[All],280.0,0.08828797,0.68633219,0.67057523
+CSA,Central and South America,ARG,Argentina,2013,All,Age_all,[All],274.0,0.08474393,0.66122101,0.64935019
+CSA,Central and South America,ARG,Argentina,2014,All,Age_all,[All],307.0,0.09533125,0.73687818,0.72002327
+CSA,Central and South America,BRA,Brazil,1979,All,Age_all,[All],2609.0,0.36710182,2.33852008,2.20085014
+CSA,Central and South America,BRA,Brazil,1980,All,Age_all,[All],2551.0,0.34029486,2.22178234,2.10328957
+CSA,Central and South America,BRA,Brazil,1981,All,Age_all,[All],2540.0,0.33895817,2.15101469,2.04723965
+CSA,Central and South America,BRA,Brazil,1982,All,Age_all,[All],2293.0,0.30946089,1.89501703,1.80701291
+CSA,Central and South America,BRA,Brazil,1983,All,Age_all,[All],2118.0,0.27480227,1.65165837,1.6322932
+CSA,Central and South America,BRA,Brazil,1984,All,Age_all,[All],1962.0,0.24246469,1.47978197,1.47910482
+CSA,Central and South America,BRA,Brazil,1985,All,Age_all,[All],1892.0,0.24030249,1.39675471,1.39565179
+CSA,Central and South America,BRA,Brazil,1986,All,Age_all,[All],1814.0,0.22382351,1.35325638,1.33767426
+CSA,Central and South America,BRA,Brazil,1987,All,Age_all,[All],1912.0,0.23935365,1.32771095,1.35707166
+CSA,Central and South America,BRA,Brazil,1988,All,Age_all,[All],1759.0,0.21107097,1.18973548,1.2246958
+CSA,Central and South America,BRA,Brazil,1989,All,Age_all,[All],1670.0,0.20497689,1.10462833,1.14126929
+CSA,Central and South America,BRA,Brazil,1990,All,Age_all,[All],1631.0,0.1997712,1.04548832,1.0946072
+CSA,Central and South America,BRA,Brazil,1991,All,Age_all,[All],1521.0,0.18958185,0.95911457,1.00298051
+CSA,Central and South America,BRA,Brazil,1992,All,Age_all,[All],1526.0,0.1849159,0.93654195,0.98924292
+CSA,Central and South America,BRA,Brazil,1993,All,Age_all,[All],1641.0,0.18729776,0.98901837,1.04622866
+CSA,Central and South America,BRA,Brazil,1994,All,Age_all,[All],1653.0,0.1868052,0.97419494,1.036801
+CSA,Central and South America,BRA,Brazil,1995,All,Age_all,[All],1632.0,0.18331764,0.95307803,1.0072837
+CSA,Central and South America,BRA,Brazil,1996,All,Age_all,[All],1465.0,0.16118704,0.83637606,0.88995704
+CSA,Central and South America,BRA,Brazil,1997,All,Age_all,[All],1791.0,0.1982256,1.00457305,1.07111434
+CSA,Central and South America,BRA,Brazil,1998,All,Age_all,[All],1938.0,0.20860625,1.06503904,1.14144191
+CSA,Central and South America,BRA,Brazil,1999,All,Age_all,[All],1823.0,0.19421344,0.98716985,1.05792364
+CSA,Central and South America,BRA,Brazil,2000,All,Age_all,[All],1648.0,0.17413521,0.87708501,0.94284387
+CSA,Central and South America,BRA,Brazil,2001,All,Age_all,[All],1587.0,0.16505769,0.83249787,0.89561814
+CSA,Central and South America,BRA,Brazil,2002,All,Age_all,[All],1648.0,0.16768519,0.85162153,0.91791398
+CSA,Central and South America,BRA,Brazil,2003,All,Age_all,[All],1597.0,0.15933163,0.81266642,0.87839317
+CSA,Central and South America,BRA,Brazil,2004,All,Age_all,[All],1672.0,0.16327025,0.84232564,0.90866365
+CSA,Central and South America,BRA,Brazil,2005,All,Age_all,[All],1661.0,0.16497372,0.82648041,0.89240093
+CSA,Central and South America,BRA,Brazil,2006,All,Age_all,[All],1634.0,0.15837999,0.80489848,0.86837592
+CSA,Central and South America,BRA,Brazil,2007,All,Age_all,[All],1612.0,0.15384219,0.78539904,0.84783898
+CSA,Central and South America,BRA,Brazil,2008,All,Age_all,[All],1641.0,0.15263114,0.79574474,0.85455237
+CSA,Central and South America,BRA,Brazil,2009,All,Age_all,[All],1884.0,0.17079326,0.90425915,0.97170248
+CSA,Central and South America,BRA,Brazil,2010,All,Age_all,[All],1728.0,0.15198611,0.82163764,0.88292264
+CSA,Central and South America,BRA,Brazil,2011,All,Age_all,[All],1680.0,0.14352865,0.79529196,0.85057031
+CSA,Central and South America,BRA,Brazil,2012,All,Age_all,[All],1647.0,0.13943849,0.77384015,0.82644504
+CSA,Central and South America,BRA,Brazil,2013,All,Age_all,[All],1787.0,0.14762812,0.8334307,0.88889591
+CSA,Central and South America,BRA,Brazil,2014,All,Age_all,[All],1889.0,0.15394784,0.87497568,0.93162614
+CSA,Central and South America,CHL,Chile,1955,All,Age_all,[All],736.0,0.83785845,12.34658201,10.83946981
+CSA,Central and South America,CHL,Chile,1956,All,Age_all,[All],743.0,0.88243328,12.02064529,10.67528736
+CSA,Central and South America,CHL,Chile,1957,All,Age_all,[All],736.0,0.80431884,11.67704805,10.30812325
+CSA,Central and South America,CHL,Chile,1958,All,Age_all,[All],769.0,0.86472506,12.04747905,10.53713346
+CSA,Central and South America,CHL,Chile,1959,All,Age_all,[All],672.0,0.71117884,10.20143824,9.00200938
+CSA,Central and South America,CHL,Chile,1960,All,Age_all,[All],789.0,0.82629914,11.7178961,10.34347142
+CSA,Central and South America,CHL,Chile,1961,All,Age_all,[All],870.0,0.9524018,12.52355833,11.07137858
+CSA,Central and South America,CHL,Chile,1962,All,Age_all,[All],787.0,0.82952126,11.0809053,9.80196787
+CSA,Central and South America,CHL,Chile,1963,All,Age_all,[All],733.0,0.7457296,10.07152245,8.91499739
+CSA,Central and South America,CHL,Chile,1964,All,Age_all,[All],721.0,0.7665483,9.58304611,8.5324434
+CSA,Central and South America,CHL,Chile,1965,All,Age_all,[All],787.0,0.85872032,10.58013061,9.27628477
+CSA,Central and South America,CHL,Chile,1966,All,Age_all,[All],771.0,0.85203726,10.15267726,8.90197437
+CSA,Central and South America,CHL,Chile,1967,All,Age_all,[All],630.0,0.72547213,8.12053207,7.12830957
+CSA,Central and South America,CHL,Chile,1968,All,Age_all,[All],579.0,0.68472091,7.28541673,6.42255771
+CSA,Central and South America,CHL,Chile,1969,All,Age_all,[All],488.0,0.5762872,5.94639235,5.30896432
+CSA,Central and South America,CHL,Chile,1970,All,Age_all,[All],439.0,0.52785994,5.46453431,4.68586555
+CSA,Central and South America,CHL,Chile,1971,All,Age_all,[All],389.0,0.4673234,4.65460901,4.07526138
+CSA,Central and South America,CHL,Chile,1972,All,Age_all,[All],452.0,0.50982427,5.19971001,4.64910566
+CSA,Central and South America,CHL,Chile,1973,All,Age_all,[All],365.0,0.43982262,4.12407259,3.68716664
+CSA,Central and South America,CHL,Chile,1974,All,Age_all,[All],326.0,0.41643248,3.42079654,3.23537877
+CSA,Central and South America,CHL,Chile,1975,All,Age_all,[All],336.0,0.45294007,3.44919555,3.29411765
+CSA,Central and South America,CHL,Chile,1976,All,Age_all,[All],284.0,0.35773218,2.85571863,2.73866924
+CSA,Central and South America,CHL,Chile,1977,All,Age_all,[All],246.0,0.33450728,2.40374375,2.33175355
+CSA,Central and South America,CHL,Chile,1978,All,Age_all,[All],218.0,0.30143389,2.03096694,2.03168686
+CSA,Central and South America,CHL,Chile,1979,All,Age_all,[All],176.0,0.23726711,1.58299838,1.61209068
+CSA,Central and South America,CHL,Chile,1980,All,Age_all,[All],185.0,0.25098358,1.59127212,1.66576625
+CSA,Central and South America,CHL,Chile,1981,All,Age_all,[All],173.0,0.24759915,1.46838857,1.53178679
+CSA,Central and South America,CHL,Chile,1982,All,Age_all,[All],142.0,0.20306601,1.19791596,1.23618003
+CSA,Central and South America,CHL,Chile,1983,All,Age_all,[All],105.0,0.14107594,0.86148999,0.88176312
+CSA,Central and South America,CHL,Chile,1984,All,Age_all,[All],92.0,0.12321044,0.73399707,0.77450857
+CSA,Central and South America,CHL,Chile,1985,All,Age_all,[All],131.0,0.17814888,1.05477481,1.08823871
+CSA,Central and South America,CHL,Chile,1986,All,Age_all,[All],129.0,0.17864809,0.96820357,1.05504212
+CSA,Central and South America,CHL,Chile,1987,All,Age_all,[All],135.0,0.19132924,1.00319715,1.07681263
+CSA,Central and South America,CHL,Chile,1988,All,Age_all,[All],122.0,0.16390139,0.87641028,0.9569378
+CSA,Central and South America,CHL,Chile,1989,All,Age_all,[All],123.0,0.16301539,0.89483198,0.94900085
+CSA,Central and South America,CHL,Chile,1990,All,Age_all,[All],123.0,0.15681975,0.86181741,0.93507678
+CSA,Central and South America,CHL,Chile,1991,All,Age_all,[All],106.0,0.14159387,0.73402383,0.79567035
+CSA,Central and South America,CHL,Chile,1992,All,Age_all,[All],91.0,0.12282359,0.61240496,0.66911765
+CSA,Central and South America,CHL,Chile,1993,All,Age_all,[All],100.0,0.13112862,0.67985557,0.72611622
+CSA,Central and South America,CHL,Chile,1994,All,Age_all,[All],73.0,0.09675923,0.49259795,0.52165959
+CSA,Central and South America,CHL,Chile,1995,All,Age_all,[All],86.0,0.10951089,0.57045484,0.59801684
+CSA,Central and South America,CHL,Chile,1996,All,Age_all,[All],63.0,0.07962287,0.41112065,0.43188046
+CSA,Central and South America,CHL,Chile,1997,All,Age_all,[All],61.0,0.07773473,0.39338053,0.41254628
+CSA,Central and South America,CHL,Chile,1998,All,Age_all,[All],55.0,0.06852985,0.35110637,0.36721178
+CSA,Central and South America,CHL,Chile,1999,All,Age_all,[All],60.0,0.07318501,0.37971515,0.39570528
+CSA,Central and South America,CHL,Chile,2000,All,Age_all,[All],49.0,0.0621717,0.30851646,0.31937735
+CSA,Central and South America,CHL,Chile,2001,All,Age_all,[All],45.0,0.05496452,0.27903108,0.29002109
+CSA,Central and South America,CHL,Chile,2002,All,Age_all,[All],42.0,0.05180133,0.26181577,0.26778185
+CSA,Central and South America,CHL,Chile,2003,All,Age_all,[All],33.0,0.03943972,0.20160608,0.20820646
+CSA,Central and South America,CHL,Chile,2004,All,Age_all,[All],42.0,0.04875897,0.25564026,0.26225461
+CSA,Central and South America,CHL,Chile,2005,All,Age_all,[All],48.0,0.05574783,0.28941825,0.29661266
+CSA,Central and South America,CHL,Chile,2006,All,Age_all,[All],47.0,0.05488154,0.28054863,0.28738261
+CSA,Central and South America,CHL,Chile,2007,All,Age_all,[All],42.0,0.04689698,0.24886541,0.25408049
+CSA,Central and South America,CHL,Chile,2008,All,Age_all,[All],36.0,0.04148278,0.21014635,0.21546232
+CSA,Central and South America,CHL,Chile,2009,All,Age_all,[All],50.0,0.05436851,0.2928303,0.29610002
+CSA,Central and South America,CHL,Chile,2010,All,Age_all,[All],46.0,0.04697233,0.26732601,0.2695965
+CSA,Central and South America,CHL,Chile,2011,All,Age_all,[All],46.0,0.0484287,0.26487462,0.26692081
+CSA,Central and South America,CHL,Chile,2012,All,Age_all,[All],54.0,0.05470515,0.30960331,0.31033864
+CSA,Central and South America,CHL,Chile,2013,All,Age_all,[All],52.0,0.0521204,0.29674106,0.29593364
+CSA,Central and South America,CHL,Chile,2014,All,Age_all,[All],56.0,0.0549235,0.3163123,0.3153338
+CSA,Central and South America,COL,Colombia,1953,All,Age_all,[All],1725.0,1.0540595,15.14399276,13.2755203
+CSA,Central and South America,COL,Colombia,1954,All,Age_all,[All],1961.0,1.30073427,16.96582498,14.6621909
+CSA,Central and South America,COL,Colombia,1955,All,Age_all,[All],1888.0,1.16641851,16.32825941,14.91664692
+CSA,Central and South America,COL,Colombia,1956,All,Age_all,[All],1673.0,0.97276491,14.56439166,13.29783006
+CSA,Central and South America,COL,Colombia,1957,All,Age_all,[All],1645.0,0.94609284,13.82579803,12.43621244
+CSA,Central and South America,COL,Colombia,1958,All,Age_all,[All],1684.0,0.96959368,14.13879259,11.63296744
+CSA,Central and South America,COL,Colombia,1959,All,Age_all,[All],1537.0,0.86917674,12.57975473,10.28912646
+CSA,Central and South America,COL,Colombia,1960,All,Age_all,[All],1553.0,0.84816113,12.31460342,10.07394914
+CSA,Central and South America,COL,Colombia,1961,All,Age_all,[All],1475.0,0.83991982,11.4544229,9.27206437
+CSA,Central and South America,COL,Colombia,1962,All,Age_all,[All],1509.0,0.85154169,11.43007497,9.19169154
+CSA,Central and South America,COL,Colombia,1963,All,Age_all,[All],1636.0,0.92482674,11.99060111,9.65704504
+CSA,Central and South America,COL,Colombia,1964,All,Age_all,[All],1712.0,0.97635532,12.09486309,9.79124964
+CSA,Central and South America,COL,Colombia,1965,All,Age_all,[All],1442.0,0.80842285,9.94637615,8.01289175
+CSA,Central and South America,COL,Colombia,1966,All,Age_all,[All],1595.0,0.912931,10.64934713,8.63656054
+CSA,Central and South America,COL,Colombia,1967,All,Age_all,[All],1625.0,0.90440571,10.54261453,8.57252887
+CSA,Central and South America,COL,Colombia,1968,All,Age_all,[All],1524.0,0.90133248,9.64589954,7.83064433
+CSA,Central and South America,COL,Colombia,1969,All,Age_all,[All],1364.0,0.88641651,8.48348424,6.82542621
+CSA,Central and South America,COL,Colombia,1972,All,Age_all,[All],1227.0,0.76505799,6.91795701,5.66272845
+CSA,Central and South America,COL,Colombia,1974,All,Age_all,[All],1240.0,0.76028842,6.19853544,5.26799076
+CSA,Central and South America,COL,Colombia,1975,All,Age_all,[All],1116.0,0.72827889,5.49561163,4.63734257
+CSA,Central and South America,COL,Colombia,1976,All,Age_all,[All],1146.0,0.74432017,5.30377065,4.65700072
+CSA,Central and South America,COL,Colombia,1977,All,Age_all,[All],1077.0,0.74058284,4.79294245,4.27983101
+CSA,Central and South America,COL,Colombia,1984,All,Age_all,[All],642.0,0.46796755,2.23679089,2.28390099
+CSA,Central and South America,COL,Colombia,1985,All,Age_all,[All],720.0,0.46769343,2.47571634,2.5075051
+CSA,Central and South America,COL,Colombia,1986,All,Age_all,[All],625.0,0.42707009,2.10994495,2.13129457
+CSA,Central and South America,COL,Colombia,1987,All,Age_all,[All],649.0,0.42709451,2.04265474,2.08043407
+CSA,Central and South America,COL,Colombia,1988,All,Age_all,[All],580.0,0.37891408,1.77242409,1.82260836
+CSA,Central and South America,COL,Colombia,1989,All,Age_all,[All],565.0,0.36523718,1.66429703,1.74073794
+CSA,Central and South America,COL,Colombia,1990,All,Age_all,[All],541.0,0.34974303,1.59483716,1.63431395
+CSA,Central and South America,COL,Colombia,1991,All,Age_all,[All],506.0,0.30911712,1.44071515,1.498889
+CSA,Central and South America,COL,Colombia,1992,All,Age_all,[All],464.0,0.27661363,1.26756797,1.36910312
+CSA,Central and South America,COL,Colombia,1993,All,Age_all,[All],476.0,0.28224635,1.25889648,1.37826397
+CSA,Central and South America,COL,Colombia,1994,All,Age_all,[All],456.0,0.27051398,1.17829487,1.29627577
+CSA,Central and South America,COL,Colombia,1995,All,Age_all,[All],411.0,0.2419127,1.0673764,1.12845627
+CSA,Central and South America,COL,Colombia,1996,All,Age_all,[All],430.0,0.24783005,1.09395141,1.15976781
+CSA,Central and South America,COL,Colombia,1997,All,Age_all,[All],420.0,0.24628809,1.06671417,1.11335549
+CSA,Central and South America,COL,Colombia,1998,All,Age_all,[All],721.0,0.41114716,1.76382751,1.87935094
+CSA,Central and South America,COL,Colombia,1999,All,Age_all,[All],676.0,0.368286,1.63883708,1.73335684
+CSA,Central and South America,COL,Colombia,2000,All,Age_all,[All],776.0,0.41436169,1.87575677,1.95811412
+CSA,Central and South America,COL,Colombia,2001,All,Age_all,[All],689.0,0.36003177,1.62710049,1.71154751
+CSA,Central and South America,COL,Colombia,2002,All,Age_all,[All],577.0,0.30040505,1.33632607,1.41160836
+CSA,Central and South America,COL,Colombia,2003,All,Age_all,[All],545.0,0.28714436,1.25169219,1.31376367
+CSA,Central and South America,COL,Colombia,2004,All,Age_all,[All],546.0,0.28922402,1.23400618,1.29765326
+CSA,Central and South America,COL,Colombia,2005,All,Age_all,[All],504.0,0.26689685,1.13202456,1.1817747
+CSA,Central and South America,COL,Colombia,2006,All,Age_all,[All],519.0,0.26917133,1.15458945,1.20136394
+CSA,Central and South America,COL,Colombia,2007,All,Age_all,[All],503.0,0.2624398,1.10808789,1.15004245
+CSA,Central and South America,COL,Colombia,2008,All,Age_all,[All],433.0,0.22007848,0.94265769,0.97842107
+CSA,Central and South America,COL,Colombia,2009,All,Age_all,[All],496.0,0.25218245,1.06199205,1.10837855
+CSA,Central and South America,COL,Colombia,2010,All,Age_all,[All],474.0,0.23638304,1.01390986,1.04814617
+CSA,Central and South America,COL,Colombia,2011,All,Age_all,[All],459.0,0.23439535,0.96621659,1.00519575
+CSA,Central and South America,COL,Colombia,2012,All,Age_all,[All],452.0,0.22627606,0.94192132,0.98099394
+CSA,Central and South America,COL,Colombia,2013,All,Age_all,[All],381.0,0.18761911,0.78619517,0.81943426
+CSA,Central and South America,COL,Colombia,2014,All,Age_all,[All],491.0,0.23375276,1.00228636,1.04539937
+CSA,Central and South America,ECU,Ecuador,1966,All,Age_all,[All],546.0,0.91583079,12.71348606,10.11219349
+CSA,Central and South America,ECU,Ecuador,1967,All,Age_all,[All],576.0,0.98770513,13.12911989,10.35968987
+CSA,Central and South America,ECU,Ecuador,1968,All,Age_all,[All],540.0,0.87524515,11.911907,9.43155824
+CSA,Central and South America,ECU,Ecuador,1969,All,Age_all,[All],513.0,0.79569425,10.83921823,8.70174834
+CSA,Central and South America,ECU,Ecuador,1970,All,Age_all,[All],529.0,0.87445243,10.97157909,8.71588776
+CSA,Central and South America,ECU,Ecuador,1971,All,Age_all,[All],495.0,0.77457516,9.63068998,7.92327326
+CSA,Central and South America,ECU,Ecuador,1972,All,Age_all,[All],486.0,0.71642319,9.05788375,7.55905042
+CSA,Central and South America,ECU,Ecuador,1973,All,Age_all,[All],471.0,0.71507735,8.63267492,7.1203504
+CSA,Central and South America,ECU,Ecuador,1974,All,Age_all,[All],498.0,0.77475964,8.60950679,7.31999859
+CSA,Central and South America,ECU,Ecuador,1975,All,Age_all,[All],513.0,0.93182933,8.83456463,7.33450819
+CSA,Central and South America,ECU,Ecuador,1977,All,Age_all,[All],444.0,0.75063398,7.14681156,5.87612493
+CSA,Central and South America,ECU,Ecuador,1978,All,Age_all,[All],498.0,0.87984311,7.75157225,6.30379747
+CSA,Central and South America,ECU,Ecuador,1979,All,Age_all,[All],424.0,0.70724425,6.29637516,5.24817428
+CSA,Central and South America,ECU,Ecuador,1980,All,Age_all,[All],426.0,0.74710628,6.24752372,5.09996408
+CSA,Central and South America,ECU,Ecuador,1981,All,Age_all,[All],443.0,0.80678942,6.26514411,5.40398641
+CSA,Central and South America,ECU,Ecuador,1982,All,Age_all,[All],394.0,0.74327001,5.54177309,4.57862688
+CSA,Central and South America,ECU,Ecuador,1983,All,Age_all,[All],413.0,0.7481613,5.24541338,4.78863121
+CSA,Central and South America,ECU,Ecuador,1984,All,Age_all,[All],384.0,0.72291878,5.01648056,4.21329822
+CSA,Central and South America,ECU,Ecuador,1985,All,Age_all,[All],397.0,0.77639144,5.08315104,4.23322173
+CSA,Central and South America,ECU,Ecuador,1986,All,Age_all,[All],330.0,0.64760484,4.18496437,3.42082349
+CSA,Central and South America,ECU,Ecuador,1987,All,Age_all,[All],355.0,0.68842477,3.86578352,3.57783556
+CSA,Central and South America,ECU,Ecuador,1988,All,Age_all,[All],329.0,0.62390958,3.55480039,3.2245102
+CSA,Central and South America,ECU,Ecuador,1989,All,Age_all,[All],340.0,0.65718262,3.62658421,3.40276645
+CSA,Central and South America,ECU,Ecuador,1990,All,Age_all,[All],307.0,0.61134676,3.18710519,3.00070355
+CSA,Central and South America,ECU,Ecuador,1991,All,Age_all,[All],320.0,0.60000375,3.17834352,3.0471257
+CSA,Central and South America,ECU,Ecuador,1992,All,Age_all,[All],338.0,0.63260341,3.22898351,3.15412403
+CSA,Central and South America,ECU,Ecuador,1993,All,Age_all,[All],348.0,0.66345109,3.23101246,3.17475783
+CSA,Central and South America,ECU,Ecuador,1994,All,Age_all,[All],241.0,0.47102511,2.16103028,2.15024963
+CSA,Central and South America,ECU,Ecuador,1995,All,Age_all,[All],170.0,0.33420489,1.51256465,1.48404166
+CSA,Central and South America,ECU,Ecuador,1996,All,Age_all,[All],194.0,0.3709369,1.65424552,1.65766996
+CSA,Central and South America,ECU,Ecuador,1997,All,Age_all,[All],162.0,0.31121528,1.36975085,1.35548384
+CSA,Central and South America,ECU,Ecuador,1998,All,Age_all,[All],153.0,0.28186139,1.24701415,1.25425782
+CSA,Central and South America,ECU,Ecuador,1999,All,Age_all,[All],209.0,0.37403583,1.67626549,1.67977872
+CSA,Central and South America,ECU,Ecuador,2000,All,Age_all,[All],232.0,0.41182214,1.82043533,1.82949097
+CSA,Central and South America,ECU,Ecuador,2001,All,Age_all,[All],187.0,0.33881722,1.43294151,1.4479661
+CSA,Central and South America,ECU,Ecuador,2002,All,Age_all,[All],149.0,0.2683186,1.11677616,1.13364322
+CSA,Central and South America,ECU,Ecuador,2003,All,Age_all,[All],139.0,0.25990053,1.02299908,1.03966603
+CSA,Central and South America,ECU,Ecuador,2004,All,Age_all,[All],129.0,0.23584474,0.92611353,0.9487814
+CSA,Central and South America,ECU,Ecuador,2005,All,Age_all,[All],143.0,0.25177829,1.01278676,1.03429468
+CSA,Central and South America,ECU,Ecuador,2006,All,Age_all,[All],135.0,0.23318076,0.94336278,0.96021277
+CSA,Central and South America,ECU,Ecuador,2007,All,Age_all,[All],176.0,0.30360008,1.2143117,1.23106563
+CSA,Central and South America,ECU,Ecuador,2008,All,Age_all,[All],162.0,0.27022519,1.09602503,1.11449442
+CSA,Central and South America,ECU,Ecuador,2009,All,Age_all,[All],208.0,0.34882356,1.37961631,1.4078383
+CSA,Central and South America,ECU,Ecuador,2010,All,Age_all,[All],202.0,0.32783693,1.31309559,1.34566935
+CSA,Central and South America,ECU,Ecuador,2011,All,Age_all,[All],239.0,0.38360298,1.53551045,1.5678419
+CSA,Central and South America,ECU,Ecuador,2012,All,Age_all,[All],202.0,0.31805514,1.26907966,1.30540702
+CSA,Central and South America,ECU,Ecuador,2013,All,Age_all,[All],158.0,0.25038032,0.97547511,1.00589057
+CSA,Central and South America,ECU,Ecuador,2014,All,Age_all,[All],169.0,0.26833489,1.02585258,1.05943891
+CSA,Central and South America,GUF,French Guiana,1968,All,Age_all,[All],0.0,0.0,0.0,0.0
+CSA,Central and South America,GUF,French Guiana,1969,All,Age_all,[All],1.0,0.23866348,0.0,2.16670639
+CSA,Central and South America,GUF,French Guiana,1970,All,Age_all,[All],3.0,0.84507042,6.55023047,6.25912789
+CSA,Central and South America,GUF,French Guiana,1971,All,Age_all,[All],1.0,0.23866348,1.98791103,2.01495094
+CSA,Central and South America,GUF,French Guiana,1972,All,Age_all,[All],0.0,0.0,0.0,0.0
+CSA,Central and South America,GUF,French Guiana,1973,All,Age_all,[All],0.0,0.0,0.0,0.0
+CSA,Central and South America,GUF,French Guiana,1974,All,Age_all,[All],0.0,0.0,0.0,0.0
+CSA,Central and South America,GUF,French Guiana,1975,All,Age_all,[All],1.0,0.24752475,2.23840852,1.77863152
+CSA,Central and South America,GUF,French Guiana,1976,All,Age_all,[All],0.0,0.0,0.0,0.0
+CSA,Central and South America,GUF,French Guiana,1977,All,Age_all,[All],1.0,0.21367521,2.12855297,1.67022982
+CSA,Central and South America,GUF,French Guiana,1978,All,Age_all,[All],1.0,0.21413276,1.54121306,1.61470023
+CSA,Central and South America,GUF,French Guiana,1979,All,Age_all,[All],0.0,0.0,0.0,0.0
+CSA,Central and South America,GUF,French Guiana,2001,All,Age_all,[All],2.0,0.3030303,1.11015282,1.17333709
+CSA,Central and South America,GUF,French Guiana,2002,All,Age_all,[All],2.0,0.29895366,1.12417612,1.12017833
+CSA,Central and South America,GUF,French Guiana,2003,All,Age_all,[All],1.0,0.13869626,0.59931482,0.53469073
+CSA,Central and South America,GUF,French Guiana,2004,All,Age_all,[All],1.0,0.13908206,0.50267698,0.51199607
+CSA,Central and South America,GUF,French Guiana,2005,All,Age_all,[All],1.0,0.13513514,0.48209192,0.49268122
+CSA,Central and South America,GUF,French Guiana,2006,All,Age_all,[All],1.0,0.13774105,0.52128119,0.47644004
+CSA,Central and South America,GUF,French Guiana,2007,All,Age_all,[All],2.0,0.28409091,0.90248442,0.92513357
+CSA,Central and South America,GUF,French Guiana,2008,All,Age_all,[All],4.0,0.51679587,1.85454207,1.80183427
+CSA,Central and South America,GUF,French Guiana,2009,All,Age_all,[All],1.0,0.14245014,0.43350624,0.43948317
+CSA,Central and South America,GUF,French Guiana,2010,All,Age_all,[All],3.0,0.38910506,1.30817711,1.2875426
+CSA,Central and South America,GUF,French Guiana,2011,All,Age_all,[All],0.0,0.0,0.0,0.0
+CSA,Central and South America,GUF,French Guiana,2012,All,Age_all,[All],2.0,0.25380711,0.91378515,0.82079568
+CSA,Central and South America,GUF,French Guiana,2013,All,Age_all,[All],1.0,0.1312336,0.45542279,0.40151935
+CSA,Central and South America,GUF,French Guiana,2014,All,Age_all,[All],3.0,0.38461538,1.14221829,1.17751881
+CSA,Central and South America,GUY,Guyana,1977,All,Age_all,[All],24.0,0.40795512,3.95606641,2.96296296
+CSA,Central and South America,GUY,Guyana,1979,All,Age_all,[All],8.0,0.14787431,1.22225076,0.92485549
+CSA,Central and South America,GUY,Guyana,1984,All,Age_all,[All],17.0,0.35557415,1.91201118,1.81623932
+CSA,Central and South America,GUY,Guyana,1988,All,Age_all,[All],13.0,0.32330266,1.63621515,1.73185779
+CSA,Central and South America,GUY,Guyana,1989,All,Age_all,[All],17.0,0.31545741,2.16858487,2.28008879
+CSA,Central and South America,GUY,Guyana,1990,All,Age_all,[All],25.0,0.51250513,3.29223986,3.3633388
+CSA,Central and South America,GUY,Guyana,1991,All,Age_all,[All],13.0,0.28577709,1.57379233,1.74619933
+CSA,Central and South America,GUY,Guyana,1992,All,Age_all,[All],11.0,0.27693857,1.40493513,1.46940564
+CSA,Central and South America,GUY,Guyana,1993,All,Age_all,[All],18.0,0.39875942,2.34279234,2.38681207
+CSA,Central and South America,GUY,Guyana,1994,All,Age_all,[All],31.0,0.72026022,3.38070319,4.0848812
+CSA,Central and South America,GUY,Guyana,1995,All,Age_all,[All],35.0,0.67593666,4.35955009,4.59745354
+CSA,Central and South America,GUY,Guyana,1996,All,Age_all,[All],26.0,0.54042819,3.28419988,3.41747777
+CSA,Central and South America,GUY,Guyana,1997,All,Age_all,[All],21.0,0.40903779,2.43210849,2.7705582
+CSA,Central and South America,GUY,Guyana,1998,All,Age_all,[All],24.0,0.47384008,3.0570562,3.18396133
+CSA,Central and South America,GUY,Guyana,1999,All,Age_all,[All],17.0,0.40505123,2.11675452,2.26765234
+CSA,Central and South America,GUY,Guyana,2001,All,Age_all,[All],17.0,0.36724995,2.18110479,2.28124841
+CSA,Central and South America,GUY,Guyana,2002,All,Age_all,[All],20.0,0.39432177,2.62245952,2.6853243
+CSA,Central and South America,GUY,Guyana,2003,All,Age_all,[All],21.0,0.4211793,2.81570275,2.81825099
+CSA,Central and South America,GUY,Guyana,2004,All,Age_all,[All],19.0,0.3695779,2.57563625,2.54781511
+CSA,Central and South America,GUY,Guyana,2005,All,Age_all,[All],24.0,0.4587156,3.33523515,3.21645539
+CSA,Central and South America,GUY,Guyana,2006,All,Age_all,[All],20.0,0.39753528,2.78477382,2.67973305
+CSA,Central and South America,GUY,Guyana,2007,All,Age_all,[All],20.0,0.39793076,2.59369243,2.67926277
+CSA,Central and South America,GUY,Guyana,2008,All,Age_all,[All],16.0,0.31980812,2.16114032,2.14242579
+CSA,Central and South America,GUY,Guyana,2009,All,Age_all,[All],9.0,0.19728189,1.26727094,1.20366234
+CSA,Central and South America,GUY,Guyana,2010,All,Age_all,[All],20.0,0.36812074,2.68846222,2.66867351
+CSA,Central and South America,GUY,Guyana,2011,All,Age_all,[All],14.0,0.25969208,1.81408381,1.86163281
+CSA,Central and South America,GUY,Guyana,2012,All,Age_all,[All],14.0,0.25234319,1.84106338,1.8533252
+CSA,Central and South America,GUY,Guyana,2013,All,Age_all,[All],9.0,0.16734846,1.29430409,1.18532567
+CSA,Central and South America,GUY,Guyana,2014,All,Age_all,[All],17.0,0.30647197,2.3896807,2.22693809
+CSA,Central and South America,PRY,Paraguay,2000,All,Age_all,[All],140.0,0.75204125,2.83052598,2.6299965
+CSA,Central and South America,PRY,Paraguay,2001,All,Age_all,[All],132.0,0.7173913,2.621536,2.43163603
+CSA,Central and South America,PRY,Paraguay,2002,All,Age_all,[All],163.0,0.86088518,3.22995159,2.94651337
+CSA,Central and South America,PRY,Paraguay,2003,All,Age_all,[All],150.0,0.7583801,2.80006826,2.6628875
+CSA,Central and South America,PRY,Paraguay,2004,All,Age_all,[All],154.0,0.70684353,2.85219006,2.6873516
+CSA,Central and South America,PRY,Paraguay,2005,All,Age_all,[All],135.0,0.61171779,2.41066987,2.3179563
+CSA,Central and South America,PRY,Paraguay,2006,All,Age_all,[All],123.0,0.54118268,2.20707381,2.08008883
+CSA,Central and South America,PRY,Paraguay,2007,All,Age_all,[All],121.0,0.52592689,2.07519536,2.01719551
+CSA,Central and South America,PRY,Paraguay,2008,All,Age_all,[All],117.0,0.50132831,1.94473425,1.923932
+CSA,Central and South America,PRY,Paraguay,2009,All,Age_all,[All],128.0,0.51038718,2.02204811,2.07658309
+CSA,Central and South America,PRY,Paraguay,2010,All,Age_all,[All],100.0,0.38207313,1.62638148,1.60050704
+CSA,Central and South America,PRY,Paraguay,2011,All,Age_all,[All],94.0,0.36581569,1.47931241,1.48405993
+CSA,Central and South America,PRY,Paraguay,2012,All,Age_all,[All],91.0,0.35467903,1.35261856,1.41711151
+CSA,Central and South America,PRY,Paraguay,2013,All,Age_all,[All],100.0,0.36111512,1.51307205,1.53603319
+CSA,Central and South America,PRY,Paraguay,2014,All,Age_all,[All],71.0,0.26320667,1.03673143,1.07583484
+CSA,Central and South America,PER,Peru,1995,All,Age_all,[All],301.0,0.32901569,1.27784199,1.23872595
+CSA,Central and South America,PER,Peru,1996,All,Age_all,[All],337.0,0.36364029,1.36925624,1.36140582
+CSA,Central and South America,PER,Peru,1997,All,Age_all,[All],246.0,0.2739726,0.96078838,0.97576633
+CSA,Central and South America,PER,Peru,1998,All,Age_all,[All],279.0,0.30502137,1.09354255,1.08737753
+CSA,Central and South America,PER,Peru,1999,All,Age_all,[All],261.0,0.30159812,0.99227035,1.00083238
+CSA,Central and South America,PER,Peru,2000,All,Age_all,[All],263.0,0.31163722,0.97693959,0.99395524
+CSA,Central and South America,PER,Peru,2001,All,Age_all,[All],227.0,0.28442907,0.81330467,0.84703752
+CSA,Central and South America,PER,Peru,2002,All,Age_all,[All],214.0,0.26357277,0.77639968,0.78963969
+CSA,Central and South America,PER,Peru,2003,All,Age_all,[All],235.0,0.2668635,0.85184387,0.85853449
+CSA,Central and South America,PER,Peru,2004,All,Age_all,[All],261.0,0.28851575,0.92120952,0.9448233
+CSA,Central and South America,PER,Peru,2005,All,Age_all,[All],213.0,0.23888029,0.75052264,0.76436838
+CSA,Central and South America,PER,Peru,2006,All,Age_all,[All],173.0,0.2093924,0.60878369,0.61561332
+CSA,Central and South America,PER,Peru,2007,All,Age_all,[All],155.0,0.17714893,0.5363571,0.54706426
+CSA,Central and South America,PER,Peru,2008,All,Age_all,[All],192.0,0.21031876,0.64932312,0.67221437
+CSA,Central and South America,PER,Peru,2009,All,Age_all,[All],163.0,0.17028478,0.55484735,0.5661166
+CSA,Central and South America,PER,Peru,2010,All,Age_all,[All],137.0,0.13791854,0.46706493,0.47196341
+CSA,Central and South America,PER,Peru,2011,All,Age_all,[All],148.0,0.15281047,0.50302013,0.50573535
+CSA,Central and South America,PER,Peru,2012,All,Age_all,[All],126.0,0.12863575,0.42034171,0.42702039
+CSA,Central and South America,PER,Peru,2013,All,Age_all,[All],97.0,0.09836132,0.32160239,0.32578774
+CSA,Central and South America,PER,Peru,2014,All,Age_all,[All],112.0,0.11611151,0.3672791,0.37221224
+CSA,Central and South America,SUR,Suriname,1963,All,Age_all,[All],15.0,0.625,6.47829313,4.80850914
+CSA,Central and South America,SUR,Suriname,1964,All,Age_all,[All],15.0,0.65530799,5.71484656,4.68354826
+CSA,Central and South America,SUR,Suriname,1965,All,Age_all,[All],14.0,0.58873003,5.67047476,4.25614709
+CSA,Central and South America,SUR,Suriname,1966,All,Age_all,[All],13.0,0.57167986,4.9324095,3.84435678
+CSA,Central and South America,SUR,Suriname,1971,All,Age_all,[All],9.0,0.34090909,2.51196829,2.43243243
+CSA,Central and South America,SUR,Suriname,1975,All,Age_all,[All],11.0,0.41198502,3.44216597,3.05555556
+CSA,Central and South America,SUR,Suriname,1976,All,Age_all,[All],9.0,0.34708831,2.9744546,2.43243243
+CSA,Central and South America,SUR,Suriname,1977,All,Age_all,[All],5.0,0.19872814,1.55427169,1.35135135
+CSA,Central and South America,SUR,Suriname,1978,All,Age_all,[All],14.0,0.51282051,4.56657061,3.74331551
+CSA,Central and South America,SUR,Suriname,1979,All,Age_all,[All],6.0,0.23300971,2.25959453,1.67215692
+CSA,Central and South America,SUR,Suriname,1980,All,Age_all,[All],8.0,0.29684601,2.96359702,2.22519533
+CSA,Central and South America,SUR,Suriname,1981,All,Age_all,[All],7.0,0.29850746,2.36676638,1.94367237
+CSA,Central and South America,SUR,Suriname,1982,All,Age_all,[All],10.0,0.42069836,4.19524436,2.77700639
+CSA,Central and South America,SUR,Suriname,1984,All,Age_all,[All],8.0,0.34934498,2.91819651,2.15866163
+CSA,Central and South America,SUR,Suriname,1985,All,Age_all,[All],7.0,0.30769231,1.94725308,1.86517453
+CSA,Central and South America,SUR,Suriname,1986,All,Age_all,[All],7.0,0.34965035,1.76875528,1.8709574
+CSA,Central and South America,SUR,Suriname,1987,All,Age_all,[All],3.0,0.17182131,0.61259451,0.78732512
+CSA,Central and South America,SUR,Suriname,1988,All,Age_all,[All],6.0,0.33707865,1.37666647,1.54288844
+CSA,Central and South America,SUR,Suriname,1989,All,Age_all,[All],3.0,0.12897678,0.67641505,0.75550575
+CSA,Central and South America,SUR,Suriname,1990,All,Age_all,[All],1.0,0.04852014,0.17873913,0.25
+CSA,Central and South America,SUR,Suriname,1991,All,Age_all,[All],7.0,0.32332564,1.37210342,1.69489473
+CSA,Central and South America,SUR,Suriname,1992,All,Age_all,[All],11.0,0.58293588,2.33053509,2.61496951
+CSA,Central and South America,SUR,Suriname,1995,All,Age_all,[All],1.0,0.06514658,0.20208509,0.22632064
+CSA,Central and South America,SUR,Suriname,1996,All,Age_all,[All],3.0,0.16411379,0.61779888,0.66932463
+CSA,Central and South America,SUR,Suriname,1997,All,Age_all,[All],5.0,0.26455026,0.98268999,1.10093117
+CSA,Central and South America,SUR,Suriname,1998,All,Age_all,[All],7.0,0.31760436,1.43518323,1.52229841
+CSA,Central and South America,SUR,Suriname,1999,All,Age_all,[All],4.0,0.15929908,0.79384506,0.85950342
+CSA,Central and South America,SUR,Suriname,2000,All,Age_all,[All],9.0,0.34992224,1.89138973,1.91103495
+CSA,Central and South America,SUR,Suriname,2001,All,Age_all,[All],10.0,0.38167939,2.0085496,2.09828801
+CSA,Central and South America,SUR,Suriname,2002,All,Age_all,[All],13.0,0.46132009,2.64597598,2.6957811
+CSA,Central and South America,SUR,Suriname,2003,All,Age_all,[All],9.0,0.32774945,1.76042948,1.84448152
+CSA,Central and South America,SUR,Suriname,2004,All,Age_all,[All],7.0,0.25107604,1.35096384,1.41792541
+CSA,Central and South America,SUR,Suriname,2005,All,Age_all,[All],4.0,0.14224751,0.8022336,0.80085852
+CSA,Central and South America,SUR,Suriname,2006,All,Age_all,[All],8.0,0.29379361,1.55193634,1.58323356
+CSA,Central and South America,SUR,Suriname,2007,All,Age_all,[All],11.0,0.38274182,2.06167652,2.15187967
+CSA,Central and South America,SUR,Suriname,2008,All,Age_all,[All],9.0,0.30282638,1.70133086,1.74039832
+CSA,Central and South America,SUR,Suriname,2009,All,Age_all,[All],11.0,0.39187745,2.11032881,2.10280419
+CSA,Central and South America,SUR,Suriname,2010,All,Age_all,[All],6.0,0.19986676,1.11004861,1.1339347
+CSA,Central and South America,SUR,Suriname,2011,All,Age_all,[All],7.0,0.23419204,1.32768506,1.30797359
+CSA,Central and South America,SUR,Suriname,2012,All,Age_all,[All],2.0,0.07104796,0.36927663,0.36951843
+CSA,Central and South America,SUR,Suriname,2013,All,Age_all,[All],11.0,0.34953924,2.00490868,2.00989967
+CSA,Central and South America,SUR,Suriname,2014,All,Age_all,[All],7.0,0.22222222,1.29082448,1.26519819
+CSA,Central and South America,URY,Uruguay,1955,All,Age_all,[All],89.0,0.43208078,3.80614903,3.75527426
+CSA,Central and South America,URY,Uruguay,1956,All,Age_all,[All],79.0,0.39746428,3.39208823,3.29166667
+CSA,Central and South America,URY,Uruguay,1957,All,Age_all,[All],93.0,0.42831483,3.89042817,3.81147541
+CSA,Central and South America,URY,Uruguay,1958,All,Age_all,[All],74.0,0.3535257,3.09072198,2.99473897
+CSA,Central and South America,URY,Uruguay,1959,All,Age_all,[All],69.0,0.29340477,2.8317394,2.75449102
+CSA,Central and South America,URY,Uruguay,1960,All,Age_all,[All],71.0,0.32126697,2.84705217,2.79527559
+CSA,Central and South America,URY,Uruguay,1963,All,Age_all,[All],51.0,0.21683673,1.97885205,1.92598187
+CSA,Central and South America,URY,Uruguay,1964,All,Age_all,[All],53.0,0.21978022,2.0251078,1.97613721
+CSA,Central and South America,URY,Uruguay,1965,All,Age_all,[All],60.0,0.24221872,2.23058906,2.20994475
+CSA,Central and South America,URY,Uruguay,1966,All,Age_all,[All],55.0,0.22122114,2.0220864,2.00072754
+CSA,Central and South America,URY,Uruguay,1967,All,Age_all,[All],76.0,0.28696572,2.80249568,2.73086597
+CSA,Central and South America,URY,Uruguay,1968,All,Age_all,[All],46.0,0.17701839,1.6638606,1.63236338
+CSA,Central and South America,URY,Uruguay,1969,All,Age_all,[All],47.0,0.17066705,1.69567265,1.6481975
+CSA,Central and South America,URY,Uruguay,1970,All,Age_all,[All],50.0,0.18910741,1.78789872,1.7324417
+CSA,Central and South America,URY,Uruguay,1971,All,Age_all,[All],46.0,0.16128467,1.59723823,1.57480315
+CSA,Central and South America,URY,Uruguay,1972,All,Age_all,[All],34.0,0.12006074,1.17424853,1.15020298
+CSA,Central and South America,URY,Uruguay,1973,All,Age_all,[All],37.0,0.13011675,1.34943106,1.23663102
+CSA,Central and South America,URY,Uruguay,1974,All,Age_all,[All],41.0,0.14494291,1.624419,1.48228489
+CSA,Central and South America,URY,Uruguay,1975,All,Age_all,[All],41.0,0.14943869,1.64364923,1.45907473
+CSA,Central and South America,URY,Uruguay,1976,All,Age_all,[All],39.0,0.13523823,1.56622496,1.37809187
+CSA,Central and South America,URY,Uruguay,1977,All,Age_all,[All],34.0,0.11756976,1.33896477,1.19465917
+CSA,Central and South America,URY,Uruguay,1978,All,Age_all,[All],32.0,0.11415118,1.23081438,1.11731844
+CSA,Central and South America,URY,Uruguay,1980,All,Age_all,[All],27.0,0.09053415,1.0605411,0.92834548
+CSA,Central and South America,URY,Uruguay,1981,All,Age_all,[All],32.0,0.11591263,1.23848161,1.09215017
+CSA,Central and South America,URY,Uruguay,1982,All,Age_all,[All],20.0,0.07360518,0.78508192,0.67789716
+CSA,Central and South America,URY,Uruguay,1983,All,Age_all,[All],21.0,0.07375408,0.78776974,0.70752333
+CSA,Central and South America,URY,Uruguay,1984,All,Age_all,[All],20.0,0.0666889,0.73516586,0.66891869
+CSA,Central and South America,URY,Uruguay,1985,All,Age_all,[All],23.0,0.08054067,0.86474534,0.76351082
+CSA,Central and South America,URY,Uruguay,1986,All,Age_all,[All],14.0,0.04865842,0.52079199,0.46133061
+CSA,Central and South America,URY,Uruguay,1987,All,Age_all,[All],15.0,0.05020416,0.5663205,0.49051668
+CSA,Central and South America,URY,Uruguay,1988,All,Age_all,[All],21.0,0.06796117,0.77777198,0.68161901
+CSA,Central and South America,URY,Uruguay,1989,All,Age_all,[All],14.0,0.04726377,0.5152704,0.4510164
+CSA,Central and South America,URY,Uruguay,1990,All,Age_all,[All],9.0,0.02979146,0.31947552,0.29088559
+CSA,Central and South America,URY,Uruguay,1993,All,Age_all,[All],14.0,0.04428558,0.48337934,0.44056398
+CSA,Central and South America,URY,Uruguay,1994,All,Age_all,[All],12.0,0.03975353,0.41210658,0.37486517
+CSA,Central and South America,URY,Uruguay,1995,All,Age_all,[All],14.0,0.04416404,0.4749015,0.43420533
+CSA,Central and South America,URY,Uruguay,1996,All,Age_all,[All],11.0,0.03535841,0.36571749,0.33873451
+CSA,Central and South America,URY,Uruguay,1997,All,Age_all,[All],17.0,0.0558219,0.56770169,0.5198516
+CSA,Central and South America,URY,Uruguay,1998,All,Age_all,[All],11.0,0.03446439,0.36590707,0.33423953
+CSA,Central and South America,URY,Uruguay,1999,All,Age_all,[All],6.0,0.01850082,0.19078355,0.18137782
+CSA,Central and South America,URY,Uruguay,2000,All,Age_all,[All],9.0,0.0295518,0.29397294,0.2711059
+CSA,Central and South America,URY,Uruguay,2001,All,Age_all,[All],19.0,0.06094041,0.61121838,0.57134729
+CSA,Central and South America,URY,Uruguay,2002,All,Age_all,[All],18.0,0.05784991,0.59027394,0.54118411
+CSA,Central and South America,URY,Uruguay,2003,All,Age_all,[All],10.0,0.0306965,0.32861562,0.30087241
+CSA,Central and South America,URY,Uruguay,2004,All,Age_all,[All],9.0,0.02795639,0.29137658,0.27096387
+CSA,Central and South America,URY,Uruguay,2005,All,Age_all,[All],9.0,0.02828499,0.29304959,0.2709372
+CSA,Central and South America,URY,Uruguay,2006,All,Age_all,[All],6.0,0.01962323,0.1950157,0.18042937
+CSA,Central and South America,URY,Uruguay,2007,All,Age_all,[All],13.0,0.03848089,0.41872363,0.39018546
+CSA,Central and South America,URY,Uruguay,2008,All,Age_all,[All],6.0,0.01931248,0.19394795,0.17962883
+CSA,Central and South America,URY,Uruguay,2009,All,Age_all,[All],11.0,0.0355148,0.36110587,0.32838997
+CSA,Central and South America,URY,Uruguay,2010,All,Age_all,[All],2.0,0.00614024,0.06275443,0.05953666
+CSA,Central and South America,URY,Uruguay,2012,All,Age_all,[All],5.0,0.01499071,0.16135329,0.14797387
+CSA,Central and South America,URY,Uruguay,2013,All,Age_all,[All],9.0,0.02752462,0.2914124,0.26553035
+CSA,Central and South America,URY,Uruguay,2014,All,Age_all,[All],9.0,0.02801818,0.25609749,0.26467194
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1955,All,Age_all,[All],378.0,0.63712518,6.505658,6.2061832
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1956,All,Age_all,[All],384.0,0.64683489,6.36584208,6.06338128
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1957,All,Age_all,[All],380.0,0.61474747,6.05357896,5.7791161
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1958,All,Age_all,[All],394.0,0.65923769,6.51574893,5.7687521
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1959,All,Age_all,[All],408.0,0.71253929,6.62161415,5.7579136
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1960,All,Age_all,[All],353.0,0.64159654,5.47488611,4.79313482
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1961,All,Age_all,[All],378.0,0.68149858,5.68780429,4.95640202
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1962,All,Age_all,[All],368.0,0.66984601,5.28708821,4.64306442
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1963,All,Age_all,[All],335.0,0.57491977,4.71700514,4.07284929
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1964,All,Age_all,[All],361.0,0.5890896,4.90708884,4.23485248
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1965,All,Age_all,[All],409.0,0.67206731,5.26479279,4.63519119
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1966,All,Age_all,[All],443.0,0.72007932,5.50494502,4.85575237
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1967,All,Age_all,[All],382.0,0.61530532,4.729856,4.05412576
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1968,All,Age_all,[All],374.0,0.57919841,4.53141141,3.88773389
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1969,All,Age_all,[All],332.0,0.48856579,3.88434232,3.34004024
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1970,All,Age_all,[All],362.0,0.5280894,4.05416888,3.52140078
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1971,All,Age_all,[All],374.0,0.53082022,4.28643638,3.52444495
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1972,All,Age_all,[All],391.0,0.53162561,4.35241171,3.57426892
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1973,All,Age_all,[All],376.0,0.49146472,3.96621961,3.33345154
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1974,All,Age_all,[All],307.0,0.41598352,3.14103233,2.63936174
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1975,All,Age_all,[All],305.0,0.40898973,3.08721018,2.54312897
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1976,All,Age_all,[All],329.0,0.42912297,3.13927485,2.66157543
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1977,All,Age_all,[All],348.0,0.46810056,3.13847931,2.73226189
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1978,All,Age_all,[All],310.0,0.42776321,2.68156694,2.36244475
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1979,All,Age_all,[All],292.0,0.39628147,2.29656688,2.00673493
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1980,All,Age_all,[All],319.0,0.41518078,2.29069757,2.12425917
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1981,All,Age_all,[All],265.0,0.32982351,1.81186853,1.71181996
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1982,All,Age_all,[All],257.0,0.32810326,1.67780263,1.61186129
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1983,All,Age_all,[All],303.0,0.39491691,1.94082079,1.84821461
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1985,All,Age_all,[All],291.0,0.36670195,1.72767405,1.68046845
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1986,All,Age_all,[All],296.0,0.37737773,1.67600464,1.66383739
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1987,All,Age_all,[All],284.0,0.35065625,1.60682308,1.55446086
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1988,All,Age_all,[All],291.0,0.3565958,1.5494141,1.5768939
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1989,All,Age_all,[All],339.0,0.39935914,1.79338274,1.79479034
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1990,All,Age_all,[All],347.0,0.38524736,1.76864372,1.77932293
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1992,All,Age_all,[All],299.0,0.32644416,1.45029413,1.46240304
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1993,All,Age_all,[All],331.0,0.35434799,1.53209519,1.58277785
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1994,All,Age_all,[All],383.0,0.38690386,1.77259873,1.79154466
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1996,All,Age_all,[All],297.0,0.29686641,1.28369001,1.3267428
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1997,All,Age_all,[All],308.0,0.31425044,1.3070448,1.34864465
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1998,All,Age_all,[All],256.0,0.25355823,1.06569921,1.09925198
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),1999,All,Age_all,[All],313.0,0.29916368,1.27202839,1.3184587
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2000,All,Age_all,[All],327.0,0.30864198,1.30399123,1.35166159
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2001,All,Age_all,[All],356.0,0.32209033,1.38319679,1.4444258
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2002,All,Age_all,[All],335.0,0.30373641,1.28741124,1.33463966
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2003,All,Age_all,[All],321.0,0.26340839,1.19973565,1.25628023
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2004,All,Age_all,[All],318.0,0.27128939,1.16118523,1.22323717
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2005,All,Age_all,[All],351.0,0.297993,1.2785383,1.32791338
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2006,All,Age_all,[All],356.0,0.29258751,1.27592586,1.32587496
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2007,All,Age_all,[All],332.0,0.26047592,1.16519606,1.21845549
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2008,All,Age_all,[All],377.0,0.28207795,1.29805769,1.36417098
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2009,All,Age_all,[All],434.0,0.32211856,1.47413631,1.54828533
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2010,All,Age_all,[All],412.0,0.29746433,1.39010009,1.44866691
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2011,All,Age_all,[All],436.0,0.30485247,1.44741129,1.50928379
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2012,All,Age_all,[All],416.0,0.28091595,1.36677624,1.41685334
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2013,All,Age_all,[All],410.0,0.27355948,1.33603423,1.37671485
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2014,All,Age_all,[All],490.0,0.30223593,1.57859868,1.63099731
+CSA,Central and South America,ARG,Argentina,2020,All,Age_all,[All],257.0,0.06831128,0.5863137,0.56863724
+CSA,Central and South America,ARG,Argentina,2019,All,Age_all,[All],231.0,0.06759762,0.53411429,0.51584749
+CSA,Central and South America,ARG,Argentina,2018,All,Age_all,[All],294.0,0.0872862,0.68309224,0.66274206
+CSA,Central and South America,ARG,Argentina,2017,All,Age_all,[All],246.0,0.0719955,0.57469103,0.55989079
+CSA,Central and South America,ARG,Argentina,2016,All,Age_all,[All],284.0,0.08111574,0.66848135,0.65274662
+CSA,Central and South America,ARG,Argentina,2015,All,Age_all,[All],333.0,0.10072961,0.7925559,0.77306276
+CSA,Central and South America,BRA,Brazil,2020,All,Age_all,[All],2147.0,0.13790897,0.97061638,1.01007052
+CSA,Central and South America,BRA,Brazil,2019,All,Age_all,[All],1726.0,0.1278707,0.7919502,0.82132934
+CSA,Central and South America,BRA,Brazil,2018,All,Age_all,[All],1862.0,0.1414121,0.85126155,0.88891298
+CSA,Central and South America,BRA,Brazil,2017,All,Age_all,[All],1874.0,0.14276311,0.85625784,0.90168192
+CSA,Central and South America,BRA,Brazil,2016,All,Age_all,[All],1814.0,0.13849718,0.83423618,0.87988608
+CSA,Central and South America,BRA,Brazil,2015,All,Age_all,[All],1896.0,0.14997924,0.8755763,0.92726737
+CSA,Central and South America,CHL,Chile,2020,All,Age_all,[All],61.0,0.04834785,0.3124842,0.31910106
+CSA,Central and South America,CHL,Chile,2019,All,Age_all,[All],40.0,0.03647705,0.2038073,0.2110591
+CSA,Central and South America,CHL,Chile,2018,All,Age_all,[All],51.0,0.0477546,0.27174601,0.27230266
+CSA,Central and South America,CHL,Chile,2017,All,Age_all,[All],58.0,0.05451743,0.3124735,0.31401528
+CSA,Central and South America,CHL,Chile,2016,All,Age_all,[All],51.0,0.0490262,0.28001205,0.28008023
+CSA,Central and South America,CHL,Chile,2015,All,Age_all,[All],56.0,0.05419687,0.30976391,0.31164172
+CSA,Central and South America,COL,Colombia,2020,All,Age_all,[All],645.0,0.21439042,1.21195659,1.26761665
+CSA,Central and South America,COL,Colombia,2019,All,Age_all,[All],521.0,0.21321438,0.98949279,1.03497371
+CSA,Central and South America,COL,Colombia,2018,All,Age_all,[All],521.0,0.21989432,1.00139364,1.04911197
+CSA,Central and South America,COL,Colombia,2017,All,Age_all,[All],485.0,0.21307068,0.94925626,0.99162052
+CSA,Central and South America,COL,Colombia,2016,All,Age_all,[All],476.0,0.21337828,0.9447317,0.98806328
+CSA,Central and South America,COL,Colombia,2015,All,Age_all,[All],476.0,0.21688416,0.9609849,1.00166944
+CSA,Central and South America,ECU,Ecuador,2021,All,Age_all,[All],190.0,0.180526,1.03971362,1.06213638
+CSA,Central and South America,ECU,Ecuador,2020,All,Age_all,[All],217.0,0.18785276,1.20120217,1.22994579
+CSA,Central and South America,ECU,Ecuador,2019,All,Age_all,[All],228.0,0.31049557,1.28066402,1.31233127
+CSA,Central and South America,ECU,Ecuador,2018,All,Age_all,[All],223.0,0.30979967,1.27157728,1.30528756
+CSA,Central and South America,ECU,Ecuador,2017,All,Age_all,[All],211.0,0.30470634,1.22074342,1.25704773
+CSA,Central and South America,ECU,Ecuador,2016,All,Age_all,[All],154.0,0.22812787,0.9113139,0.93383613
+CSA,Central and South America,ECU,Ecuador,2015,All,Age_all,[All],183.0,0.282451,1.10197032,1.12879209
+CSA,Central and South America,GUF,French Guiana,2016,All,Age_all,[All],1.0,0.11098779,0.33196224,0.37338372
+CSA,Central and South America,GUF,French Guiana,2015,All,Age_all,[All],1.0,0.12019231,0.38982008,0.38314323
+CSA,Central and South America,GUY,Guyana,2019,All,Age_all,[All],19.0,0.3818328,2.4477151,2.42728989
+CSA,Central and South America,GUY,Guyana,2018,All,Age_all,[All],13.0,0.25788534,1.68602677,1.66879331
+CSA,Central and South America,GUY,Guyana,2017,All,Age_all,[All],22.0,0.39419459,2.57428404,2.83789676
+CSA,Central and South America,GUY,Guyana,2016,All,Age_all,[All],8.0,0.1607394,1.0570245,1.03711847
+CSA,Central and South America,GUY,Guyana,2015,All,Age_all,[All],15.0,0.25978524,2.02407795,1.95457057
+CSA,Central and South America,PER,Peru,2020,All,Age_all,[All],228.0,0.09743715,0.67107156,0.69149888
+CSA,Central and South America,PER,Peru,2019,All,Age_all,[All],216.0,0.16268368,0.64326349,0.66440169
+CSA,Central and South America,PER,Peru,2018,All,Age_all,[All],225.0,0.17915439,0.68588639,0.70336107
+CSA,Central and South America,PER,Peru,2017,All,Age_all,[All],315.0,0.26002542,0.97598162,1.00177145
+CSA,Central and South America,PER,Peru,2016,All,Age_all,[All],72.0,0.07404284,0.22881769,0.23281357
+CSA,Central and South America,PER,Peru,2015,All,Age_all,[All],110.0,0.11429759,0.35831013,0.36100213
+CSA,Central and South America,PRY,Paraguay,2020,All,Age_all,[All],110.0,0.3119417,1.46311388,1.54222803
+CSA,Central and South America,PRY,Paraguay,2019,All,Age_all,[All],105.0,0.32445461,1.41311366,1.49049575
+CSA,Central and South America,PRY,Paraguay,2018,All,Age_all,[All],114.0,0.36470664,1.56750955,1.63885737
+CSA,Central and South America,PRY,Paraguay,2017,All,Age_all,[All],100.0,0.34457806,1.41826246,1.45622705
+CSA,Central and South America,PRY,Paraguay,2016,All,Age_all,[All],115.0,0.36723615,1.58297242,1.69669772
+CSA,Central and South America,PRY,Paraguay,2015,All,Age_all,[All],114.0,0.3980308,1.63670864,1.70435535
+CSA,Central and South America,URY,Uruguay,2020,All,Age_all,[All],11.0,0.03370408,0.34879134,0.31666249
+CSA,Central and South America,URY,Uruguay,2019,All,Age_all,[All],5.0,0.01436493,0.15534151,0.14443629
+CSA,Central and South America,URY,Uruguay,2018,All,Age_all,[All],6.0,0.01758087,0.19350972,0.17394909
+CSA,Central and South America,URY,Uruguay,2017,All,Age_all,[All],8.0,0.024116,0.25151998,0.23278544
+CSA,Central and South America,URY,Uruguay,2016,All,Age_all,[All],9.0,0.02625974,0.28741877,0.26284056
+CSA,Central and South America,URY,Uruguay,2015,All,Age_all,[All],11.0,0.0333667,0.35516385,0.32239071
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2016,All,Age_all,[All],986.0,0.51765595,3.25848407,3.30304371
+CSA,Central and South America,VEN,Venezuela (Bolivarian Republic of),2015,All,Age_all,[All],664.0,0.39463205,2.14954483,2.20731259
+CSA,Central and South America,ARG,Argentina,2021,All,Age_all,[All],475.0,0.10874567,1.07547519,1.0415336
+CSA,Central and South America,CHL,Chile,2021,All,Age_all,[All],64.0,0.04650183,0.32875885,0.33311887
+CSA,Central and South America,COL,Colombia,2021,All,Age_all,[All],729.0,0.20077722,1.36257974,1.42199941
+CSA,Central and South America,PRY,Paraguay,2021,All,Age_all,[All],198.0,0.37305699,2.58942759,2.74251978

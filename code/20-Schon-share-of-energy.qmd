@@ -30,6 +30,8 @@ df <- df %>%
   TRUE ~ year
 ))
 
+df %>% write_rds(here::here("data", "figure-2.rds"))
+
 
 df %>% ggplot(aes(year, value, colour = industry)) +
   geom_line() +
