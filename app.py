@@ -25,6 +25,13 @@ summary_df = filtered_df.groupby('document_type_short').agg(
 st.subheader(f"Summary for {country}")
 st.table(summary_df)
 
+# New table: Count of domain by country
+domain_count = filtered_df.groupby('domain').size().reset_index(name='Domain Count')
+# sort by domain count
+domain_count = domain_count.sort_values(by='Domain Count', ascending=False)
+st.subheader(f"Domain Count for {country}")
+st.table(domain_count)
+
 # Add a line to break up the sections
 st.markdown("---")
 
