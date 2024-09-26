@@ -19,14 +19,14 @@ filtered_df = df[df['country'] == country]
 summary_df = filtered_df.groupby('document_type_short').agg(
     Document_Count=('year', 'size'),
     Most_Recent_Year=('year', 'max')
-).reset_index()
+).reset_index(drop=True)
 
 # Display the summary table
 st.subheader(f"Summary for {country}")
 st.table(summary_df)
 
 # New table: Count of domain by country
-domain_count = filtered_df.groupby('domain').size().reset_index(name='Domain Count')
+domain_count = filtered_df.groupby('domain').size().reset_index(name='Domain Count', drop=True)
 # sort by domain count
 domain_count = domain_count.sort_values(by='Domain Count', ascending=False)
 st.subheader(f"Domain Count for {country}")
@@ -42,10 +42,10 @@ document_type = st.selectbox("Select a Document Type", sorted(filtered_df['docum
 final_df = filtered_df[filtered_df['document_type_short'] == document_type]
 
 # Count the number of documents per year
-document_count = final_df.groupby('year').size().reset_index(name='Document Count')
+document_count = final_df.groupby('year').size().reset_index(name='Document Count', drop=True)
 
 # Count the number of documents per domain
-domain_count = final_df.groupby('domain').size().reset_index(name='Domain Count')
+domain_count = final_df.groupby('domain').size().reset_index(name='Domain Count', drop=True)
 
 # Add domain to the final table
 final_df['domain'] = final_df['domain']
